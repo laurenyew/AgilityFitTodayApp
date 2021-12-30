@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B93319E6277D3C6E009642CD /* AgilityFitTodayAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319E5277D3C6E009642CD /* AgilityFitTodayAppApp.swift */; };
+		B93319E8277D3C6E009642CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319E7277D3C6E009642CD /* ContentView.swift */; };
+		B93319EA277D3C71009642CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93319E9277D3C71009642CD /* Assets.xcassets */; };
+		B93319ED277D3C71009642CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93319EC277D3C71009642CD /* Preview Assets.xcassets */; };
+		B93319EF277D3C71009642CD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319EE277D3C71009642CD /* Persistence.swift */; };
+		B93319F2277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B93319F0277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld */; };
+		B93319FC277D3C71009642CD /* AgilityFitTodayAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319FB277D3C71009642CD /* AgilityFitTodayAppTests.swift */; };
+		B9331A06277D3C71009642CD /* AgilityFitTodayAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9331A05277D3C71009642CD /* AgilityFitTodayAppUITests.swift */; };
+		B9331A08277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9331A07277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B93319F8277D3C71009642CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B93319DA277D3C6D009642CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B93319E1277D3C6D009642CD;
+			remoteInfo = AgilityFitTodayApp;
+		};
+		B9331A02277D3C71009642CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B93319DA277D3C6D009642CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B93319E1277D3C6D009642CD;
+			remoteInfo = AgilityFitTodayApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B93319E2277D3C6E009642CD /* AgilityFitTodayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgilityFitTodayApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B93319E5277D3C6E009642CD /* AgilityFitTodayAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayAppApp.swift; sourceTree = "<group>"; };
+		B93319E7277D3C6E009642CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B93319E9277D3C71009642CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B93319EC277D3C71009642CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B93319EE277D3C71009642CD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		B93319F1277D3C71009642CD /* AgilityFitTodayApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AgilityFitTodayApp.xcdatamodel; sourceTree = "<group>"; };
+		B93319F7277D3C71009642CD /* AgilityFitTodayAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgilityFitTodayAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B93319FB277D3C71009642CD /* AgilityFitTodayAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayAppTests.swift; sourceTree = "<group>"; };
+		B9331A01277D3C71009642CD /* AgilityFitTodayAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AgilityFitTodayAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9331A05277D3C71009642CD /* AgilityFitTodayAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayAppUITests.swift; sourceTree = "<group>"; };
+		B9331A07277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B93319DF277D3C6D009642CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93319F4277D3C71009642CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93319FE277D3C71009642CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B93319D9277D3C6D009642CD = {
+			isa = PBXGroup;
+			children = (
+				B93319E4277D3C6E009642CD /* AgilityFitTodayApp */,
+				B93319FA277D3C71009642CD /* AgilityFitTodayAppTests */,
+				B9331A04277D3C71009642CD /* AgilityFitTodayAppUITests */,
+				B93319E3277D3C6E009642CD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B93319E3277D3C6E009642CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B93319E2277D3C6E009642CD /* AgilityFitTodayApp.app */,
+				B93319F7277D3C71009642CD /* AgilityFitTodayAppTests.xctest */,
+				B9331A01277D3C71009642CD /* AgilityFitTodayAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B93319E4277D3C6E009642CD /* AgilityFitTodayApp */ = {
+			isa = PBXGroup;
+			children = (
+				B93319E5277D3C6E009642CD /* AgilityFitTodayAppApp.swift */,
+				B93319E7277D3C6E009642CD /* ContentView.swift */,
+				B93319E9277D3C71009642CD /* Assets.xcassets */,
+				B93319EE277D3C71009642CD /* Persistence.swift */,
+				B93319F0277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld */,
+				B93319EB277D3C71009642CD /* Preview Content */,
+			);
+			path = AgilityFitTodayApp;
+			sourceTree = "<group>";
+		};
+		B93319EB277D3C71009642CD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B93319EC277D3C71009642CD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B93319FA277D3C71009642CD /* AgilityFitTodayAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				B93319FB277D3C71009642CD /* AgilityFitTodayAppTests.swift */,
+			);
+			path = AgilityFitTodayAppTests;
+			sourceTree = "<group>";
+		};
+		B9331A04277D3C71009642CD /* AgilityFitTodayAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B9331A05277D3C71009642CD /* AgilityFitTodayAppUITests.swift */,
+				B9331A07277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift */,
+			);
+			path = AgilityFitTodayAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B93319E1277D3C6D009642CD /* AgilityFitTodayApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9331A0B277D3C71009642CD /* Build configuration list for PBXNativeTarget "AgilityFitTodayApp" */;
+			buildPhases = (
+				B93319DE277D3C6D009642CD /* Sources */,
+				B93319DF277D3C6D009642CD /* Frameworks */,
+				B93319E0277D3C6D009642CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AgilityFitTodayApp;
+			productName = AgilityFitTodayApp;
+			productReference = B93319E2277D3C6E009642CD /* AgilityFitTodayApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B93319F6277D3C71009642CD /* AgilityFitTodayAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9331A0E277D3C71009642CD /* Build configuration list for PBXNativeTarget "AgilityFitTodayAppTests" */;
+			buildPhases = (
+				B93319F3277D3C71009642CD /* Sources */,
+				B93319F4277D3C71009642CD /* Frameworks */,
+				B93319F5277D3C71009642CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B93319F9277D3C71009642CD /* PBXTargetDependency */,
+			);
+			name = AgilityFitTodayAppTests;
+			productName = AgilityFitTodayAppTests;
+			productReference = B93319F7277D3C71009642CD /* AgilityFitTodayAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B9331A00277D3C71009642CD /* AgilityFitTodayAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9331A11277D3C71009642CD /* Build configuration list for PBXNativeTarget "AgilityFitTodayAppUITests" */;
+			buildPhases = (
+				B93319FD277D3C71009642CD /* Sources */,
+				B93319FE277D3C71009642CD /* Frameworks */,
+				B93319FF277D3C71009642CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9331A03277D3C71009642CD /* PBXTargetDependency */,
+			);
+			name = AgilityFitTodayAppUITests;
+			productName = AgilityFitTodayAppUITests;
+			productReference = B9331A01277D3C71009642CD /* AgilityFitTodayAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B93319DA277D3C6D009642CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					B93319E1277D3C6D009642CD = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					B93319F6277D3C71009642CD = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = B93319E1277D3C6D009642CD;
+					};
+					B9331A00277D3C71009642CD = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = B93319E1277D3C6D009642CD;
+					};
+				};
+			};
+			buildConfigurationList = B93319DD277D3C6D009642CD /* Build configuration list for PBXProject "AgilityFitTodayApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B93319D9277D3C6D009642CD;
+			productRefGroup = B93319E3277D3C6E009642CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B93319E1277D3C6D009642CD /* AgilityFitTodayApp */,
+				B93319F6277D3C71009642CD /* AgilityFitTodayAppTests */,
+				B9331A00277D3C71009642CD /* AgilityFitTodayAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B93319E0277D3C6D009642CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B93319ED277D3C71009642CD /* Preview Assets.xcassets in Resources */,
+				B93319EA277D3C71009642CD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93319F5277D3C71009642CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93319FF277D3C71009642CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B93319DE277D3C6D009642CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B93319EF277D3C71009642CD /* Persistence.swift in Sources */,
+				B93319E8277D3C6E009642CD /* ContentView.swift in Sources */,
+				B93319E6277D3C6E009642CD /* AgilityFitTodayAppApp.swift in Sources */,
+				B93319F2277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93319F3277D3C71009642CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B93319FC277D3C71009642CD /* AgilityFitTodayAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93319FD277D3C71009642CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9331A08277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift in Sources */,
+				B9331A06277D3C71009642CD /* AgilityFitTodayAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B93319F9277D3C71009642CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B93319E1277D3C6D009642CD /* AgilityFitTodayApp */;
+			targetProxy = B93319F8277D3C71009642CD /* PBXContainerItemProxy */;
+		};
+		B9331A03277D3C71009642CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B93319E1277D3C6D009642CD /* AgilityFitTodayApp */;
+			targetProxy = B9331A02277D3C71009642CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B9331A09277D3C71009642CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B9331A0A277D3C71009642CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B9331A0C277D3C71009642CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AgilityFitTodayApp/Preview Content\"";
+				DEVELOPMENT_TEAM = M534J7BM7R;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = laurenyew.AgilityFitTodayApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B9331A0D277D3C71009642CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AgilityFitTodayApp/Preview Content\"";
+				DEVELOPMENT_TEAM = M534J7BM7R;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = laurenyew.AgilityFitTodayApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B9331A0F277D3C71009642CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M534J7BM7R;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = laurenyew.AgilityFitTodayAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AgilityFitTodayApp.app/AgilityFitTodayApp";
+			};
+			name = Debug;
+		};
+		B9331A10277D3C71009642CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M534J7BM7R;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = laurenyew.AgilityFitTodayAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AgilityFitTodayApp.app/AgilityFitTodayApp";
+			};
+			name = Release;
+		};
+		B9331A12277D3C71009642CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M534J7BM7R;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = laurenyew.AgilityFitTodayAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AgilityFitTodayApp;
+			};
+			name = Debug;
+		};
+		B9331A13277D3C71009642CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M534J7BM7R;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = laurenyew.AgilityFitTodayAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AgilityFitTodayApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B93319DD277D3C6D009642CD /* Build configuration list for PBXProject "AgilityFitTodayApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9331A09277D3C71009642CD /* Debug */,
+				B9331A0A277D3C71009642CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9331A0B277D3C71009642CD /* Build configuration list for PBXNativeTarget "AgilityFitTodayApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9331A0C277D3C71009642CD /* Debug */,
+				B9331A0D277D3C71009642CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9331A0E277D3C71009642CD /* Build configuration list for PBXNativeTarget "AgilityFitTodayAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9331A0F277D3C71009642CD /* Debug */,
+				B9331A10277D3C71009642CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9331A11277D3C71009642CD /* Build configuration list for PBXNativeTarget "AgilityFitTodayAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9331A12277D3C71009642CD /* Debug */,
+				B9331A13277D3C71009642CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B93319F0277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B93319F1277D3C71009642CD /* AgilityFitTodayApp.xcdatamodel */,
+			);
+			currentVersion = B93319F1277D3C71009642CD /* AgilityFitTodayApp.xcdatamodel */;
+			path = AgilityFitTodayApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B93319DA277D3C6D009642CD /* Project object */;
+}
