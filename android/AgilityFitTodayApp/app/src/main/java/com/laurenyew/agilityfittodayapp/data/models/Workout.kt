@@ -4,10 +4,25 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Workout(
+data class WorkoutSequence(
     @PrimaryKey val id: Long,
     val name: String,
     val description: String,
-    val estimatedTime: Long,
-    //TODO
-)
+    val workoutItems: List<WorkoutItem>,
+    val workoutType: WorkoutType,
+    val isFavorite: Boolean
+) {
+    val estimatedTime: Long =
+        workoutItems.sumOf {
+            it.estimatedTime
+        }
+}
+
+@Entity
+data class WorkoutItem(
+    val id: Long,
+    val quantity: Int,
+    val itemBase: WorkoutItemBase
+) {
+    val estimatedTime: Long = itemBase.baseEstimatedTime * quantity
+}
