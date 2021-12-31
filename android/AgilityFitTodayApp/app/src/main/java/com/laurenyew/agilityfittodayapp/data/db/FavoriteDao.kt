@@ -1,6 +1,7 @@
 package com.laurenyew.agilityfittodayapp.data.db
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutItem
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
@@ -18,7 +19,16 @@ interface FavoriteDao {
     suspend fun getFavoriteWorkoutSequencesOrderedByName(): List<WorkoutSequence>
 
     @Query("SELECT * from workoutitem")
-    suspend fun getFavoriteWorkoutItems(): List<WorkoutItem>
+    suspend fun getSavedWorkoutItems(): List<WorkoutItem>
+
+    @Query("SELECT * from workoutitem WHERE id = :id")
+    suspend fun getSavedWorkoutItem(id: Long): WorkoutItem?
+
+    @Query("DELETE FROM workoutitem WHERE id = :id")
+    suspend fun deleteSavedWorkoutItem(id: Long)
+
+    @Insert
+    suspend fun insertSavedWorkoutItem(workoutItem: WorkoutItem)
 }
 
 interface FavoriteDatabaseProvider {
@@ -28,7 +38,7 @@ interface FavoriteDatabaseProvider {
     suspend fun favoriteWorkoutSequence(id: Long)
     suspend fun unfavoriteWorkoutSequence(id: Long)
 
-    suspend fun favoriteWorkoutItem(id: Long)
+    suspend fun favoriteWorkoutItem(workoutItem: WorkoutItem)
     suspend fun unfavoriteWorkoutItem(id: Long)
     suspend fun getFavoriteWorkoutItems(): List<WorkoutItem>
 }

@@ -17,3 +17,9 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
 }
+
+interface UserDatabaseProvider {
+    suspend fun getUser(id: Long): User?
+    suspend fun deleteUser(id: Long)
+    suspend fun createUser(user: User)
+}
