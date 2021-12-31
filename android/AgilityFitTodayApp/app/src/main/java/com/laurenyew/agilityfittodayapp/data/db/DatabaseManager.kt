@@ -1,26 +1,10 @@
 package com.laurenyew.agilityfittodayapp.data.db
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
 import com.laurenyew.agilityfittodayapp.data.models.User
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutItem
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutType
 import javax.inject.Inject
-
-@Database(
-    entities = [
-        UserDao::class,
-        WorkoutDao::class,
-        FavoriteDao::class
-    ],
-    version = 3
-)
-abstract class AgilityFitTodayDatabase : RoomDatabase() {
-    abstract fun userDao(): UserDao
-    abstract fun workoutDao(): WorkoutDao
-    abstract fun favoriteDao(): FavoriteDao
-}
 
 class DatabaseManager @Inject constructor(
     private val db: AgilityFitTodayDatabase

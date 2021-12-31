@@ -12,17 +12,17 @@ data class WorkoutSequence(
     val workoutType: WorkoutType,
     val isFavorite: Boolean
 ) {
-    val estimatedTime: Long =
+    fun estimatedTime(): Long =
         workoutItems.sumOf {
-            it.estimatedTime
+            it.estimatedTime()
         }
 }
 
 @Entity
 data class WorkoutItem(
-    val id: Long,
+    @PrimaryKey val id: Long,
     val quantity: Int,
     val itemBase: WorkoutItemBase
 ) {
-    val estimatedTime: Long = itemBase.baseEstimatedTime * quantity
+    fun estimatedTime(): Long = itemBase.baseEstimatedTime * quantity
 }
