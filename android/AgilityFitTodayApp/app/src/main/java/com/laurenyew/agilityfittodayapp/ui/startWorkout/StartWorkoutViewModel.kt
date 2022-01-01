@@ -6,14 +6,17 @@ import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class StartWorkoutViewModel @Inject constructor(
-    private val workoutRepository: WorkoutRepository
+    workoutRepository: WorkoutRepository
 ) : ViewModel() {
-    val pagingWorkoutSequenceFlow: Flow<PagingData<WorkoutSequence>>
+    val workoutSequences: Flow<PagingData<WorkoutSequence>> =
+        workoutRepository.getWorkoutSequences()
 
-    init {
+    fun onSelectWorkoutSequence(sequenceId: Long) {
+        Timber.d("Selected Workout Sequence: $sequenceId")
     }
 }

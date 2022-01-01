@@ -1,5 +1,6 @@
 package com.laurenyew.agilityfittodayapp.network.models
 
+import com.laurenyew.agilityfittodayapp.data.models.WorkoutType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -8,7 +9,7 @@ data class WorkoutSequenceDTO(
     val name: String,
     val description: String,
     val workoutItems: List<WorkoutItemDTO>,
-    val workoutType: Int
+    val workoutType: WorkoutType
 )
 
 data class WorkoutItemDTO(

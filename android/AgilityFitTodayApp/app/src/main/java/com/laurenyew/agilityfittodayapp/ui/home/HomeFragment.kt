@@ -8,7 +8,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import com.laurenyew.agilityfittodayapp.databinding.FragmentHomeBinding
+import com.laurenyew.agilityfittodayapp.ui.navigation.HomeScreenNavHost
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -30,7 +33,7 @@ class HomeFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MaterialTheme {
-                    HomeScreen()
+                    HomeScreenNavHost()
                 }
             }
         }

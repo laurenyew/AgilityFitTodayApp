@@ -3,7 +3,8 @@ package com.laurenyew.agilityfittodayapp.utils
 import androidx.room.TypeConverter
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutItem
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutItemBase
-import com.laurenyew.agilityfittodayapp.data.models.WorkoutType
+import com.laurenyew.agilityfittodayapp.data.models.WorkoutItemBaseAdapter
+import com.laurenyew.agilityfittodayapp.data.models.WorkoutTypeAdapter
 import com.laurenyew.agilityfittodayapp.network.models.WorkoutSequenceDTO
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.KotlinJsonAdapterFactory
@@ -13,6 +14,8 @@ import com.squareup.moshi.Types
 object WorkoutTypeConverters {
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
+        .add(WorkoutTypeAdapter())
+        .add(WorkoutItemBaseAdapter())
         .build()
     private val workoutItemListType =
         Types.newParameterizedType(List::class.java, WorkoutItem::class.java)
@@ -21,9 +24,7 @@ object WorkoutTypeConverters {
     private val workoutSequenceDTOListType =
         Types.newParameterizedType(List::class.java, WorkoutSequenceDTO::class.java)
     val workoutSequenceDTOListAdapter: JsonAdapter<List<WorkoutSequenceDTO>> =
-        moshi.adapter<List<WorkoutSequenceDTO>>(workoutSequenceDTOListType)
-
-    private val workoutTypeValues = WorkoutType.values()
+        moshi.adapter(workoutSequenceDTOListType)
 
     @TypeConverter
     fun workoutItemListToJson(value: List<WorkoutItem>?): String =
@@ -48,7 +49,4 @@ object WorkoutTypeConverters {
             WorkoutItemBase.Stretch.name -> WorkoutItemBase.Stretch
             else -> null
         }
-
-    @TypeConverter
-    fun intToWorkoutType(value: Int): WorkoutType = workoutTypeValues[value]
 }

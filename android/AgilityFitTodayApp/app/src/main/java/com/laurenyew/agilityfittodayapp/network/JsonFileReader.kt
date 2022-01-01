@@ -33,9 +33,7 @@ class JsonFileReader {
                                 itemBase = WorkoutTypeConverters.stringToWorkoutItemBase(itemDTO.itemBaseName)!!
                             )
                         },
-                        workoutType = WorkoutTypeConverters.intToWorkoutType(
-                            seqDTO.workoutType
-                        ),
+                        workoutType = seqDTO.workoutType,
                         isFavorite = false
                     )
                 }
