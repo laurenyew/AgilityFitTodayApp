@@ -23,7 +23,7 @@ class JsonFileReader {
             WorkoutTypeConverters.workoutSequenceDTOListAdapter.fromJson(jsonString)
                 ?.map { seqDTO ->
                     WorkoutSequence(
-                        id = Random.nextLong(),
+                        id = seqDTO.id,
                         name = seqDTO.name,
                         description = seqDTO.description,
                         workoutItems = seqDTO.workoutItems.map { itemDTO ->
