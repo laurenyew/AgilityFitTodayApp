@@ -26,4 +26,25 @@ sealed class WorkoutItemBase(
         baseEstimatedTime = 1,
         workoutType = WorkoutType.UPPER_BODY_STRENGTH
     )
+
+    object Squats : WorkoutItemBase(
+        name = "Squats",
+        description = "Knees over ankles, bend your knees with straight back (w/ or w/o weights)",
+        baseEstimatedTime = 1,
+        workoutType = WorkoutType.LOWER_BODY_STRENGTH
+    )
+
+    object Treadmill : WorkoutItemBase(
+        name = "Treadmill",
+        description = "Walk / Run in intervals on the treadmill",
+        baseEstimatedTime = 5,
+        workoutType = WorkoutType.CARDIO
+    )
+
+    object Stretch : WorkoutItemBase(
+        name = "Stretch",
+        description = "Stretch / Cooldown",
+        baseEstimatedTime = 5,
+        workoutType = WorkoutType.STRETCH
+    )
 }

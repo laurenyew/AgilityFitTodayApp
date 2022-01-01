@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ListItem(
+fun ListItemComposable(
     title: String,
     description: String,
     isFavorite: State<Boolean>? = null,
