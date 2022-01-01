@@ -2,8 +2,7 @@ package com.laurenyew.agilityfittodayapp.data.models
 
 import com.laurenyew.agilityfittodayapp.utils.WorkoutTypeConverters
 import com.squareup.moshi.FromJson
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonReader
+import com.squareup.moshi.ToJson
 
 sealed class WorkoutItemBase(
     val name: String,
@@ -56,8 +55,9 @@ sealed class WorkoutItemBase(
 
 class WorkoutItemBaseAdapter {
     @FromJson
-    fun fromJson(jsonReader: JsonReader, delegate: JsonAdapter<WorkoutItemBase>): WorkoutItemBase? {
-        val value = jsonReader.nextString()
-        return WorkoutTypeConverters.stringToWorkoutItemBase(value)
-    }
+    fun fromJson(jsonString: String): WorkoutItemBase? =
+        WorkoutTypeConverters.stringToWorkoutItemBase(jsonString)
+
+    @ToJson
+    fun toJson(workoutItemBase: WorkoutItemBase): String = workoutItemBase.name
 }

@@ -12,12 +12,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.laurenyew.agilityfittodayapp.ui.navigation.NavigationRoutes
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(homeScreenViewModel: HomeScreenViewModel = hiltViewModel()) {
     val context = LocalContext.current
 
     Column(
@@ -40,10 +38,7 @@ fun HomeScreen(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            navController.navigate(NavigationRoutes.StartWorkoutSelectWorkout.route) {
-                popUpTo = navController.graph.startDestinationId
-                launchSingleTop = true
-            }
+            homeScreenViewModel.openStartWorkoutFlow(context)
         }) {
             Text(
                 text = "Start a Workout",
@@ -84,5 +79,5 @@ fun HomeScreen(navController: NavController) {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(rememberNavController())
+    HomeScreen()
 }

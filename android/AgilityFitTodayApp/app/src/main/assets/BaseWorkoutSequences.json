@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "name": "Basic Strength Workout",
     "description": "Push-ups & Crunches!",
     "workoutItems": [
@@ -15,6 +16,7 @@
     "workoutType": 5
   },
   {
+    "id": 1,
     "name": "Basic Core Workout",
     "description": "Crunches galore!",
     "workoutItems": [
@@ -34,6 +36,7 @@
     "workoutType": 1
   },
   {
+    "id": 2,
     "name": "Basic Upper Body Workout",
     "description": "Did someone ask for push-ups?",
     "workoutItems": [
@@ -53,6 +56,7 @@
     "workoutType": 2
   },
   {
+    "id": 3,
     "name": "Cardio Treadmill",
     "description": "Get ready to Interval Treadmill",
     "workoutItems": [
@@ -72,6 +76,7 @@
     "workoutType": 0
   },
   {
+    "id": 4,
     "name": "Cooldown & Stretch",
     "description": "Take a breather...",
     "workoutItems": [
@@ -95,6 +100,7 @@
     "workoutType": 4
   },
   {
+    "id": 5,
     "name": "Squats 4 Life!",
     "description": "Squats, Squats, and more Squats",
     "workoutItems": [

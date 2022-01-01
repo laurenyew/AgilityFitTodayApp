@@ -13,9 +13,9 @@ import com.squareup.moshi.Types
 
 object WorkoutTypeConverters {
     private val moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
         .add(WorkoutTypeAdapter())
         .add(WorkoutItemBaseAdapter())
+        .add(KotlinJsonAdapterFactory())
         .build()
     private val workoutItemListType =
         Types.newParameterizedType(List::class.java, WorkoutItem::class.java)
