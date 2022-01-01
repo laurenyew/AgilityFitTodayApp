@@ -1,5 +1,9 @@
 package com.laurenyew.agilityfittodayapp.data.models
 
+import com.laurenyew.agilityfittodayapp.utils.WorkoutTypeConverters
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.ToJson
+
 sealed class WorkoutItemBase(
     val name: String,
     val description: String,
@@ -26,4 +30,34 @@ sealed class WorkoutItemBase(
         baseEstimatedTime = 1,
         workoutType = WorkoutType.UPPER_BODY_STRENGTH
     )
+
+    object Squats : WorkoutItemBase(
+        name = "Squats",
+        description = "Knees over ankles, bend your knees with straight back (w/ or w/o weights)",
+        baseEstimatedTime = 1,
+        workoutType = WorkoutType.LOWER_BODY_STRENGTH
+    )
+
+    object Treadmill : WorkoutItemBase(
+        name = "Treadmill",
+        description = "Walk / Run in intervals on the treadmill",
+        baseEstimatedTime = 5,
+        workoutType = WorkoutType.CARDIO
+    )
+
+    object Stretch : WorkoutItemBase(
+        name = "Stretch",
+        description = "Stretch / Cooldown",
+        baseEstimatedTime = 5,
+        workoutType = WorkoutType.STRETCH
+    )
+}
+
+class WorkoutItemBaseAdapter {
+    @FromJson
+    fun fromJson(jsonString: String): WorkoutItemBase? =
+        WorkoutTypeConverters.stringToWorkoutItemBase(jsonString)
+
+    @ToJson
+    fun toJson(workoutItemBase: WorkoutItemBase): String = workoutItemBase.name
 }

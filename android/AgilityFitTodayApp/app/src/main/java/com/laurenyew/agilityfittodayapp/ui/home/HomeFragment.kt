@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.laurenyew.agilityfittodayapp.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -22,6 +25,9 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val homeScreenViewModel =
+            ViewModelProvider(this).get(HomeScreenViewModel::class.java)
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.composeView.apply {
@@ -30,7 +36,7 @@ class HomeFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MaterialTheme {
-                    HomeScreen()
+                    HomeScreen(homeScreenViewModel)
                 }
             }
         }

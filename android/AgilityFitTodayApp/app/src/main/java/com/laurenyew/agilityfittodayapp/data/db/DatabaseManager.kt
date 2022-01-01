@@ -1,5 +1,6 @@
 package com.laurenyew.agilityfittodayapp.data.db
 
+import androidx.paging.PagingSource
 import com.laurenyew.agilityfittodayapp.data.models.User
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutItem
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
@@ -23,13 +24,13 @@ class DatabaseManager @Inject constructor(
     //endregion
 
     //region Favorites
-    override suspend fun getFavoriteWorkoutSequences(workoutTypes: List<WorkoutType>): List<WorkoutSequence> =
+    override fun getFavoriteWorkoutSequences(workoutTypes: List<WorkoutType>): PagingSource<Int, WorkoutSequence> =
         db.favoriteDao().getFavoriteWorkoutSequences(workoutTypes)
 
-    override suspend fun getFavoriteWorkoutSequencesOrderedByType(): List<WorkoutSequence> =
+    override fun getFavoriteWorkoutSequencesOrderedByType(): PagingSource<Int, WorkoutSequence> =
         db.favoriteDao().getFavoriteWorkoutSequencesOrderedByType()
 
-    override suspend fun getFavoriteWorkoutSequencesOrderedByName(): List<WorkoutSequence> =
+    override fun getFavoriteWorkoutSequencesOrderedByName(): PagingSource<Int, WorkoutSequence> =
         db.favoriteDao().getFavoriteWorkoutSequencesOrderedByName()
 
     override suspend fun favoriteWorkoutSequence(id: Long) {
@@ -54,7 +55,7 @@ class DatabaseManager @Inject constructor(
         db.favoriteDao().deleteSavedWorkoutItem(id)
     }
 
-    override suspend fun getFavoriteWorkoutItems(): List<WorkoutItem> =
+    override fun getFavoriteWorkoutItems(): PagingSource<Int, WorkoutItem> =
         db.favoriteDao().getSavedWorkoutItems()
     //endregion
 
@@ -62,13 +63,13 @@ class DatabaseManager @Inject constructor(
     override suspend fun getWorkoutSequence(id: Long): WorkoutSequence? =
         db.workoutDao().getWorkoutSequence(id)
 
-    override suspend fun getWorkoutSequences(workoutTypes: List<WorkoutType>): List<WorkoutSequence> =
+    override fun getWorkoutSequences(workoutTypes: List<WorkoutType>): PagingSource<Int, WorkoutSequence> =
         db.workoutDao().getWorkoutSequences(workoutTypes)
 
-    override suspend fun getWorkoutSequencesOrderedByType(): List<WorkoutSequence> =
+    override fun getWorkoutSequencesOrderedByType(): PagingSource<Int, WorkoutSequence> =
         db.workoutDao().getWorkoutSequencesOrderedByType()
 
-    override suspend fun getWorkoutSequencesOrderedByName(): List<WorkoutSequence> =
+    override fun getWorkoutSequencesOrderedByName(): PagingSource<Int, WorkoutSequence> =
         db.workoutDao().getWorkoutSequencesOrderedByName()
 
     override suspend fun deleteWorkoutSequence(id: Long) {
@@ -81,6 +82,10 @@ class DatabaseManager @Inject constructor(
 
     override suspend fun createWorkoutSequence(workoutSequence: WorkoutSequence) {
         db.workoutDao().insert(workoutSequence)
+    }
+
+    override suspend fun createWorkoutSequences(workoutSequences: List<WorkoutSequence>) {
+        db.workoutDao().insertAll(workoutSequences)
     }
     //endregion
 }

@@ -97,6 +97,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-core:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
     // Integration with observables
+    implementation "androidx.compose.runtime:runtime:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
     implementation "androidx.compose.runtime:runtime-rxjava2:$compose_version"
     // Navigation
