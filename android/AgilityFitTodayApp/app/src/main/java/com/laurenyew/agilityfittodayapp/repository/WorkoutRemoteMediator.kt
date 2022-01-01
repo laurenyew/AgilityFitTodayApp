@@ -18,7 +18,12 @@ class WorkoutRemoteMediator(
 
     // Make sure to refresh on initial load
     override suspend fun initialize(): InitializeAction =
-        InitializeAction.LAUNCH_INITIAL_REFRESH
+        if (db.hasWorkoutSequences()) {
+            InitializeAction.SKIP_INITIAL_REFRESH
+        } else {
+            InitializeAction.LAUNCH_INITIAL_REFRESH
+        }
+
 
     override suspend fun load(
         loadType: LoadType,

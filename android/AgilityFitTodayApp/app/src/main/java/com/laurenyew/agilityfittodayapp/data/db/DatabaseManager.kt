@@ -60,6 +60,9 @@ class DatabaseManager @Inject constructor(
     //endregion
 
     //region Workout
+    override suspend fun hasWorkoutSequences(): Boolean =
+        db.workoutDao().getWorkoutSequenceCount() > 0
+
     override suspend fun getWorkoutSequence(id: Long): WorkoutSequence? =
         db.workoutDao().getWorkoutSequence(id)
 

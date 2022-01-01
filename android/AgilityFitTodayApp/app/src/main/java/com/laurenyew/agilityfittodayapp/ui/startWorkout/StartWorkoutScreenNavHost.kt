@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutPickerScreen
 
 sealed class StartWorkoutNavRoutes(val route: String) {
     object SelectWorkout : StartWorkoutNavRoutes("Select Workout Sequence to Start Workout")
