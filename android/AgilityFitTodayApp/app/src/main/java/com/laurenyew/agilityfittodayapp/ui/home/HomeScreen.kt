@@ -43,7 +43,7 @@ fun HomeScreen(homeScreenViewModel: HomeScreenViewModel = hiltViewModel()) {
             Text(
                 text = "Start a Workout",
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.subtitle1,
+                style = MaterialTheme.typography.button,
                 modifier = Modifier
                     .padding(8.dp)
             )
@@ -55,7 +55,7 @@ fun HomeScreen(homeScreenViewModel: HomeScreenViewModel = hiltViewModel()) {
             Text(
                 text = "Create a Workout",
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.subtitle1,
+                style = MaterialTheme.typography.button,
                 modifier = Modifier
                     .padding(8.dp)
             )
@@ -67,7 +67,7 @@ fun HomeScreen(homeScreenViewModel: HomeScreenViewModel = hiltViewModel()) {
             Text(
                 text = "Old Workouts",
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.subtitle1,
+                style = MaterialTheme.typography.button,
                 modifier = Modifier
                     .padding(8.dp)
             )

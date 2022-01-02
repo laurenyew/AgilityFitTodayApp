@@ -27,14 +27,17 @@ class WorkoutRepository @Inject constructor(
 
     override fun getWorkoutSequences(): Flow<PagingData<WorkoutSequence>> =
         Pager(
-            config = PagingConfig(pageSize = WORKOUT_SEQUENCE_PAGE_SIZE),
+            config = PagingConfig(
+                pageSize = WORKOUT_SEQUENCE_PAGE_SIZE,
+                initialLoadSize = WORKOUT_SEQUENCE_PAGE_SIZE
+            ),
             remoteMediator = workoutRemoteMediator
         ) {
             workoutDatabaseProvider.getWorkoutSequencesOrderedByName()
         }.flow
 
     companion object {
-        private const val WORKOUT_SEQUENCE_PAGE_SIZE = 5
+        private const val WORKOUT_SEQUENCE_PAGE_SIZE = 4
     }
 }
 

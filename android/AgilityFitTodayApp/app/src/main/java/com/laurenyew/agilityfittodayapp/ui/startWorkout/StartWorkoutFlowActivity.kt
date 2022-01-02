@@ -10,7 +10,11 @@ class StartWorkoutFlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            StartWorkoutScreenNavHost()
+            StartWorkoutScreen(
+                onBackButtonPressed = {
+                    onBackPressed()
+                }
+            )
         }
     }
 }

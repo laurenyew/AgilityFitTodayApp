@@ -8,6 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import com.laurenyew.agilityfittodayapp.databinding.FragmentDashboardBinding
+import com.laurenyew.agilityfittodayapp.ui.theme.AgilityFitTodayTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,7 @@ class DashboardFragment : Fragment() {
             // is destroyed
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MaterialTheme {
+                AgilityFitTodayTheme {
                     DashboardScreen()
                 }
             }

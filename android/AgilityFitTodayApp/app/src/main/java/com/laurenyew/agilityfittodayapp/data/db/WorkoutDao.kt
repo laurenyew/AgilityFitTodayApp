@@ -11,6 +11,9 @@ import com.laurenyew.agilityfittodayapp.network.models.WorkoutSequenceDTO
 
 @Dao
 interface WorkoutDao {
+    @Query("SELECT COUNT(*) from workoutsequence")
+    suspend fun getWorkoutSequenceCount(): Int
+
     @Query("SELECT * from workoutsequence WHERE id = :id")
     suspend fun getWorkoutSequence(id: Long): WorkoutSequence?
 
@@ -34,6 +37,7 @@ interface WorkoutDao {
 }
 
 interface WorkoutDatabaseProvider {
+    suspend fun hasWorkoutSequences(): Boolean
     suspend fun getWorkoutSequence(id: Long): WorkoutSequence?
     fun getWorkoutSequences(workoutTypes: List<WorkoutType>): PagingSource<Int, WorkoutSequence>
     fun getWorkoutSequencesOrderedByType(): PagingSource<Int, WorkoutSequence>

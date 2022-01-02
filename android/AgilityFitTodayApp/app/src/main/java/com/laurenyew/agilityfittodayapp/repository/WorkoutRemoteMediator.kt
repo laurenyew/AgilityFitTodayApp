@@ -18,16 +18,37 @@ class WorkoutRemoteMediator(
 
     // Make sure to refresh on initial load
     override suspend fun initialize(): InitializeAction =
-        InitializeAction.LAUNCH_INITIAL_REFRESH
+        if (db.hasWorkoutSequences()) {
+            InitializeAction.SKIP_INITIAL_REFRESH
+        } else {
+            InitializeAction.LAUNCH_INITIAL_REFRESH
+        }
+
 
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, WorkoutSequence>
     ): MediatorResult {
-        if (loadType == LoadType.REFRESH) {
+        val loadKey = when (loadType) {
+            LoadType.REFRESH -> null
+            LoadType.PREPEND ->
+                return MediatorResult.Success(endOfPaginationReached = true)
+            LoadType.APPEND -> {
+                val lastItem = state.lastItemOrNull()
+                    ?: return MediatorResult.Success(
+                        endOfPaginationReached = true
+                    )
+
+                lastItem.id
+            }
+
+        }
+
+        if (loadKey == null) {
             val items = network.getBaseWorkoutSequences(context)
             db.createWorkoutSequences(items)
         }
+
         return MediatorResult.Success(endOfPaginationReached = true)
     }
 }

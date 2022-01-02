@@ -20,7 +20,7 @@ fun WorkoutSequenceListItem(
     ListItemComposable(
         title = item.name,
         description = item.description,
-        isFavorite = isFavorite,
+        isFavorite = onItemFavorited?.let { isFavorite },
         onItemFavorited = onItemFavorited,
         modifier = Modifier
             .clickable(onClick = { onItemClicked(item.id) })
