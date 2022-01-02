@@ -1,6 +1,8 @@
 # Android AgilityFitTodayApp
 Sample App created to practice with different Android Tech
 
+<img src="./Screenshots/select_workout.png" width="200"/> <img src="./Screenshots/start_workout.png" width="200"/> <img src="./Screenshots/start_workout_long.png" width="200"/> <img src="./Screenshots/home.png" width="200"/> <img src="./Screenshots/dashboard.png" width="200"/>
+
 ## Proposed Features
 
 - Start a workout (WIP)
@@ -32,7 +34,7 @@ Sample App created to practice with different Android Tech
 * Kotlin Flow
 * Jetpack Compose
 * Hilt 
-* Jetpack Pages (/)
+* Jetpack Pages
 
 ## TODO (Tech)
 * MotionLayout intro animation
