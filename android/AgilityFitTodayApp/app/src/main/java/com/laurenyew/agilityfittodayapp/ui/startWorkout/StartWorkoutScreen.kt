@@ -1,38 +1,35 @@
 package com.laurenyew.agilityfittodayapp.ui.startWorkout
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.laurenyew.agilityfittodayapp.ui.compose.BaseActivityScreen
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.StartWorkoutDetailScreen
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutPickerScreen
 
 @Composable
 fun StartWorkoutScreen(
-    onBackButtonPressed: () -> Unit
+    viewModel: StartWorkoutViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
-    val titleState = remember {
-        navController.currentDestination?.route ?: StartWorkoutNavRoutes.SelectWorkout.route
-    }
+    val currentRoute =
+        viewModel.currentNavRoute.collectAsState(initial = StartWorkoutNavRoutes.SelectWorkout.route)
 
     BaseActivityScreen(
-        title = titleState,
-        onBackButtonPressed = { onBackButtonPressed() })
+        title = currentRoute,
+        onBackButtonPressed = { viewModel.onBackPressed() })
     {
-        StartWorkoutNavHost(navController)
+        StartWorkoutNavHost(viewModel, navController)
     }
-}
-
-sealed class StartWorkoutNavRoutes(val route: String) {
-    object SelectWorkout : StartWorkoutNavRoutes("Select a Workout")
 }
 
 @Composable
 fun StartWorkoutNavHost(
+    viewModel: StartWorkoutViewModel = hiltViewModel(),
     navController: NavHostController,
 ) {
     NavHost(
@@ -40,10 +37,22 @@ fun StartWorkoutNavHost(
         startDestination = StartWorkoutNavRoutes.SelectWorkout.route
     ) {
         composable(StartWorkoutNavRoutes.SelectWorkout.route) {
-            val searchViewModel = hiltViewModel<StartWorkoutViewModel>()
             WorkoutPickerScreen(
-                viewModel = searchViewModel
+                viewModel = viewModel
             )
         }
+        composable(StartWorkoutNavRoutes.StartWorkout.route) {
+            StartWorkoutDetailScreen(
+                viewModel = viewModel
+            )
+        }
+    }
+
+    val currentRoute =
+        viewModel.currentNavRoute.collectAsState(initial = StartWorkoutNavRoutes.SelectWorkout.route)
+
+    navController.navigate(currentRoute.value) {
+        popUpTo = navController.graph.startDestinationId
+        launchSingleTop = true
     }
 }

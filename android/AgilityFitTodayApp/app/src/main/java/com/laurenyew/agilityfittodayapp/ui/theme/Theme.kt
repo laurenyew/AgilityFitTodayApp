@@ -15,7 +15,7 @@ private val DarkColorPalette = darkColors(
 
 private val LightColorPalette = lightColors(
     primary = gold500,
-    primaryVariant = gold700,
+    primaryVariant = gold200,
     secondary = teal200,
     surface = gold100
 )

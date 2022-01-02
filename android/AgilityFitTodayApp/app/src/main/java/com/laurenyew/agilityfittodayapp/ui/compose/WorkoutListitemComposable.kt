@@ -5,13 +5,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import com.laurenyew.agilityfittodayapp.R
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 
 @Composable
 fun WorkoutSequenceListItem(
     item: WorkoutSequence,
-    onItemClicked: (Long) -> Unit,
-    onItemFavorited: ((Boolean) -> Unit)? = null
+    onItemClicked: ((Long) -> Unit)? = null,
+    onItemFavorited: ((Boolean) -> Unit)? = null,
+    modifier: Modifier = Modifier
 ) {
     val isFavorite = remember(item) {
         mutableStateOf(item.isFavorite)
@@ -20,9 +22,10 @@ fun WorkoutSequenceListItem(
     ListItemComposable(
         title = item.name,
         description = item.description,
+        iconId = R.drawable.ic_run,
         isFavorite = onItemFavorited?.let { isFavorite },
         onItemFavorited = onItemFavorited,
-        modifier = Modifier
-            .clickable(onClick = { onItemClicked(item.id) })
+        modifier = modifier
+            .clickable(onClick = { onItemClicked?.invoke(item.id) })
     )
 }
