@@ -74,10 +74,7 @@ fun PagingWorkoutSequenceList(
 
         workoutSeqItems.apply {
             when {
-                loadState.refresh is LoadState.Loading -> {
-                    item { CircularProgressIndicator() }
-                }
-                loadState.append is LoadState.Loading -> {
+                !loadState.append.endOfPaginationReached -> {
                     item { CircularProgressIndicator() }
                 }
                 loadState.refresh is LoadState.Error -> {
