@@ -12,6 +12,7 @@
         android:theme="@style/Theme.AgilityFitTodayApp">
         <activity
             android:name=".ui.startWorkout.StartWorkoutFlowActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
