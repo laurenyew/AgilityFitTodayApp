@@ -11,7 +11,14 @@ enum class WorkoutType {
     LOWER_BODY_STRENGTH,
     STRETCH,
     STRENGTH,
-    REST
+    REST;
+
+    override fun toString(): String =
+        when (this) {
+            UPPER_BODY_STRENGTH -> "Upper-body Strength"
+            LOWER_BODY_STRENGTH -> "Lower-body Strength"
+            else -> name.toLowerCase().capitalize()
+        }
 }
 
 class WorkoutTypeAdapter {
