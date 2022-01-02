@@ -10,13 +10,13 @@ import com.laurenyew.agilityfittodayapp.data.models.WorkoutType
 
 @Dao
 interface FavoriteDao {
-    @Query("SELECT * from workoutsequence WHERE isFavorite AND workoutType IN(:workoutTypes) ORDER by name DESC")
+    @Query("SELECT * from workoutsequence WHERE isFavorite AND workoutType IN(:workoutTypes) ORDER by name ASC")
     fun getFavoriteWorkoutSequences(workoutTypes: List<WorkoutType>): PagingSource<Int, WorkoutSequence>
 
-    @Query("SELECT * from workoutsequence WHERE isFavorite ORDER by workoutType DESC")
+    @Query("SELECT * from workoutsequence WHERE isFavorite ORDER by workoutType ASC")
     fun getFavoriteWorkoutSequencesOrderedByType(): PagingSource<Int, WorkoutSequence>
 
-    @Query("SELECT * from workoutsequence WHERE isFavorite ORDER by name DESC")
+    @Query("SELECT * from workoutsequence WHERE isFavorite ORDER by name ASC")
     fun getFavoriteWorkoutSequencesOrderedByName(): PagingSource<Int, WorkoutSequence>
 
     @Query("SELECT * from workoutitem")

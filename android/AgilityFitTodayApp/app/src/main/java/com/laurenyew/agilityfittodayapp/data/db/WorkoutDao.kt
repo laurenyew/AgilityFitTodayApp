@@ -17,13 +17,13 @@ interface WorkoutDao {
     @Query("SELECT * from workoutsequence WHERE id = :id")
     suspend fun getWorkoutSequence(id: Long): WorkoutSequence?
 
-    @Query("SELECT * from workoutsequence WHERE workoutType IN(:workoutTypes) ORDER by name DESC")
+    @Query("SELECT * from workoutsequence WHERE workoutType IN(:workoutTypes) ORDER by name ASC")
     fun getWorkoutSequences(workoutTypes: List<WorkoutType>): PagingSource<Int, WorkoutSequence>
 
-    @Query("SELECT * from workoutsequence ORDER by workoutType DESC")
+    @Query("SELECT * from workoutsequence ORDER by workoutType ASC")
     fun getWorkoutSequencesOrderedByType(): PagingSource<Int, WorkoutSequence>
 
-    @Query("SELECT * from workoutsequence ORDER by name DESC")
+    @Query("SELECT * from workoutsequence ORDER by name ASC")
     fun getWorkoutSequencesOrderedByName(): PagingSource<Int, WorkoutSequence>
 
     @Query("DELETE FROM workoutsequence WHERE id = :id")
