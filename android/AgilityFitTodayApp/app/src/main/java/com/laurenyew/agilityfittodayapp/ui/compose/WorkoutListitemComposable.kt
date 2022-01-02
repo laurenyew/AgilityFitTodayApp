@@ -44,9 +44,16 @@ fun WorkoutItemListItem(
         mutableStateOf(item.isFavorite)
     }
 
+    val quantity = item.quantity
+    val quantityText = if (quantity > 1 && item.itemBase.isMeasuredInReps) {
+        quantity.toString()
+    } else {
+        " "
+    }
+
     ListItemComposable(
         title = item.itemBase.name,
-        largeText = item.quantity.toString(),
+        largeText = quantityText,
         timing = if (shouldShowTiming) item.estimatedTimeFormattedString() else null,
         isFavorite = onItemFavorited?.let { isFavorite },
         onItemFavorited = onItemFavorited,
