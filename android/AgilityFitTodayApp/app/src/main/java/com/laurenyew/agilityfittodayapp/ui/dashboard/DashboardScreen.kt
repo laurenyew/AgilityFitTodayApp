@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -52,6 +53,7 @@ fun DashboardScreen() {
                         text = item.name,
                         fontSize = 24.sp,
                         textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.button,
                         modifier = Modifier
                             .padding(24.dp)
                     )

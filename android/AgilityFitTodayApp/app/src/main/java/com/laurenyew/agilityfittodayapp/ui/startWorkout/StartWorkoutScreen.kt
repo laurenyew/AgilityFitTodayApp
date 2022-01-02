@@ -28,7 +28,7 @@ fun StartWorkoutScreen(
 }
 
 sealed class StartWorkoutNavRoutes(val route: String) {
-    object SelectWorkout : StartWorkoutNavRoutes("Select Workout Sequence")
+    object SelectWorkout : StartWorkoutNavRoutes("Select a Workout")
 }
 
 @Composable

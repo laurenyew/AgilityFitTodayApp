@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -29,21 +27,6 @@ fun WorkoutPickerScreen(
     Column(
         Modifier.fillMaxSize()
     ) {
-        Text(
-            text = "START A WORKOUT",
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.subtitle1,
-            modifier = Modifier
-                .padding(8.dp)
-        )
-        Text(
-            text = "Pick a workout:",
-            style = MaterialTheme.typography.subtitle1,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(8.dp)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
         PagingWorkoutSequenceList(
             workoutSequences =
             viewModel.workoutSequences,
@@ -68,14 +51,22 @@ fun PagingWorkoutSequenceList(
                     item = workoutSeqItem,
                     onItemClicked = { id -> onItemClicked(id) },
                 )
-                Divider(color = dividerColor)
             }
         }
 
         workoutSeqItems.apply {
             when {
                 !loadState.append.endOfPaginationReached -> {
-                    item { CircularProgressIndicator() }
+                    item {
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.padding(8.dp)
+                            )
+                        }
+                    }
                 }
                 loadState.refresh is LoadState.Error -> {
                     val e = workoutSeqItems.loadState.refresh as LoadState.Error
