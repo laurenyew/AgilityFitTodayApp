@@ -154,5 +154,53 @@
       }
     ],
     "workoutType": "CORE"
+  },
+  {
+    "id": 7,
+    "name": "Long Core Workout",
+    "description": "Sit ups and Squats",
+    "workoutItems": [
+      {
+        "quantity": 15,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 5,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 5,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Rest"
+      }
+    ],
+    "workoutType": "CORE"
   }
 ]

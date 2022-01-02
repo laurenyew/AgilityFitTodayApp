@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.laurenyew.agilityfittodayapp.R
@@ -24,14 +25,31 @@ import com.laurenyew.agilityfittodayapp.R
 @Composable
 fun ListItemComposable(
     title: String,
-    description: String,
+    description: String? = null,
     @DrawableRes iconId: Int? = null,
+    largeText: String? = null,
+    timing: String? = null,
     isFavorite: State<Boolean>? = null,
     onItemFavorited: ((Boolean) -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     Box(modifier = modifier) {
-        Row(modifier = Modifier.padding(8.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(8.dp)
+        ) {
+            largeText?.let {
+                Text(
+                    largeText,
+                    style = MaterialTheme.typography.h3,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier
+                        .width(72.dp)
+                        .padding(start = 8.dp)
+                        .align(Alignment.CenterVertically)
+                )
+            }
+
             val imageModifier = Modifier
                 .size(72.dp)
                 .padding(8.dp)
@@ -43,27 +61,52 @@ fun ListItemComposable(
                     contentDescription = null,
                     contentScale = ContentScale.FillWidth,
                     colorFilter = ColorFilter.tint(Color.Black),
+                    alignment = Alignment.Center,
                     modifier = imageModifier
                 )
             }
 
+            val alignment =
+                if (description != null) {
+                    Alignment.CenterVertically
+                } else {
+                    Alignment.Bottom
+                }
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(2.dp)
-                    .align(Alignment.CenterVertically)
+                    .padding(8.dp)
+                    .align(alignment)
             ) {
-                Text(title, style = MaterialTheme.typography.button)
-                Spacer(modifier = Modifier.height(3.dp))
-                Text(description)
+                if (description != null) {
+                    Text(title, style = MaterialTheme.typography.button)
+                    Spacer(modifier = Modifier.height(3.dp))
+                    Text(description)
+                } else {
+                    Text(
+                        title,
+                        style = MaterialTheme.typography.h5,
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
+                }
             }
 
-            if (isFavorite != null) {
+            isFavorite?.let {
                 Spacer(modifier = Modifier.width(5.dp))
                 FavoriteButton(
                     isFavorite = isFavorite.value,
                     onItemFavorited = onItemFavorited,
                     modifier = imageModifier
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+
+            timing?.let {
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    timing,
+                    style = MaterialTheme.typography.h5,
+                    modifier = Modifier.align(Alignment.Bottom)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
             }
@@ -75,6 +118,12 @@ fun ListItemComposable(
 @Composable
 fun ListItemComposablePreview() {
     ListItemComposable(title = "Test Title", description = "Test Description")
+}
+
+@Preview
+@Composable
+fun ListItemLargeTextComposablePreview() {
+    ListItemComposable(title = "Test Title", description = "Test Description", largeText = "10")
 }
 
 @Preview
@@ -99,12 +148,33 @@ fun ListItemWithIconComposablePreview() {
 
 @Preview
 @Composable
+fun ListItemWithIconAndLargeTextComposablePreview() {
+    ListItemComposable(
+        title = "Test Title",
+        description = "Test Description",
+        iconId = R.drawable.ic_run,
+        largeText = "10"
+    )
+}
+
+@Preview
+@Composable
 fun ListItemWithIconFavoriteComposablePreview() {
     ListItemComposable(
         title = "Test Title",
         description = "Test Description",
         iconId = R.drawable.ic_run,
         isFavorite = remember { mutableStateOf(true) }
+    )
+}
+
+@Preview
+@Composable
+fun ListItemWithLargeTextAndTimingComposablePreview() {
+    ListItemComposable(
+        title = "Test Title",
+        largeText = "10",
+        timing = "10:00"
     )
 }
 
@@ -121,7 +191,7 @@ fun Header(title: String) {
             color = MaterialTheme.typography.h1.color,
             style = MaterialTheme.typography.subtitle1,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)
         )
     }
 }

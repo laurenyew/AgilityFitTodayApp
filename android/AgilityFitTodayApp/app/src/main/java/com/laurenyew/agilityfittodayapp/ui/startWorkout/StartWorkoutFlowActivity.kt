@@ -23,4 +23,9 @@ class StartWorkoutFlowActivity : AppCompatActivity() {
             )
         }
     }
+
+    override fun onBackPressed() {
+        startWorkoutViewModel.onBackPressed(true)
+        super.onBackPressed()
+    }
 }

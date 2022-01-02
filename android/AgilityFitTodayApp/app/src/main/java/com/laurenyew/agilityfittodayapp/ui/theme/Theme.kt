@@ -17,7 +17,7 @@ private val LightColorPalette = lightColors(
     primary = gold500,
     primaryVariant = gold200,
     secondary = teal200,
-    surface = gold100
+    surface = gold100,
 )
 
 @Composable

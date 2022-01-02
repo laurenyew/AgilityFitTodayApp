@@ -16,14 +16,9 @@ class WorkoutRemoteMediator(
     private val context: Context
 ) : RemoteMediator<Int, WorkoutSequence>() {
 
-    // Make sure to refresh on initial load
+    // Make sure to refresh on initial load in case the JSON changed
     override suspend fun initialize(): InitializeAction =
-        if (db.hasWorkoutSequences()) {
-            InitializeAction.SKIP_INITIAL_REFRESH
-        } else {
-            InitializeAction.LAUNCH_INITIAL_REFRESH
-        }
-
+        InitializeAction.LAUNCH_INITIAL_REFRESH
 
     override suspend fun load(
         loadType: LoadType,
