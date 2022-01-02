@@ -18,7 +18,7 @@ import com.laurenyew.agilityfittodayapp.ui.theme.AgilityFitTodayTheme
 
 @Composable
 fun BaseActivityScreen(
-    title: State<String>,
+    title: String,
     onBackButtonPressed: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
@@ -41,7 +41,7 @@ fun BaseActivityScreen(
                                 })
                         Spacer(Modifier.width(8.dp))
                         Text(
-                            text = title.value,
+                            text = title,
                             style = MaterialTheme.typography.h6,
                             modifier = Modifier
                                 .align(Alignment.CenterVertically)

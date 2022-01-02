@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.laurenyew.agilityfittodayapp.ui.compose.BaseActivityScreen
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.execute.ExecuteWorkoutScreen
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.StartWorkoutDetailScreen
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutPickerScreen
 
@@ -20,7 +21,7 @@ fun StartWorkoutScreen(
         viewModel.currentNavRoute.collectAsState(initial = StartWorkoutNavRoutes.SelectWorkout.route)
 
     BaseActivityScreen(
-        title = currentRoute,
+        title = currentRoute.value,
         onBackButtonPressed = { viewModel.onBackPressed() })
     {
         StartWorkoutNavHost(viewModel, navController)
@@ -43,6 +44,11 @@ fun StartWorkoutNavHost(
         }
         composable(StartWorkoutNavRoutes.StartWorkout.route) {
             StartWorkoutDetailScreen(
+                viewModel = viewModel
+            )
+        }
+        composable(StartWorkoutNavRoutes.ExecuteWorkout.route) {
+            ExecuteWorkoutScreen(
                 viewModel = viewModel
             )
         }
