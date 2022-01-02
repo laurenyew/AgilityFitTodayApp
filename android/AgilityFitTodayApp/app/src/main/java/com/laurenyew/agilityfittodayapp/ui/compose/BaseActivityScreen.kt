@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -17,7 +18,7 @@ import com.laurenyew.agilityfittodayapp.ui.theme.AgilityFitTodayTheme
 
 @Composable
 fun BaseActivityScreen(
-    title: String,
+    title: State<String>,
     onBackButtonPressed: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
@@ -40,7 +41,7 @@ fun BaseActivityScreen(
                                 })
                         Spacer(Modifier.width(8.dp))
                         Text(
-                            text = title,
+                            text = title.value,
                             style = MaterialTheme.typography.h6,
                             modifier = Modifier
                                 .align(Alignment.CenterVertically)

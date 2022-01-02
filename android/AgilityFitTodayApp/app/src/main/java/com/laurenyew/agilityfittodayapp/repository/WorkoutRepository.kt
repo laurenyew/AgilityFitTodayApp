@@ -36,6 +36,9 @@ class WorkoutRepository @Inject constructor(
             workoutDatabaseProvider.getWorkoutSequencesOrderedByType()
         }.flow
 
+    override suspend fun getWorkoutSequence(id: Long): WorkoutSequence? =
+        workoutDatabaseProvider.getWorkoutSequence(id)
+
     companion object {
         private const val WORKOUT_SEQUENCE_PAGE_SIZE = 4
     }
@@ -43,4 +46,5 @@ class WorkoutRepository @Inject constructor(
 
 interface WorkoutRepositoryAPI {
     fun getWorkoutSequences(): Flow<PagingData<WorkoutSequence>>
+    suspend fun getWorkoutSequence(id: Long): WorkoutSequence?
 }
