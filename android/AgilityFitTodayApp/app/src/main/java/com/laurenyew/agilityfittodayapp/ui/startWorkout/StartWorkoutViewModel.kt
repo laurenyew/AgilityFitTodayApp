@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,13 +39,22 @@ class StartWorkoutViewModel @Inject constructor(
         }
     }
 
-    fun onBackPressed() {
+    fun startWorkout() {
+
+    }
+
+    fun onBackPressed(isFromActivityOnBackPress: Boolean = false) {
+        Timber.d("HERE! On backPressed: ${_currentNavRoute.value}")
         when (_currentNavRoute.value) {
             StartWorkoutNavRoutes.StartWorkout.route -> _currentNavRoute.value =
                 StartWorkoutNavRoutes.SelectWorkout.route
             StartWorkoutNavRoutes.ExecuteWorkout.route -> _currentNavRoute.value =
                 StartWorkoutNavRoutes.StartWorkout.route
-            else -> activityBackPressLambda?.invoke()
+            else -> if (!isFromActivityOnBackPress) {
+                activityBackPressLambda?.invoke()
+            }
         }
+
+        Timber.d("HERE! On backPressed COMPLETE: ${_currentNavRoute.value}")
     }
 }
