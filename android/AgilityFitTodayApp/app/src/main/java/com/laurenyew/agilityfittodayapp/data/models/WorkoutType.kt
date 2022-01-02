@@ -1,8 +1,6 @@
 package com.laurenyew.agilityfittodayapp.data.models
 
 import com.squareup.moshi.FromJson
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonReader
 
 enum class WorkoutType {
     CARDIO,
@@ -22,11 +20,6 @@ enum class WorkoutType {
 }
 
 class WorkoutTypeAdapter {
-    private val workoutTypeValues = WorkoutType.values()
-
     @FromJson
-    fun fromJson(jsonReader: JsonReader, delegate: JsonAdapter<WorkoutType>): WorkoutType {
-        val value = jsonReader.nextInt()
-        return workoutTypeValues[value]
-    }
+    fun fromJson(value: String): WorkoutType = WorkoutType.valueOf(value)
 }

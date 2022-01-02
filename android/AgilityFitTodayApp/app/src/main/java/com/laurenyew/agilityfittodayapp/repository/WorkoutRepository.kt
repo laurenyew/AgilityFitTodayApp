@@ -33,7 +33,7 @@ class WorkoutRepository @Inject constructor(
             ),
             remoteMediator = workoutRemoteMediator
         ) {
-            workoutDatabaseProvider.getWorkoutSequencesOrderedByName()
+            workoutDatabaseProvider.getWorkoutSequencesOrderedByType()
         }.flow
 
     companion object {
