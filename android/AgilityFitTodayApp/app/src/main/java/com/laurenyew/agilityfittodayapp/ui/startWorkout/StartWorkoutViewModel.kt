@@ -32,6 +32,9 @@ class StartWorkoutViewModel @Inject constructor(
         workoutRepository.getWorkoutSequences()
             .cachedIn(viewModelScope)
 
+    /**
+     * Select a Workout to Start
+     */
     fun onSelectWorkoutSequence(sequenceId: Long) {
         viewModelScope.launch {
             _selectedWorkout.value = workoutRepository.getWorkoutSequence(sequenceId)
@@ -39,7 +42,24 @@ class StartWorkoutViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Start the Workout
+     */
     fun startWorkout() {
+        viewModelScope.launch {
+            _currentNavRoute.value = StartWorkoutNavRoutes.ExecuteWorkout.route
+        }
+    }
+
+    fun pauseWorkout() {
+
+    }
+
+    fun resumeWorkout() {
+
+    }
+
+    fun finishWorkout() {
 
     }
 
