@@ -4,7 +4,7 @@
   "description": "Backend Server built to try out building & Deploying REST APIs / GraphQL server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "apollo-server": "^3.6.3",
     "graphql": "^16.3.0",
+    "mongoose": "^6.2.3",
     "nodemon": "^2.0.15"
   }
 }
