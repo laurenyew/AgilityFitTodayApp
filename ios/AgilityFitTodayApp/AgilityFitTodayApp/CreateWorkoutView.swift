@@ -1,14 +1,15 @@
 //
-//  ContentView.swift
+//  CreateWorkoutView.swift
 //  AgilityFitTodayApp
 //
 //  Created by laurenyew on 12/29/21.
 //
+// TODO: This is filled with sample code on creating a list of navigation items and adding / deleting. We need to update this list ot work with creating a workout.
 
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct CreateWorkoutView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -81,8 +82,8 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+struct CreateWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CreateWorkoutView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

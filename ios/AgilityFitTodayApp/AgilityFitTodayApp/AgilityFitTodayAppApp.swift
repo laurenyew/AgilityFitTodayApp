@@ -13,8 +13,10 @@ struct AgilityFitTodayAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            HomeView()
+            // TODO: Fix create workout view
+//            CreateWorkoutView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
