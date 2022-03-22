@@ -8,9 +8,11 @@ Sample App created to practice with different iOS Tech
 * SPM (Swift Package Manager)
 
 ## Completed Features
-TBD
+* App icon
 
 ## TODO
+* Add home screen navigation + UI (WIP)
+* Execute a workout
 * Proposed Features
 * Dark Mode
 * Accessibility
