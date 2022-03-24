@@ -12,10 +12,14 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-               Text("Hello World")
+                Text("Hello World")
             }
-        }.toolbar {
-            Text("Home")
+            .toolbar {
+                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+//                    Text("Home")
+                }
+            }.navigationTitle("Home")
+                
         }
     }
 }

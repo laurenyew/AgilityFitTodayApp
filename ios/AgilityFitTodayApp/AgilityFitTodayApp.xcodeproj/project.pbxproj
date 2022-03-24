@@ -17,6 +17,10 @@
 		B9331A06277D3C71009642CD /* AgilityFitTodayAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9331A05277D3C71009642CD /* AgilityFitTodayAppUITests.swift */; };
 		B9331A08277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9331A07277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift */; };
 		B93C13B427E96FD4009CC7C3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93C13B327E96FD4009CC7C3 /* HomeView.swift */; };
+		B958198427EC01C100C31E01 /* UINavigationController-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198327EC01C100C31E01 /* UINavigationController-Extension.swift */; };
+		B958198627EC02EF00C31E01 /* Color-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198527EC02EF00C31E01 /* Color-Extension.swift */; };
+		B958198827EC034200C31E01 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198727EC034200C31E01 /* AppTheme.swift */; };
+		B958198C27EC0AA700C31E01 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198B27EC0AA700C31E01 /* AppEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		B9331A05277D3C71009642CD /* AgilityFitTodayAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayAppUITests.swift; sourceTree = "<group>"; };
 		B9331A07277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B93C13B327E96FD4009CC7C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B958198327EC01C100C31E01 /* UINavigationController-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController-Extension.swift"; sourceTree = "<group>"; };
+		B958198527EC02EF00C31E01 /* Color-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extension.swift"; sourceTree = "<group>"; };
+		B958198727EC034200C31E01 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		B958198B27EC0AA700C31E01 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,11 +110,12 @@
 			children = (
 				B93319E5277D3C6E009642CD /* AgilityFitTodayAppApp.swift */,
 				B93319E7277D3C6E009642CD /* CreateWorkoutView.swift */,
-				B93319E9277D3C71009642CD /* Assets.xcassets */,
-				B93319EE277D3C71009642CD /* Persistence.swift */,
-				B93319F0277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld */,
-				B93319EB277D3C71009642CD /* Preview Content */,
 				B93C13B327E96FD4009CC7C3 /* HomeView.swift */,
+				B958198B27EC0AA700C31E01 /* AppEnvironment.swift */,
+				B958198727EC034200C31E01 /* AppTheme.swift */,
+				B93319EE277D3C71009642CD /* Persistence.swift */,
+				B958198227EC01AC00C31E01 /* Extensions */,
+				B958198127EC011900C31E01 /* Supporting Files */,
 			);
 			path = AgilityFitTodayApp;
 			sourceTree = "<group>";
@@ -134,6 +143,25 @@
 				B9331A07277D3C71009642CD /* AgilityFitTodayAppUITestsLaunchTests.swift */,
 			);
 			path = AgilityFitTodayAppUITests;
+			sourceTree = "<group>";
+		};
+		B958198127EC011900C31E01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B93319F0277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld */,
+				B93319E9277D3C71009642CD /* Assets.xcassets */,
+				B93319EB277D3C71009642CD /* Preview Content */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B958198227EC01AC00C31E01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B958198327EC01C100C31E01 /* UINavigationController-Extension.swift */,
+				B958198527EC02EF00C31E01 /* Color-Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,10 +295,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93319EF277D3C71009642CD /* Persistence.swift in Sources */,
+				B958198427EC01C100C31E01 /* UINavigationController-Extension.swift in Sources */,
 				B93319E8277D3C6E009642CD /* CreateWorkoutView.swift in Sources */,
 				B93319E6277D3C6E009642CD /* AgilityFitTodayAppApp.swift in Sources */,
 				B93C13B427E96FD4009CC7C3 /* HomeView.swift in Sources */,
 				B93319F2277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld in Sources */,
+				B958198627EC02EF00C31E01 /* Color-Extension.swift in Sources */,
+				B958198827EC034200C31E01 /* AppTheme.swift in Sources */,
+				B958198C27EC0AA700C31E01 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AgilityFitTodayApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"AgilityFitTodayApp/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = M534J7BM7R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -460,7 +492,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AgilityFitTodayApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"AgilityFitTodayApp/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = M534J7BM7R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
