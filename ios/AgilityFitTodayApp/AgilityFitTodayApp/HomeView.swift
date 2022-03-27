@@ -12,13 +12,29 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Hello World")
+                Image("IconLogo")
+                    .resizable()
+                    .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: 200, alignment: Alignment.center)
+                    .scaledToFit()
+                    .padding()
+                Text("Welcome to the Agility Fit Today App!")
+                    .padding()
+                Text("This sample app features fitness workout creations that demo SwiftUI, Combine, async/await, CoreData, and other iOS tech/architecture")
+                    .padding()
+                Button("Start a Workout") {
+                    print("Open start a workout screen")
+                    // TODO
+                }.padding()
+                Button("Create a Workout"){
+                    print("Open create a workout screen")
+                    // TODO
+                }.padding()
+                Button("Old Workouts"){
+                    print("Open workout history screen")
+                    // TODO
+                }.padding()
             }
-            .toolbar {
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-//                    Text("Home")
-                }
-            }.navigationTitle("Home")
+            .navigationTitle("Home")
                 
         }
     }
