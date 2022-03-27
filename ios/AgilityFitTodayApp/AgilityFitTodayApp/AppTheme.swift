@@ -47,7 +47,7 @@ class Theme: ObservableObject {
 
 /// Colors used in the app theme
 
-let logoColor = Color(hex: "FFFF9800")
+let logoColor = Color(hex: "FFddac19")
 let gold700 = Color(hex:"FFB86F05")
 let gold500 = Color(hex:"FFDDAC19")
 let gold200 = Color(hex:"FFFFC107")
@@ -57,18 +57,3 @@ let teal200 = Color(hex:"FF23C1F6")
 
 let dividerColor = Color(hex:"FF6D6A6F")
 let cardColor = gold150
-
-
-
-//private val DarkColorPalette = darkColors(
-//    primary = gold200,
-//    primaryVariant = gold700,
-//    secondary = teal200
-//)
-//
-//private val LightColorPalette = lightColors(
-//    primary = gold500,
-//    primaryVariant = gold200,
-//    secondary = teal200,
-//    surface = gold100,
-//)

@@ -15,7 +15,7 @@ struct AgilityFitTodayApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            MainView()
             // TODO: Fix create workout view
 //            CreateWorkoutView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
