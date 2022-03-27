@@ -1,5 +1,5 @@
 //
-//  AgilityFitTodayAppApp.swift
+//  AgilityFitTodayApp.swift
 //  AgilityFitTodayApp
 //
 //  Created by laurenyew on 12/29/21.
@@ -8,12 +8,14 @@
 import SwiftUI
 
 @main
-struct AgilityFitTodayAppApp: App {
+struct AgilityFitTodayApp: App {
     let persistenceController = PersistenceController.shared
+    
+    
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            MainView()
             // TODO: Fix create workout view
 //            CreateWorkoutView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
