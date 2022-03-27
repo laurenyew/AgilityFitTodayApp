@@ -1,6 +1,8 @@
 # iOS AgilityFitTodayApp
 Sample App created to practice with different iOS Tech
 
+<img src="./Screenshots/Home.PNG" width="200"/>
+
 ## iOS Tech
 * SwiftUI
 * Combine
@@ -9,9 +11,12 @@ Sample App created to practice with different iOS Tech
 
 ## Completed Features
 * App icon
+* Add home screen UI 
+* Add initial bottom tabs
 
 ## TODO
-* Add home screen navigation + UI (WIP)
+* Fix Top nav bar (WIP)
+* Add home screen navigation (WIP)
 * Execute a workout
 * Proposed Features
 * Dark Mode
