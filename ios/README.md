@@ -13,9 +13,9 @@ Sample App created to practice with different iOS Tech
 * App icon
 * Add home screen UI 
 * Add initial bottom tabs
+* Added initial models
 
 ## TODO
-* Fix Top nav bar (WIP)
 * Add home screen navigation (WIP)
 * Execute a workout
 * Proposed Features

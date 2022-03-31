@@ -10,8 +10,12 @@ import SwiftUI
 
 struct DashboardView: View {
     var body: some View {
-        VStack {
-            Text("Dashboard")
+        NavigationView {
+            VStack {
+                Text("Dashboard")
+            }
+            .navigationTitle("Dashboard")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
