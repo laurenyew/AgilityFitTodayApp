@@ -16,8 +16,9 @@ Sample App created to practice with different iOS Tech
 * Added initial models
 
 ## TODO
-* Add home screen navigation (WIP)
-* Execute a workout
+* Add home screen navigation to select workout view (WIP)
+* Select a workout screen (WIP)
+* Execute a workout screen
 * Proposed Features
 * Dark Mode
 * Accessibility

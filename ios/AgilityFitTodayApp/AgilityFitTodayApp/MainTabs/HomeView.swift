@@ -21,10 +21,10 @@ struct HomeView: View {
                     .padding()
                 Text("This sample app features fitness workout creations that demo SwiftUI, Combine, async/await, CoreData, and other iOS tech/architecture")
                     .padding()
-                Button("Start a Workout") {
-                    print("Open start a workout screen")
-                    // TODO
-                }.padding()
+                NavigationLink(destination: SelectWorkoutView()){
+                    Button("Start a Workout"){}
+                        .padding()
+                }
                 Button("Create a Workout"){
                     print("Open create a workout screen")
                     // TODO
@@ -35,7 +35,7 @@ struct HomeView: View {
                 }.padding()
             }
             .navigationTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)     
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

@@ -35,6 +35,10 @@
 		B94D776027F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D775F27F539BA00249E83 /* TimeInterval+Formatter.swift */; };
 		B94D776127F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D775F27F539BA00249E83 /* TimeInterval+Formatter.swift */; };
 		B94D776227F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D775F27F539BA00249E83 /* TimeInterval+Formatter.swift */; };
+		B94D776727F53F9D00249E83 /* StartWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D776627F53F9D00249E83 /* StartWorkoutView.swift */; };
+		B94D776827F53F9D00249E83 /* StartWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D776627F53F9D00249E83 /* StartWorkoutView.swift */; };
+		B94D776A27F53FEC00249E83 /* SelectWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */; };
+		B94D776B27F53FEC00249E83 /* SelectWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */; };
 		B958198427EC01C100C31E01 /* UINavigationController+NavBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198327EC01C100C31E01 /* UINavigationController+NavBarColor.swift */; };
 		B958198627EC02EF00C31E01 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198527EC02EF00C31E01 /* Color+Hex.swift */; };
 		B958198827EC034200C31E01 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198727EC034200C31E01 /* AppTheme.swift */; };
@@ -80,6 +84,8 @@
 		B94D775727F5354300249E83 /* WorkoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutItem.swift; sourceTree = "<group>"; };
 		B94D775B27F5371700249E83 /* WorkoutSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSequence.swift; sourceTree = "<group>"; };
 		B94D775F27F539BA00249E83 /* TimeInterval+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Formatter.swift"; sourceTree = "<group>"; };
+		B94D776627F53F9D00249E83 /* StartWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutView.swift; sourceTree = "<group>"; };
+		B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWorkoutView.swift; sourceTree = "<group>"; };
 		B958198327EC01C100C31E01 /* UINavigationController+NavBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+NavBarColor.swift"; sourceTree = "<group>"; };
 		B958198527EC02EF00C31E01 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		B958198727EC034200C31E01 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
@@ -134,15 +140,10 @@
 		B93319E4277D3C6E009642CD /* AgilityFitTodayApp */ = {
 			isa = PBXGroup;
 			children = (
+				B94D776527F53F7600249E83 /* Global */,
+				B94D776427F53F5F00249E83 /* MainTabs */,
+				B94D776327F53F5000249E83 /* Workout */,
 				B94D774E27F5336E00249E83 /* Models */,
-				B93319E5277D3C6E009642CD /* AgilityFitTodayApp.swift */,
-				B93319E7277D3C6E009642CD /* CreateWorkoutView.swift */,
-				B90879E427EFFB5D003566C4 /* MainView.swift */,
-				B93C13B327E96FD4009CC7C3 /* HomeView.swift */,
-				B90879E627EFFBA2003566C4 /* DashboardView.swift */,
-				B90879E827EFFBCF003566C4 /* NotificationsView.swift */,
-				B958198B27EC0AA700C31E01 /* AppEnvironment.swift */,
-				B958198727EC034200C31E01 /* AppTheme.swift */,
 				B93319EE277D3C71009642CD /* Persistence.swift */,
 				B958198227EC01AC00C31E01 /* Extensions */,
 				B958198127EC011900C31E01 /* Supporting Files */,
@@ -184,6 +185,37 @@
 				B94D775B27F5371700249E83 /* WorkoutSequence.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B94D776327F53F5000249E83 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				B93319E7277D3C6E009642CD /* CreateWorkoutView.swift */,
+				B94D776627F53F9D00249E83 /* StartWorkoutView.swift */,
+				B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		B94D776427F53F5F00249E83 /* MainTabs */ = {
+			isa = PBXGroup;
+			children = (
+				B93319E5277D3C6E009642CD /* AgilityFitTodayApp.swift */,
+				B90879E427EFFB5D003566C4 /* MainView.swift */,
+				B93C13B327E96FD4009CC7C3 /* HomeView.swift */,
+				B90879E627EFFBA2003566C4 /* DashboardView.swift */,
+				B90879E827EFFBCF003566C4 /* NotificationsView.swift */,
+			);
+			path = MainTabs;
+			sourceTree = "<group>";
+		};
+		B94D776527F53F7600249E83 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				B958198B27EC0AA700C31E01 /* AppEnvironment.swift */,
+				B958198727EC034200C31E01 /* AppTheme.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		B958198127EC011900C31E01 /* Supporting Files */ = {
@@ -349,6 +381,8 @@
 				B90879E727EFFBA2003566C4 /* DashboardView.swift in Sources */,
 				B93319F2277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld in Sources */,
 				B94D775427F5347100249E83 /* WorkoutType.swift in Sources */,
+				B94D776727F53F9D00249E83 /* StartWorkoutView.swift in Sources */,
+				B94D776A27F53FEC00249E83 /* SelectWorkoutView.swift in Sources */,
 				B958198627EC02EF00C31E01 /* Color+Hex.swift in Sources */,
 				B958198827EC034200C31E01 /* AppTheme.swift in Sources */,
 				B958198C27EC0AA700C31E01 /* AppEnvironment.swift in Sources */,
@@ -378,6 +412,8 @@
 				B94D775E27F5371700249E83 /* WorkoutSequence.swift in Sources */,
 				B94D775627F5347100249E83 /* WorkoutType.swift in Sources */,
 				B94D776227F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */,
+				B94D776B27F53FEC00249E83 /* SelectWorkoutView.swift in Sources */,
+				B94D776827F53F9D00249E83 /* StartWorkoutView.swift in Sources */,
 				B9331A06277D3C71009642CD /* AgilityFitTodayAppUITests.swift in Sources */,
 				B94D775227F533D200249E83 /* User.swift in Sources */,
 			);
