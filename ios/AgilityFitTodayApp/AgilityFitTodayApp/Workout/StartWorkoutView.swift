@@ -10,12 +10,15 @@ import SwiftUI
 
 struct StartWorkoutView : View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Start your Workout")
-            }
-            .navigationTitle("Start Workout")
-            .navigationBarTitleDisplayMode(.large)
+        VStack {
+            Text("Start your Workout")
         }
+        .navigationTitle("Start Workout")
+    }
+}
+
+struct StartWorkoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        StartWorkoutView()
     }
 }

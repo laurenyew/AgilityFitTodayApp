@@ -10,19 +10,24 @@ import SwiftUI
 
 struct SelectWorkoutView : View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Select your Workout")
-            }
-            .navigationTitle("Select a Workout")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: CreateWorkoutView()) {
-                        Text("+")
-                    }
+        VStack {
+            Text("Select your Workout")
+        }
+        .navigationTitle("Select a Workout")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: CreateWorkoutView()) {
+                    Text("+")
                 }
             }
         }
+    }
+}
+
+
+struct SelectWorkoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        SelectWorkoutView()
     }
 }
