@@ -9,9 +9,13 @@ import Foundation
 import SwiftUI
 
 struct SelectWorkoutView : View {
+    @StateObject var viewModel = SelectWorkoutViewModel()
+    
     var body: some View {
         VStack {
-            Text("Select your Workout")
+            List(viewModel.workoutSet) {
+                Text($0.name)
+            }
         }
         .navigationTitle("Select a Workout")
         .navigationBarTitleDisplayMode(.inline)

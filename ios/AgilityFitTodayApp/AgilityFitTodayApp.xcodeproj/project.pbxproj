@@ -10,6 +10,11 @@
 		B90879E527EFFB5D003566C4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90879E427EFFB5D003566C4 /* MainView.swift */; };
 		B90879E727EFFBA2003566C4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90879E627EFFBA2003566C4 /* DashboardView.swift */; };
 		B90879E927EFFBCF003566C4 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90879E827EFFBCF003566C4 /* NotificationsView.swift */; };
+		B912F8A92860061000C24FC6 /* BaseWorkoutSequences.json in Resources */ = {isa = PBXBuildFile; fileRef = B912F8A82860061000C24FC6 /* BaseWorkoutSequences.json */; };
+		B912F8AA2860061000C24FC6 /* BaseWorkoutSequences.json in Resources */ = {isa = PBXBuildFile; fileRef = B912F8A82860061000C24FC6 /* BaseWorkoutSequences.json */; };
+		B912F8AB2860061000C24FC6 /* BaseWorkoutSequences.json in Resources */ = {isa = PBXBuildFile; fileRef = B912F8A82860061000C24FC6 /* BaseWorkoutSequences.json */; };
+		B912F8AD2860110B00C24FC6 /* SelectWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B912F8AC2860110B00C24FC6 /* SelectWorkoutViewModel.swift */; };
+		B912F8AF2860110B00C24FC6 /* SelectWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B912F8AC2860110B00C24FC6 /* SelectWorkoutViewModel.swift */; };
 		B93319E6277D3C6E009642CD /* AgilityFitTodayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319E5277D3C6E009642CD /* AgilityFitTodayApp.swift */; };
 		B93319EA277D3C71009642CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93319E9277D3C71009642CD /* Assets.xcassets */; };
 		B93319ED277D3C71009642CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93319EC277D3C71009642CD /* Preview Assets.xcassets */; };
@@ -45,9 +50,6 @@
 		B9E27936282C955E004F1A11 /* CreateWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D74353282C948C0044538D /* CreateWorkoutView.swift */; };
 		B9E27938282C95EC004F1A11 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */; };
 		B9E27939282C95EC004F1A11 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */; };
-		B9E2793C282C98F5004F1A11 /* BaseWorkoutSequences.json in Resources */ = {isa = PBXBuildFile; fileRef = B9E2793B282C98F5004F1A11 /* BaseWorkoutSequences.json */; };
-		B9E2793D282C98F5004F1A11 /* BaseWorkoutSequences.json in Resources */ = {isa = PBXBuildFile; fileRef = B9E2793B282C98F5004F1A11 /* BaseWorkoutSequences.json */; };
-		B9E2793E282C98F5004F1A11 /* BaseWorkoutSequences.json in Resources */ = {isa = PBXBuildFile; fileRef = B9E2793B282C98F5004F1A11 /* BaseWorkoutSequences.json */; };
 		B9E27940282C9A2D004F1A11 /* WorkoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E2793F282C9A2D004F1A11 /* WorkoutRepository.swift */; };
 		B9E27941282C9A2D004F1A11 /* WorkoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E2793F282C9A2D004F1A11 /* WorkoutRepository.swift */; };
 		B9E27942282C9A2D004F1A11 /* WorkoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E2793F282C9A2D004F1A11 /* WorkoutRepository.swift */; };
@@ -74,6 +76,8 @@
 		B90879E427EFFB5D003566C4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B90879E627EFFBA2003566C4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		B90879E827EFFBCF003566C4 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		B912F8A82860061000C24FC6 /* BaseWorkoutSequences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BaseWorkoutSequences.json; sourceTree = "<group>"; };
+		B912F8AC2860110B00C24FC6 /* SelectWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWorkoutViewModel.swift; sourceTree = "<group>"; };
 		B93319E2277D3C6E009642CD /* AgilityFitTodayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgilityFitTodayApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93319E5277D3C6E009642CD /* AgilityFitTodayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgilityFitTodayApp.swift; sourceTree = "<group>"; };
 		B93319E9277D3C71009642CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +102,6 @@
 		B958198B27EC0AA700C31E01 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		B9D74353282C948C0044538D /* CreateWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkoutView.swift; sourceTree = "<group>"; };
 		B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
-		B9E2793B282C98F5004F1A11 /* BaseWorkoutSequences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = BaseWorkoutSequences.json; path = ../../../../../android/AgilityFitTodayApp/app/src/main/assets/BaseWorkoutSequences.json; sourceTree = "<group>"; };
 		B9E2793F282C9A2D004F1A11 /* WorkoutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +130,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B912F8A7286005E500C24FC6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B912F8A82860061000C24FC6 /* BaseWorkoutSequences.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B912F8B02860111900C24FC6 /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */,
+				B912F8AC2860110B00C24FC6 /* SelectWorkoutViewModel.swift */,
+			);
+			path = Select;
+			sourceTree = "<group>";
+		};
 		B93319D9277D3C6D009642CD = {
 			isa = PBXGroup;
 			children = (
@@ -200,8 +220,8 @@
 		B94D776327F53F5000249E83 /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				B912F8B02860111900C24FC6 /* Select */,
 				B94D776627F53F9D00249E83 /* StartWorkoutView.swift */,
-				B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */,
 				B9D74353282C948C0044538D /* CreateWorkoutView.swift */,
 				B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */,
 			);
@@ -232,7 +252,7 @@
 		B958198127EC011900C31E01 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B9E2793A282C98BB004F1A11 /* Resources */,
+				B912F8A7286005E500C24FC6 /* Resources */,
 				B93319F0277D3C71009642CD /* AgilityFitTodayApp.xcdatamodeld */,
 				B93319E9277D3C71009642CD /* Assets.xcassets */,
 				B93319EB277D3C71009642CD /* Preview Content */,
@@ -248,14 +268,6 @@
 				B94D775F27F539BA00249E83 /* TimeInterval+Formatter.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		B9E2793A282C98BB004F1A11 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B9E2793B282C98F5004F1A11 /* BaseWorkoutSequences.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		B9E27943282C9A34004F1A11 /* Repositories */ = {
@@ -370,7 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E2793C282C98F5004F1A11 /* BaseWorkoutSequences.json in Resources */,
+				B912F8A92860061000C24FC6 /* BaseWorkoutSequences.json in Resources */,
 				B93319ED277D3C71009642CD /* Preview Assets.xcassets in Resources */,
 				B93319EA277D3C71009642CD /* Assets.xcassets in Resources */,
 			);
@@ -380,7 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E2793D282C98F5004F1A11 /* BaseWorkoutSequences.json in Resources */,
+				B912F8AA2860061000C24FC6 /* BaseWorkoutSequences.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E2793E282C98F5004F1A11 /* BaseWorkoutSequences.json in Resources */,
+				B912F8AB2860061000C24FC6 /* BaseWorkoutSequences.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +416,7 @@
 				B94D776027F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */,
 				B958198427EC01C100C31E01 /* UINavigationController+NavBarColor.swift in Sources */,
 				B94D775C27F5371700249E83 /* WorkoutSequence.swift in Sources */,
+				B912F8AD2860110B00C24FC6 /* SelectWorkoutViewModel.swift in Sources */,
 				B90879E527EFFB5D003566C4 /* MainView.swift in Sources */,
 				B93319E6277D3C6E009642CD /* AgilityFitTodayApp.swift in Sources */,
 				B94D775827F5354300249E83 /* WorkoutItem.swift in Sources */,
@@ -452,6 +465,7 @@
 				B9E27939282C95EC004F1A11 /* WorkoutHistoryView.swift in Sources */,
 				B9331A06277D3C71009642CD /* AgilityFitTodayAppUITests.swift in Sources */,
 				B94D775227F533D200249E83 /* User.swift in Sources */,
+				B912F8AF2860110B00C24FC6 /* SelectWorkoutViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

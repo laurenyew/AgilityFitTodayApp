@@ -9,10 +9,8 @@ import SwiftUI
 
 @main
 struct AgilityFitTodayApp: App {
-    let persistenceController = PersistenceController.shared
+    let workoutRepository = AppEnvironment.current.workoutRepository
     
-    
-
     var body: some Scene {
         WindowGroup {
             MainView()

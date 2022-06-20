@@ -1,0 +1,206 @@
+[
+  {
+    "id": 0,
+    "name": "Basic Strength Workout",
+    "description": "Push-ups & Crunches!",
+    "workoutItems": [
+      {
+        "quantity": 10,
+        "itemBase": "Push-ups"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      }
+    ],
+    "workoutType": "STRENGTH"
+  },
+  {
+    "id": 1,
+    "name": "Basic Core Workout",
+    "description": "Crunches galore!",
+    "workoutItems": [
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      }
+    ],
+    "workoutType": "CORE"
+  },
+  {
+    "id": 2,
+    "name": "Basic Upper Body Workout",
+    "description": "Did someone ask for push-ups?",
+    "workoutItems": [
+      {
+        "quantity": 10,
+        "itemBase": "Push-ups"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Push-ups"
+      }
+    ],
+    "workoutType": "UPPER_BODY_STRENGTH"
+  },
+  {
+    "id": 3,
+    "name": "Cardio Treadmill",
+    "description": "Get ready to Interval Treadmill",
+    "workoutItems": [
+      {
+        "quantity": 1,
+        "itemBase": "Treadmill"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Treadmill"
+      }
+    ],
+    "workoutType": "CARDIO"
+  },
+  {
+    "id": 4,
+    "name": "Cooldown & Stretch",
+    "description": "Take a breather...",
+    "workoutItems": [
+      {
+        "quantity": 1,
+        "itemBase": "Treadmill"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Stretch"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Treadmill"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Stretch"
+      }
+    ],
+    "workoutType": "STRETCH"
+  },
+  {
+    "id": 5,
+    "name": "Squats 4 Life!",
+    "description": "Squats, Squats, and more Squats",
+    "workoutItems": [
+      {
+        "quantity": 15,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 5,
+        "itemBase": "Squats"
+      }
+    ],
+    "workoutType": "LOWER_BODY_STRENGTH"
+  },
+  {
+    "id": 6,
+    "name": "Core & Squats",
+    "description": "Sit ups and Squats",
+    "workoutItems": [
+      {
+        "quantity": 15,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 5,
+        "itemBase": "Squats"
+      }
+    ],
+    "workoutType": "CORE"
+  },
+  {
+    "id": 7,
+    "name": "Long Core Workout",
+    "description": "Sit ups and Squats",
+    "workoutItems": [
+      {
+        "quantity": 15,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 5,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Crunches"
+      },
+      {
+        "quantity": 1,
+        "itemBase": "Rest"
+      },
+      {
+        "quantity": 5,
+        "itemBase": "Squats"
+      },
+      {
+        "quantity": 10,
+        "itemBase": "Rest"
+      }
+    ],
+    "workoutType": "CORE"
+  }
+]

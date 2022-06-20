@@ -7,29 +7,47 @@
 
 import Foundation
 
-class WorkoutItem {
-    let id: Int
+class WorkoutItem: Codable, Identifiable {
+    let id = UUID()
     let quantity: Int
     let itemBase: WorkoutItemBase
-    let isFavorite: Bool
+    var isFavorite: Bool = false
     
-    init(id: Int, quantity: Int, itemBase: WorkoutItemBase, isFavorite: Bool) {
-        self.id = id
+    init(quantity: Int, itemBase: WorkoutItemBase, isFavorite: Bool) {
         self.quantity = quantity
         self.itemBase = itemBase
         self.isFavorite = isFavorite
     }
-
+    
     // Helper init
     init(quantity: Int, itemBase: WorkoutItemBase) {
-        self.id = Int.random(in: 0..<Int.max)
         self.quantity = quantity
         self.itemBase = itemBase
         self.isFavorite = false
     }
     
+    /// Handle JSON parsing
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let quantity = try container.decodeIfPresent(Int.self, forKey: .quantity) {
+            self.quantity = quantity
+        } else {
+            fatalError("Invalid Quantity in Workout decoder for WorkoutItem creation")
+        }
+        if let basicWorkoutItems = try container.decodeIfPresent(BasicWorkoutItem.self, forKey: .itemBase) {
+            self.itemBase = basicWorkoutItems.toWorkoutItemBase()
+        } else {
+            fatalError("Invalid Item Base in Workout decoder for WorkoutItem creation")
+        }
+        if let isFavorite = try container.decodeIfPresent(Bool.self, forKey: .isFavorite) {
+            self.isFavorite = isFavorite
+        } else {
+            self.isFavorite = false
+        }
+    }
+    
     func estimatedTimeInSecs() -> Int {
-       return itemBase.baseEstimatedTime * quantity * 60 // mins to secs
+        return itemBase.baseEstimatedTime * quantity * 60 // mins to secs
     }
     
     func estimatedTimeFormattedString() -> String {
@@ -38,7 +56,7 @@ class WorkoutItem {
     }
 }
 
-struct WorkoutItemBase {
+struct WorkoutItemBase: Codable {
     let name: String
     let description: String
     let baseEstimatedTime: Int // in munites
@@ -46,10 +64,10 @@ struct WorkoutItemBase {
     let workoutType: WorkoutType
 }
 
-enum BasicWorkoutItems {
+enum BasicWorkoutItem: String, Codable {
     case Rest
     case Crunches
-    case PushUps
+    case PushUps = "Push-ups"
     case Squats
     case Treadmill
     case Stretch

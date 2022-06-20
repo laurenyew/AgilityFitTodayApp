@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum WorkoutType: String {
-    case Cardio
-    case Core
-    case UpperBodyStrength = "Upper-body Strength"
-    case LowerBodyStrength = "Lower-body Strength"
-    case Stretch
-    case Strength
-    case Rest
+enum WorkoutType: String, Codable {
+    case Cardio = "CARDIO"
+    case Core = "CORE"
+    case UpperBodyStrength = "UPPER_BODY_STRENGTH"
+    case LowerBodyStrength = "LOWER_BODY_STRENGTH"
+    case Stretch = "STRETCH"
+    case Strength = "STRENGTH"
+    case Rest = "REST"
 }

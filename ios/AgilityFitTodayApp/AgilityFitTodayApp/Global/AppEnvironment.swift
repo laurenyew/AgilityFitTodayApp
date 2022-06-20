@@ -13,6 +13,7 @@ class AppEnvironment {
     static let current = AppEnvironment()
     
     @State var theme:Theme = themes[0]
+    @State var workoutRepository = WorkoutRepository()
 }
 
 /// Handle App Theming
