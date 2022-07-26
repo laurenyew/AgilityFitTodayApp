@@ -16,6 +16,11 @@ class WorkoutRepository {
     /// Sorted workout sequences by name
     private(set) var workoutSet: WorkoutSet = []
     
+    /// Sorted workout sequences by category
+    private(set) var workoutSetSortedByType: WorkoutSet = []
+    
+    private(set) var workoutTypes: [WorkoutType] = []
+    
     init() {
         loadBaseWorkoutSequences()
     }
@@ -28,10 +33,24 @@ class WorkoutRepository {
                     let data = try Data(contentsOf: URL(fileURLWithPath: path))
                     let decoder = JSONDecoder()
                     let baseWorkoutSet = try decoder.decode(WorkoutSet.self, from: data)
-                    workoutSet = baseWorkoutSet
+                    parseBaseWorkoutSet(baseWorkoutSet)
                 } catch {
                     print("error:\(error)")
                 }
+            }
+        }
+    }
+    
+    /// Parse Base Workout Set into appropriate data sets
+    private func parseBaseWorkoutSet(_ baseWorkoutSet: WorkoutSet) {
+        workoutSet = baseWorkoutSet
+        workoutSetSortedByType = baseWorkoutSet.sorted(by: {
+            $0.workoutType.rawValue < $1.workoutType.rawValue
+        })
+        workoutSetSortedByType.forEach { workoutSequence in
+            let type = workoutSequence.workoutType
+            if !workoutTypes.contains(type) {
+                workoutTypes.append(type)
             }
         }
     }

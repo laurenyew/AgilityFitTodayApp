@@ -13,8 +13,16 @@ struct SelectWorkoutView : View {
     
     var body: some View {
         VStack {
-            List(viewModel.workoutSet) {
-                Text($0.name)
+            List{
+                ForEach(viewModel.workoutTypes){ type in
+                    Section(header: Text(String(type.uiString()))){
+                        ForEach(viewModel.workoutSet
+                            .filter({ $0.workoutType == type })
+                            .sorted(by: { $0.name < $1.name})){
+                                Text($0.name)
+                            }
+                    }
+                }
             }
         }
         .navigationTitle("Select a Workout")

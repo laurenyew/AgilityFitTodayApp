@@ -15,4 +15,19 @@ enum WorkoutType: String, Codable {
     case Stretch = "STRETCH"
     case Strength = "STRENGTH"
     case Rest = "REST"
+    
+    func uiString() -> String {
+        switch(self){
+        case .UpperBodyStrength:
+            return "Upper-body Strength"
+        case .LowerBodyStrength:
+            return "Lower-body Strength"
+        default:
+            return self.rawValue.capitalized(with: Locale.current)
+        }
+    }
+}
+
+extension WorkoutType: Identifiable {
+    var id: Self { self }
 }

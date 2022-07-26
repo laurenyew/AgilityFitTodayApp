@@ -13,8 +13,11 @@ class SelectWorkoutViewModel: ObservableObject {
     
     @Published
     private(set) var workoutSet: WorkoutSet = []
+    @Published
+    private(set) var workoutTypes: [WorkoutType] = []
     
     init() {
-        workoutSet = workoutRepo.workoutSet
+        workoutSet = workoutRepo.workoutSetSortedByType
+        workoutTypes = workoutRepo.workoutTypes
     }
 }
