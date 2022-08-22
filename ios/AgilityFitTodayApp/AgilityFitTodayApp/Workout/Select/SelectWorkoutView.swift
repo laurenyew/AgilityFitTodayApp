@@ -19,7 +19,14 @@ struct SelectWorkoutView : View {
                         ForEach(viewModel.workoutSet
                             .filter({ $0.workoutType == type })
                             .sorted(by: { $0.name < $1.name})){
-                                Text($0.name)
+                                let id = $0.id
+                                let name = $0.name
+                                let description = $0.description
+                                NavigationLink(destination: StartWorkoutView(sequenceId: id)){
+                                    SelectWorkoutRowView(
+                                        title: name,
+                                        description: description)
+                                }
                             }
                     }
                 }

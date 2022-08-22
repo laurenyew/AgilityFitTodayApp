@@ -46,6 +46,10 @@
 		B958198627EC02EF00C31E01 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198527EC02EF00C31E01 /* Color+Hex.swift */; };
 		B958198827EC034200C31E01 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198727EC034200C31E01 /* AppTheme.swift */; };
 		B958198C27EC0AA700C31E01 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958198B27EC0AA700C31E01 /* AppEnvironment.swift */; };
+		B97845B528B317BB008162EA /* StartWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97845B428B317BB008162EA /* StartWorkoutViewModel.swift */; };
+		B97845B628B317BB008162EA /* StartWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97845B428B317BB008162EA /* StartWorkoutViewModel.swift */; };
+		B97845B828B31ACF008162EA /* SelectWorkoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97845B728B31ACF008162EA /* SelectWorkoutRowView.swift */; };
+		B97845B928B31ACF008162EA /* SelectWorkoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97845B728B31ACF008162EA /* SelectWorkoutRowView.swift */; };
 		B9D74354282C948C0044538D /* CreateWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D74353282C948C0044538D /* CreateWorkoutView.swift */; };
 		B9E27936282C955E004F1A11 /* CreateWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D74353282C948C0044538D /* CreateWorkoutView.swift */; };
 		B9E27938282C95EC004F1A11 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */; };
@@ -100,6 +104,8 @@
 		B958198527EC02EF00C31E01 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		B958198727EC034200C31E01 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		B958198B27EC0AA700C31E01 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		B97845B428B317BB008162EA /* StartWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewModel.swift; sourceTree = "<group>"; };
+		B97845B728B31ACF008162EA /* SelectWorkoutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWorkoutRowView.swift; sourceTree = "<group>"; };
 		B9D74353282C948C0044538D /* CreateWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkoutView.swift; sourceTree = "<group>"; };
 		B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
 		B9E2793F282C9A2D004F1A11 /* WorkoutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRepository.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 			children = (
 				B94D776927F53FEC00249E83 /* SelectWorkoutView.swift */,
 				B912F8AC2860110B00C24FC6 /* SelectWorkoutViewModel.swift */,
+				B97845B728B31ACF008162EA /* SelectWorkoutRowView.swift */,
 			);
 			path = Select;
 			sourceTree = "<group>";
@@ -221,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				B912F8B02860111900C24FC6 /* Select */,
-				B94D776627F53F9D00249E83 /* StartWorkoutView.swift */,
+				B97845B328B317A6008162EA /* Start */,
 				B9D74353282C948C0044538D /* CreateWorkoutView.swift */,
 				B9E27937282C95EC004F1A11 /* WorkoutHistoryView.swift */,
 			);
@@ -268,6 +275,15 @@
 				B94D775F27F539BA00249E83 /* TimeInterval+Formatter.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B97845B328B317A6008162EA /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				B94D776627F53F9D00249E83 /* StartWorkoutView.swift */,
+				B97845B428B317BB008162EA /* StartWorkoutViewModel.swift */,
+			);
+			path = Start;
 			sourceTree = "<group>";
 		};
 		B9E27943282C9A34004F1A11 /* Repositories */ = {
@@ -412,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B94D775027F533D200249E83 /* User.swift in Sources */,
+				B97845B828B31ACF008162EA /* SelectWorkoutRowView.swift in Sources */,
 				B9E27940282C9A2D004F1A11 /* WorkoutRepository.swift in Sources */,
 				B94D776027F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */,
 				B958198427EC01C100C31E01 /* UINavigationController+NavBarColor.swift in Sources */,
@@ -430,6 +447,7 @@
 				B958198627EC02EF00C31E01 /* Color+Hex.swift in Sources */,
 				B958198827EC034200C31E01 /* AppTheme.swift in Sources */,
 				B958198C27EC0AA700C31E01 /* AppEnvironment.swift in Sources */,
+				B97845B528B317BB008162EA /* StartWorkoutViewModel.swift in Sources */,
 				B90879E927EFFBCF003566C4 /* NotificationsView.swift in Sources */,
 				B9E27938282C95EC004F1A11 /* WorkoutHistoryView.swift in Sources */,
 			);
@@ -442,7 +460,9 @@
 				B94D775127F533D200249E83 /* User.swift in Sources */,
 				B94D775527F5347100249E83 /* WorkoutType.swift in Sources */,
 				B94D775927F5354300249E83 /* WorkoutItem.swift in Sources */,
+				B97845B628B317BB008162EA /* StartWorkoutViewModel.swift in Sources */,
 				B94D775D27F5371700249E83 /* WorkoutSequence.swift in Sources */,
+				B97845B928B31ACF008162EA /* SelectWorkoutRowView.swift in Sources */,
 				B9E27941282C9A2D004F1A11 /* WorkoutRepository.swift in Sources */,
 				B94D776127F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */,
 				B93319FC277D3C71009642CD /* WorkoutModelTests.swift in Sources */,
@@ -617,7 +637,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -647,7 +667,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

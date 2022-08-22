@@ -25,6 +25,13 @@ class WorkoutRepository {
         loadBaseWorkoutSequences()
     }
     
+    // TODO: Eventually we want to use CoreData instead of this.
+    func loadWorkoutSequence(id: UUID) -> WorkoutSequence? {
+        return workoutSet.first { sequence in
+            sequence.id == id
+        }
+    }
+    
     /// Load workout sequences from base JSON file
     private func loadBaseWorkoutSequences(){
         if workoutSet.isEmpty {

@@ -9,6 +9,12 @@ import Foundation
 import SwiftUI
 
 struct StartWorkoutView : View {
+    @ObservedObject var viewModel : StartWorkoutViewModel
+    
+    init(sequenceId: UUID){
+        viewModel = StartWorkoutViewModel(sequenceID: sequenceId)
+    }
+    
     var body: some View {
         VStack {
             Text("Start your Workout")
@@ -19,6 +25,6 @@ struct StartWorkoutView : View {
 
 struct StartWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        StartWorkoutView()
+        StartWorkoutView(sequenceId: UUID.init())
     }
 }
