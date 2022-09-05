@@ -12,7 +12,7 @@ import SwiftUI
 struct StartWorkoutHeaderView : View {
     let title: String
     let description: String
-    let estimatedTimeFormattedString: String
+    let estimatedTimeLeftString: String
     // TODO: Change image to match whatever comes from Workout Sequence
     
     var body: some View {
@@ -35,10 +35,10 @@ struct StartWorkoutHeaderView : View {
             .padding(.leading)
             
             HStack(alignment:.center) {
-                Text("Estimated Time:")
+                Text("Estimated Time Left:")
                     .font(.body)
                     .bold()
-                Text(estimatedTimeFormattedString)
+                Text(estimatedTimeLeftString)
                     .font(.body)
                 Spacer()
             }
@@ -54,7 +54,7 @@ struct StartWorkoutHeaderView_Previews: PreviewProvider {
         StartWorkoutHeaderView(
             title: "Cardio Treadmill",
             description: "Get ready to interval treadmill",
-            estimatedTimeFormattedString: "32:00"
+            estimatedTimeLeftString: "32:00"
         )
     }
 }
