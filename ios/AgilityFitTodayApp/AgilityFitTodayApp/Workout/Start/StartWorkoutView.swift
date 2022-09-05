@@ -44,12 +44,30 @@ struct StartWorkoutView : View {
                 Spacer()
             }
             if workoutSequence != nil {
-                StartWorkoutButton(currentState: .Paused) {
-                    // TODO: Hook up workout button with view model.
+                StartWorkoutButton(currentState: viewModel.currentState) {
+                    viewModel.onFABButtonClick()
                 }
             }
         }
         .navigationTitle("Start Workout")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.cancelWorkout()
+                } label: {
+                    Text("Cancel")
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.completeWorkout()
+                } label: {
+                    Text("✓")
+                        .bold()
+                }
+            }
+        }
     }
 }
 
