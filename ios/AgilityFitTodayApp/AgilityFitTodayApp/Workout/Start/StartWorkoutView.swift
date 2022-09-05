@@ -16,8 +16,33 @@ struct StartWorkoutView : View {
     }
     
     var body: some View {
-        VStack {
-            Text("Start your Workout")
+        let workoutSequence = viewModel.workoutSequence
+        ZStack {
+            VStack(alignment: .leading, spacing: 0) {
+                if let workoutSequence = workoutSequence {
+                    StartWorkoutHeaderView(
+                        title: workoutSequence.name,
+                        description: workoutSequence.description,
+                        estimatedTimeFormattedString: workoutSequence.estimatedTimeFormattedString())
+                    ScrollView {
+                        VStack(spacing: 0){
+                            ForEach(workoutSequence.workoutItems) { item in
+                                StartWorkoutRowView(
+                                    quantity: item.quantity,
+                                    name: item.itemBase.name,
+                                    estimatedFormattedTimeString: item.estimatedTimeFormattedString())
+                            }
+                        }
+                    }
+                } else {
+                    Text("Loading..")
+                }
+                Spacer()
+            }
+            
+            StartWorkoutButton(currentState: .Paused) {
+                // TODO: Hook up workout button with view model.
+            }
         }
         .navigationTitle("Start Workout")
     }

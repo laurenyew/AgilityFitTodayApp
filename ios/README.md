@@ -1,7 +1,7 @@
 # iOS AgilityFitTodayApp
 Sample App created to practice with different iOS Tech
 
-<img src="./Screenshots/Home.PNG" width="200"/> <img src="./Screenshots/SelectWorkout.png" width="200"/>
+<img src="./Screenshots/Home.PNG" width="200"/> <img src="./Screenshots/SelectWorkout.PNG" width="200"/> <img src="./Screenshots/StartWorkout1.PNG" width="200"/> <img src="./Screenshots/StartWorkout2.PNG" width="200"/> <img src="./Screenshots/StartWorkout2_Scollable.PNG" width="200"/>
 
 ## iOS Tech
 * SwiftUI
@@ -19,6 +19,7 @@ Sample App created to practice with different iOS Tech
 * Add home screen navigation to select workout view (DONE)
 * Select a workout screen (DONE)
 * Execute a workout screen (WIP)
+* Create a workout screen
 * Proposed Features
 * Dark Mode
 * Accessibility
