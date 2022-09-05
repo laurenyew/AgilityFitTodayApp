@@ -16,8 +16,16 @@ struct StartWorkoutView : View {
     }
     
     var body: some View {
+        let workoutSequence = viewModel.workoutSequence
         VStack {
-            Text("Start your Workout")
+            if(workoutSequence != nil){
+                StartWorkoutHeaderView(
+                    title: workoutSequence?.name,
+                    description: workoutSequence?.description,
+                    estimatedTimeFormattedString: workoutSequence?.estimatedTimeFormattedString())
+            } else {
+                Text("Loading..")
+            }
         }
         .navigationTitle("Start Workout")
     }

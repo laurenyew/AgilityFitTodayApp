@@ -7,8 +7,18 @@
 
 import Foundation
 
+/// WorkoutSet
+///
+/// List of workout sequences
+/// Can represent many different types of workouts
+/// Ex: [Treadmill workout, sit up workout, HITT, etc]
 typealias WorkoutSet = [WorkoutSequence]
 
+/// Workout Sequence
+///
+/// List of workout items representing a sequence of work.
+/// The items should be compiled into a list that has its own name, description, and type
+/// Ex: [ Crunch x 3, Rest x 1, PushUps x 2]
 class WorkoutSequence: Codable, Identifiable {
     let id = UUID()
     var name: String

@@ -7,6 +7,10 @@
 
 import Foundation
 
+/// WorkoutItem
+///
+/// A single unit of work of a certain type and quantity
+/// Ex: Crunch x 3
 class WorkoutItem: Codable, Identifiable {
     let id = UUID()
     let quantity: Int
