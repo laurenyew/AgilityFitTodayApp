@@ -10,9 +10,9 @@ import SwiftUI
 
 /// Start Workout Sequence -- Header
 struct StartWorkoutHeaderView : View {
-    let title: String?
-    let description: String?
-    let estimatedTimeFormattedString: String?
+    let title: String
+    let description: String
+    let estimatedTimeFormattedString: String
     // TODO: Change image to match whatever comes from Workout Sequence
     
     var body: some View {
@@ -25,24 +25,25 @@ struct StartWorkoutHeaderView : View {
                     .scaledToFit()
                     .padding(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                 VStack(alignment:.leading){
-                    Text(title ?? "Unknown")
+                    Text(title)
                         .font(.headline)
-                    Text(description ?? "")
+                    Text(description)
                         .font(.body)
                 }
+                Spacer()
             }
+            .padding(.leading)
             
-            if let estimatedTime = estimatedTimeFormattedString{
-                HStack(alignment:.center) {
-                    Text("Estimated Time:")
-                        .font(.body)
-                        .bold()
-                    Text(estimatedTime)
-                        .font(.body)
-                }
+            HStack(alignment:.center) {
+                Text("Estimated Time:")
+                    .font(.body)
+                    .bold()
+                Text(estimatedTimeFormattedString)
+                    .font(.body)
+                Spacer()
             }
+            .padding(.leading)
         }
-        .frame(maxWidth:.infinity)
         .padding()
         .background(cardColor)
     }

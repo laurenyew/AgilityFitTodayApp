@@ -17,15 +17,27 @@ struct StartWorkoutView : View {
     
     var body: some View {
         let workoutSequence = viewModel.workoutSequence
-        VStack {
-            if(workoutSequence != nil){
+        
+        VStack(alignment: .leading, spacing: 0) {
+            if let workoutSequence = workoutSequence {
                 StartWorkoutHeaderView(
-                    title: workoutSequence?.name,
-                    description: workoutSequence?.description,
-                    estimatedTimeFormattedString: workoutSequence?.estimatedTimeFormattedString())
+                    title: workoutSequence.name,
+                    description: workoutSequence.description,
+                    estimatedTimeFormattedString: workoutSequence.estimatedTimeFormattedString())
+                ScrollView {
+                    VStack(spacing: 0){
+                        ForEach(workoutSequence.workoutItems) { item in
+                            StartWorkoutRowView(
+                                quantity: item.quantity,
+                                name: item.itemBase.name,
+                                estimatedFormattedTimeString: item.estimatedTimeFormattedString())
+                        }
+                    }
+                }
             } else {
                 Text("Loading..")
             }
+            Spacer()
         }
         .navigationTitle("Start Workout")
     }
