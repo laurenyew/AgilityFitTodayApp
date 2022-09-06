@@ -66,6 +66,9 @@
 		B9E4A92928C59EE300ED0F42 /* StartWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4A92828C59EE300ED0F42 /* StartWorkoutButton.swift */; };
 		B9E4A92A28C59EE300ED0F42 /* StartWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4A92828C59EE300ED0F42 /* StartWorkoutButton.swift */; };
 		B9E4A92B28C59EE300ED0F42 /* StartWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4A92828C59EE300ED0F42 /* StartWorkoutButton.swift */; };
+		B9E4A92D28C6B36F00ED0F42 /* WorkoutExecutionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4A92C28C6B36F00ED0F42 /* WorkoutExecutionState.swift */; };
+		B9E4A92E28C6B36F00ED0F42 /* WorkoutExecutionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4A92C28C6B36F00ED0F42 /* WorkoutExecutionState.swift */; };
+		B9E4A92F28C6B36F00ED0F42 /* WorkoutExecutionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4A92C28C6B36F00ED0F42 /* WorkoutExecutionState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +124,7 @@
 		B9E4A91C28C58C8400ED0F42 /* StartWorkoutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutHeaderView.swift; sourceTree = "<group>"; };
 		B9E4A92428C597BB00ED0F42 /* StartWorkoutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutRowView.swift; sourceTree = "<group>"; };
 		B9E4A92828C59EE300ED0F42 /* StartWorkoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutButton.swift; sourceTree = "<group>"; };
+		B9E4A92C28C6B36F00ED0F42 /* WorkoutExecutionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExecutionState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +301,7 @@
 				B9E4A91C28C58C8400ED0F42 /* StartWorkoutHeaderView.swift */,
 				B9E4A92428C597BB00ED0F42 /* StartWorkoutRowView.swift */,
 				B9E4A92828C59EE300ED0F42 /* StartWorkoutButton.swift */,
+				B9E4A92C28C6B36F00ED0F42 /* WorkoutExecutionState.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				B958198427EC01C100C31E01 /* UINavigationController+NavBarColor.swift in Sources */,
 				B94D775C27F5371700249E83 /* WorkoutSequence.swift in Sources */,
 				B912F8AD2860110B00C24FC6 /* SelectWorkoutViewModel.swift in Sources */,
+				B9E4A92D28C6B36F00ED0F42 /* WorkoutExecutionState.swift in Sources */,
 				B90879E527EFFB5D003566C4 /* MainView.swift in Sources */,
 				B93319E6277D3C6E009642CD /* AgilityFitTodayApp.swift in Sources */,
 				B94D775827F5354300249E83 /* WorkoutItem.swift in Sources */,
@@ -480,6 +486,7 @@
 				B94D775927F5354300249E83 /* WorkoutItem.swift in Sources */,
 				B97845B628B317BB008162EA /* StartWorkoutViewModel.swift in Sources */,
 				B94D775D27F5371700249E83 /* WorkoutSequence.swift in Sources */,
+				B9E4A92E28C6B36F00ED0F42 /* WorkoutExecutionState.swift in Sources */,
 				B97845B928B31ACF008162EA /* SelectWorkoutRowView.swift in Sources */,
 				B9E27941282C9A2D004F1A11 /* WorkoutRepository.swift in Sources */,
 				B9E4A92A28C59EE300ED0F42 /* StartWorkoutButton.swift in Sources */,
@@ -502,6 +509,7 @@
 				B94D775E27F5371700249E83 /* WorkoutSequence.swift in Sources */,
 				B94D775627F5347100249E83 /* WorkoutType.swift in Sources */,
 				B9E4A92B28C59EE300ED0F42 /* StartWorkoutButton.swift in Sources */,
+				B9E4A92F28C6B36F00ED0F42 /* WorkoutExecutionState.swift in Sources */,
 				B94D776227F539BA00249E83 /* TimeInterval+Formatter.swift in Sources */,
 				B94D776B27F53FEC00249E83 /* SelectWorkoutView.swift in Sources */,
 				B94D776827F53F9D00249E83 /* StartWorkoutView.swift in Sources */,

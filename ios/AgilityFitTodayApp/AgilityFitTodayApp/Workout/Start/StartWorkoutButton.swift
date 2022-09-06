@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StartWorkoutButton : View {
-    let currentState: WorkoutExecutionButtonState
+    let currentState: WorkoutExecutionState
     let action: () -> Void
     
     var body: some View {
@@ -20,10 +20,18 @@ struct StartWorkoutButton : View {
                 Button(action: {
                     self.action()
                 }, label: {
-                    Text(label())
-                        .font(.system(.largeTitle))
-                        .frame(width: 70, height: 70)
-                        .foregroundColor(Color.white)
+                    if currentState != .Completed && currentState != .Cancelled {
+                        Text(label())
+                            .font(.system(.largeTitle))
+                            .frame(width: 70, height: 70)
+                            .foregroundColor(Color.white)
+                    }
+                    else {
+                        Text(label())
+                            .font(.system(.largeTitle))
+                            .foregroundColor(Color.white)
+                            .padding()
+                    }
                 })
                 .background(Color.blue)
                 .cornerRadius(38.5)
@@ -39,21 +47,22 @@ struct StartWorkoutButton : View {
     
     private func label() -> String {
         switch(self.currentState){
-        case .Paused: return "▶︎"
+        case .NotStarted: return "▶︎"
         case .InProgress: return "◼︎"
+        case .Stopped:
+            return "▶︎"
+        case .Cancelled:
+            return "Restart"
+        case .Completed:
+            return "Restart"
         }
     }
 }
 
 struct StartWorkoutButton_Previews: PreviewProvider {
     static var previews: some View {
-        StartWorkoutButton(currentState: .Paused) {
+        StartWorkoutButton(currentState: .NotStarted) {
             // Do nothing
         }
     }
-}
-
-enum WorkoutExecutionButtonState {
-    case Paused
-    case InProgress
 }

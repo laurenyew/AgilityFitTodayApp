@@ -11,7 +11,7 @@ import Foundation
 ///
 /// A single unit of work of a certain type and quantity
 /// Ex: Crunch x 3
-class WorkoutItem: Codable, Identifiable {
+class WorkoutItem: Codable, Identifiable, Hashable {
     let id = UUID()
     let quantity: Int
     let itemBase: WorkoutItemBase
@@ -51,19 +51,27 @@ class WorkoutItem: Codable, Identifiable {
     }
     
     func estimatedTimeInSecs() -> Int {
-        return itemBase.baseEstimatedTime * quantity * 60 // mins to secs
+        return itemBase.baseEstimatedTime * quantity // TODO: Eventually do mins to secs. Sticking with secs for now. * 60 // mins to secs
     }
     
     func estimatedTimeFormattedString() -> String {
         let estimatedTime = TimeInterval.init(estimatedTimeInSecs())
         return estimatedTime.minuteSecond
     }
+    
+    static func == (lhs: WorkoutItem, rhs: WorkoutItem) -> Bool {
+        return lhs.id == rhs.id && lhs.quantity == rhs.quantity && lhs.itemBase.workoutType == rhs.itemBase.workoutType && lhs.isFavorite == rhs.isFavorite
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 struct WorkoutItemBase: Codable {
     let name: String
     let description: String
-    let baseEstimatedTime: Int // in munites
+    let baseEstimatedTime: Int // in seconds
     let isMeasuredInReps: Bool
     let workoutType: WorkoutType
 }
