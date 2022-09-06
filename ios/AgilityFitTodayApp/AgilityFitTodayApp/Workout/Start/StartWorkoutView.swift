@@ -17,7 +17,7 @@ struct StartWorkoutView : View {
     
     var body: some View {
         let workoutSequence = viewModel.workoutSequence
-        let selectedIndex = viewModel.currentWorkoutItemIndex ?? 0
+        let selectedIndex = viewModel.currentWorkoutItemIndex
         ZStack {
             VStack(alignment: .leading, spacing: 0) {
                 if let workoutSequence = workoutSequence {
@@ -67,6 +67,9 @@ struct StartWorkoutView : View {
                         .bold()
                 }
             }
+        }
+        .onDisappear {
+            viewModel.cancelWorkout()
         }
     }
 }
