@@ -1,9 +1,21 @@
 package com.laurenyew.agilityfittodayapp.ui.startWorkout.select
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -20,23 +32,23 @@ import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.data.models.estimatedTimeFormattedString
 import com.laurenyew.agilityfittodayapp.ui.compose.WorkoutItemListItem
 import com.laurenyew.agilityfittodayapp.ui.compose.WorkoutSequenceListItem
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutViewModel
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutFlowViewModel
 import com.laurenyew.agilityfittodayapp.ui.theme.cardColor
 
 @Composable
 fun StartWorkoutDetailScreen(
-    viewModel: StartWorkoutViewModel = hiltViewModel()
+    viewModel: StartWorkoutFlowViewModel = hiltViewModel()
 ) {
     val selectedWorkoutState = viewModel.selectedWorkout.collectAsState(initial = null)
     selectedWorkoutState.value?.let { selectedWorkout ->
         Scaffold(
             floatingActionButton = {
                 StartWorkoutFAB {
-                    viewModel.startWorkout()
+                    viewModel.onStartWorkoutFromPreviewScreen()
                 }
             }
-        ) {
-            Column {
+        ) { padding ->
+            Column(modifier = Modifier.padding(padding)) {
                 WorkoutSequenceDetailCard(selectedWorkout)
                 WorkoutSequenceItemsSection(selectedWorkout)
             }

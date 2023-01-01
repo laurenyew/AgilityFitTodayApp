@@ -14,7 +14,7 @@ import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutPickerScre
 
 @Composable
 fun StartWorkoutScreen(
-    viewModel: StartWorkoutViewModel = hiltViewModel()
+    viewModel: StartWorkoutFlowViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
     val currentRoute =
@@ -30,7 +30,7 @@ fun StartWorkoutScreen(
 
 @Composable
 fun StartWorkoutNavHost(
-    viewModel: StartWorkoutViewModel = hiltViewModel(),
+    viewModel: StartWorkoutFlowViewModel = hiltViewModel(),
     navController: NavHostController,
 ) {
     NavHost(

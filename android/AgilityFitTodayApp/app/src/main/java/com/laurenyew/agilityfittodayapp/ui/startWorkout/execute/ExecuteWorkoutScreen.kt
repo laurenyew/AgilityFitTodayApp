@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.laurenyew.agilityfittodayapp.R
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutViewModel
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutFlowViewModel
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutSequenceDetailCard
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutSequenceItemsSection
 
 @Composable
-fun ExecuteWorkoutScreen(viewModel: StartWorkoutViewModel = hiltViewModel()) {
+fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()) {
     val selectedWorkoutState = viewModel.selectedWorkout.collectAsState(initial = null)
     selectedWorkoutState.value?.let { selectedWorkout ->
 
@@ -35,7 +35,7 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutViewModel = hiltViewModel()) {
         Scaffold(
             floatingActionButton = {
                 ExecuteWorkoutFAB(fabState = ExecuteWorkoutFABState.PAUSE) {
-                    viewModel.startWorkout()
+                    viewModel.onStartWorkoutFromPreviewScreen()
                 }
             }
         ) {
