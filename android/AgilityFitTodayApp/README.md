@@ -9,6 +9,10 @@
 
 * Execute Workout Screen
 * Add option to instead of timer, allow user input when items are finished
+* C25K workout series
+* Add ability for some workouts for user to tell me when they're done.
+* Focused workout screen (detail lockable in foreground)
+* Siri / voice cues for encouragement / let you know to go to next thing
 
 ## Tech Debt
 

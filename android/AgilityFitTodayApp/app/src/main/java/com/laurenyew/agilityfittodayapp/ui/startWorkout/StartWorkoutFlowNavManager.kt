@@ -20,11 +20,8 @@ class StartWorkoutFlowNavManager @Inject constructor() : StartWorkoutFlowNavMana
 
     override fun onBackPressed(isFromActivityOnBackPress: Boolean) {
         when (_currentNavRoute.value) {
-            StartWorkoutNavRoutes.StartWorkout.route -> _currentNavRoute.value =
-                StartWorkoutNavRoutes.SelectWorkout.route
-
             StartWorkoutNavRoutes.ExecuteWorkout.route -> _currentNavRoute.value =
-                StartWorkoutNavRoutes.StartWorkout.route
+                StartWorkoutNavRoutes.SelectWorkout.route
 
             else -> if (!isFromActivityOnBackPress) {
                 activityBackPressLambda?.invoke()

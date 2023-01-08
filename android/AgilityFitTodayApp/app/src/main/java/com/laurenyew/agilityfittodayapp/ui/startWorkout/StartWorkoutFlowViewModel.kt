@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.execute.ExecuteWorkoutState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,7 +28,15 @@ class StartWorkoutFlowViewModel @Inject constructor(
         workoutRepository.getWorkoutSequences()
             .cachedIn(viewModelScope)
 
+    private var _workoutState =
+        MutableStateFlow<ExecuteWorkoutState>(ExecuteWorkoutState.NOT_STARTED)
+    val workoutState: StateFlow<ExecuteWorkoutState> = _workoutState
+
     // Workout Execution
+    fun updateWorkoutState(newState: ExecuteWorkoutState) {
+        _workoutState.value = newState
+    }
+
 
     fun restartWorkout() {
 
@@ -53,14 +62,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
     fun onSelectWorkoutSequence(sequenceId: Long) {
         viewModelScope.launch {
             _selectedWorkout.value = workoutRepository.getWorkoutSequence(sequenceId)
-            navManager.updateNavRoute(StartWorkoutNavRoutes.StartWorkout)
+            navManager.updateNavRoute(StartWorkoutNavRoutes.ExecuteWorkout)
         }
-    }
-
-    /**
-     * Choose to start the previewed workout
-     */
-    fun onStartWorkoutFromPreviewScreen() {
-        navManager.updateNavRoute(StartWorkoutNavRoutes.ExecuteWorkout)
     }
 }
