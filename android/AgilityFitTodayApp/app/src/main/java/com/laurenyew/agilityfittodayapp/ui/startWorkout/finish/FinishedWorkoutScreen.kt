@@ -30,9 +30,10 @@ import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutFlowViewMode
 /**
  * Show finished workout screen
  * Congrats message
- * Share button
- * Done button
+ * TODO: Share button
+ * Done button, should exit activity
  * TODO: Save workout into history
+ * TODO: Confetti?
  */
 @Composable
 fun FinishedWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()) {

@@ -14,6 +14,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * TODO: How to actually do the timer going through a workout?
+ */
 @HiltViewModel
 class StartWorkoutFlowViewModel @Inject constructor(
     private val workoutRepository: WorkoutRepository,
@@ -35,7 +38,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
     // Workout Execution
     fun updateWorkoutState(newState: ExecuteWorkoutState) {
         _workoutState.value = newState
-        when(newState){
+        when (newState) {
             ExecuteWorkoutState.NOT_STARTED -> restartWorkout()
             ExecuteWorkoutState.RUNNING -> resumeWorkout()
             ExecuteWorkoutState.PAUSED -> pauseWorkout()
