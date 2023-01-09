@@ -35,23 +35,29 @@ class StartWorkoutFlowViewModel @Inject constructor(
     // Workout Execution
     fun updateWorkoutState(newState: ExecuteWorkoutState) {
         _workoutState.value = newState
+        when(newState){
+            ExecuteWorkoutState.NOT_STARTED -> restartWorkout()
+            ExecuteWorkoutState.RUNNING -> resumeWorkout()
+            ExecuteWorkoutState.PAUSED -> pauseWorkout()
+            ExecuteWorkoutState.FINISHED -> finishWorkout()
+        }
     }
 
 
     fun restartWorkout() {
-
+        // TODO; Restart timer from 0
     }
 
     fun pauseWorkout() {
-
+        // TODO: Pause timer
     }
 
     fun resumeWorkout() {
-
+        //TODO: Restart timer from paused time
     }
 
     fun finishWorkout() {
-
+        navManager.updateNavRoute(StartWorkoutNavRoutes.CompletedWorkout)
     }
 
     // Flow Navigation
