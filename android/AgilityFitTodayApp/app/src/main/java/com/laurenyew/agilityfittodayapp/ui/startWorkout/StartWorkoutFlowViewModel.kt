@@ -1,12 +1,13 @@
 package com.laurenyew.agilityfittodayapp.ui.startWorkout
 
+import android.os.CountDownTimer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.execute.ExecuteWorkoutState
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.execute.WorkoutExecutionState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,34 +33,43 @@ class StartWorkoutFlowViewModel @Inject constructor(
             .cachedIn(viewModelScope)
 
     private var _workoutState =
-        MutableStateFlow<ExecuteWorkoutState>(ExecuteWorkoutState.NOT_STARTED)
-    val workoutState: StateFlow<ExecuteWorkoutState> = _workoutState
+        MutableStateFlow<WorkoutExecutionState>(WorkoutExecutionState.NOT_STARTED)
+    val workoutState: StateFlow<WorkoutExecutionState> = _workoutState
+
+    private var _currentWorkoutItemIndex = MutableStateFlow(0)
+    val currentWorkoutItemIndex: StateFlow<Int> = _currentWorkoutItemIndex
+
+    private lateinit var countDownTimer: CountDownTimer
 
     // Workout Execution
-    fun updateWorkoutState(newState: ExecuteWorkoutState) {
+    fun updateWorkoutState(newState: WorkoutExecutionState) {
         _workoutState.value = newState
         when (newState) {
-            ExecuteWorkoutState.NOT_STARTED -> restartWorkout()
-            ExecuteWorkoutState.RUNNING -> resumeWorkout()
-            ExecuteWorkoutState.PAUSED -> pauseWorkout()
-            ExecuteWorkoutState.FINISHED -> finishWorkout()
+            WorkoutExecutionState.NOT_STARTED -> restartWorkout()
+            WorkoutExecutionState.IN_PROGRESS -> resumeWorkout()
+            WorkoutExecutionState.STOPPED -> pauseWorkout()
+            WorkoutExecutionState.COMPLETED -> finishWorkout()
+            WorkoutExecutionState.CANCELLED -> finishWorkout(isCancelled = true)
         }
     }
 
 
-    fun restartWorkout() {
-        // TODO; Restart timer from 0
+    private fun restartWorkout() {
+        // TODO: Do timer
+//        countDownTimer = ExecuteWorkoutCountDownTimer(
+//            selectedWorkout.value?.estimatedTime() ?: 0L
+//        )
     }
 
-    fun pauseWorkout() {
+    private fun pauseWorkout() {
         // TODO: Pause timer
     }
 
-    fun resumeWorkout() {
+    private fun resumeWorkout() {
         //TODO: Restart timer from paused time
     }
 
-    fun finishWorkout() {
+    private fun finishWorkout(isCancelled: Boolean = false) {
         navManager.updateNavRoute(StartWorkoutNavRoutes.CompletedWorkout)
     }
 
@@ -72,6 +82,11 @@ class StartWorkoutFlowViewModel @Inject constructor(
         viewModelScope.launch {
             _selectedWorkout.value = workoutRepository.getWorkoutSequence(sequenceId)
             navManager.updateNavRoute(StartWorkoutNavRoutes.ExecuteWorkout)
+            restartWorkout()
         }
+    }
+
+    companion object {
+        private const val COUNT_DOWN_INTERVAL_IN_MILLIS = 1000L
     }
 }

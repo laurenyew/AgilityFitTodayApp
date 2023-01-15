@@ -63,32 +63,34 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
 
 @Composable
 fun ExecuteWorkoutControls(
-    workoutState: ExecuteWorkoutState,
-    updateWorkoutState: (ExecuteWorkoutState) -> Unit,
+    workoutState: WorkoutExecutionState,
+    updateWorkoutState: (WorkoutExecutionState) -> Unit,
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(10.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         when (workoutState) {
-            ExecuteWorkoutState.NOT_STARTED ->
+            WorkoutExecutionState.NOT_STARTED ->
                 ExecuteWorkoutFAB(fabTitle = "Start", fabIcon = R.drawable.ic_play) {
-                    updateWorkoutState(ExecuteWorkoutState.RUNNING)
+                    updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
                 }
 
-            ExecuteWorkoutState.RUNNING ->
+            WorkoutExecutionState.IN_PROGRESS ->
                 ExecuteWorkoutFAB(fabTitle = "Pause", fabIcon = R.drawable.ic_pause) {
-                    updateWorkoutState(ExecuteWorkoutState.PAUSED)
+                    updateWorkoutState(WorkoutExecutionState.STOPPED)
                 }
 
-            ExecuteWorkoutState.PAUSED -> {
+            WorkoutExecutionState.STOPPED -> {
                 ExecuteWorkoutFAB(fabTitle = "Resume", fabIcon = R.drawable.ic_play) {
-                    updateWorkoutState(ExecuteWorkoutState.RUNNING)
+                    updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
                 }
 
                 Spacer(Modifier.width(30.dp))
                 ExecuteWorkoutFAB(fabTitle = "Finish", fabIcon = R.drawable.ic_flag) {
-                    updateWorkoutState(ExecuteWorkoutState.FINISHED)
+                    updateWorkoutState(WorkoutExecutionState.CANCELLED)
                 }
             }
 
@@ -139,7 +141,7 @@ fun ExecuteWorkoutFAB(
 fun ExecuteWorkoutControls_Running_Preview() {
     Column {
         ExecuteWorkoutControls(
-            workoutState = ExecuteWorkoutState.RUNNING,
+            workoutState = WorkoutExecutionState.IN_PROGRESS,
             updateWorkoutState = {},
         )
     }
@@ -150,7 +152,7 @@ fun ExecuteWorkoutControls_Running_Preview() {
 fun ExecuteWorkoutControls_Paused_Preview() {
     Column {
         ExecuteWorkoutControls(
-            workoutState = ExecuteWorkoutState.PAUSED,
+            workoutState = WorkoutExecutionState.STOPPED,
             updateWorkoutState = {},
         )
     }

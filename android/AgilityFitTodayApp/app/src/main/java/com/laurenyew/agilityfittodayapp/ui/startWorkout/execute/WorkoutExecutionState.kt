@@ -3,9 +3,10 @@ package com.laurenyew.agilityfittodayapp.ui.startWorkout.execute
 /**
  * State of the workout during execution
  */
-enum class ExecuteWorkoutState {
+enum class WorkoutExecutionState {
     NOT_STARTED,
-    RUNNING,
-    PAUSED,
-    FINISHED
+    IN_PROGRESS,
+    STOPPED,
+    CANCELLED,
+    COMPLETED
 }
