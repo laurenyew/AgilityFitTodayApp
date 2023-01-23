@@ -1,5 +1,6 @@
 package com.laurenyew.agilityfittodayapp.utils
 
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -28,13 +29,13 @@ class CountDownTimerWithPauseResume(
     private val countDownInterval: Long,
     private val onIntervalTick: ((millisUntilFinished: Long) -> Unit),
     private val onCountDownComplete: (() -> Unit),
-    private val testScope: CoroutineScope? = null
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     private var _scope: CoroutineScope? = null
     private val scope: CoroutineScope
         get() {
             if (_scope == null) {
-                _scope = testScope ?: CoroutineScope(Dispatchers.IO)
+                _scope = CoroutineScope(ioDispatcher)
             }
             return _scope!!
         }
@@ -69,6 +70,7 @@ class CountDownTimerWithPauseResume(
 
     fun pause() {
         scope.cancel("Pausing Timer")
+        _scope = null
     }
 
     fun resume() {

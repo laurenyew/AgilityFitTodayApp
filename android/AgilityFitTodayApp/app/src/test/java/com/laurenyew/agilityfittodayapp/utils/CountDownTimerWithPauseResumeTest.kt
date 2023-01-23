@@ -2,6 +2,7 @@
 
 package com.laurenyew.agilityfittodayapp.utils
 
+import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -29,6 +30,9 @@ class CountDownTimerWithPauseResumeTest {
         numOnFinishCallbacks++
     }
 
+    private val expectedNumIntervals = 3
+    private val expectedNumFinishEvents = 1
+
     @Before
     fun setup() {
         numIntervalCallbacks = 0
@@ -38,14 +42,25 @@ class CountDownTimerWithPauseResumeTest {
             testTotalTime,
             testIntervalTime,
             onIntervalTick = onInterval,
-            onCountDownComplete = onFinish
+            onCountDownComplete = onFinish,
+            ioDispatcher = dispatcher
         )
     }
+
 
     @Test
     fun `happy path timer - timer runs and completes - onInterval and onFinish are called`() =
         runTest {
-            testObject
+            // Verify
+            Truth.assertThat(numIntervalCallbacks).isEqualTo(0)
+            Truth.assertThat(numOnFinishCallbacks).isEqualTo(0)
+
+            // Exercise
+            dispatcher.scheduler.advanceUntilIdle()
+
+            // Verify
+            Truth.assertThat(numIntervalCallbacks).isEqualTo(expectedNumIntervals)
+            Truth.assertThat(numOnFinishCallbacks).isEqualTo(expectedNumFinishEvents)
         }
 
     @Test
