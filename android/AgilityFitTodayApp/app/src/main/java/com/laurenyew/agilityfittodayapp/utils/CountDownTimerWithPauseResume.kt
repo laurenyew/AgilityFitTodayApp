@@ -57,6 +57,7 @@ class CountDownTimerWithPauseResume(
     }
 
     fun restart() {
+        cancel()
         scope.launch {
             countDownTimer = countDownTimerFlow(
                 millisInFuture = millisInFuture,
@@ -86,7 +87,10 @@ class CountDownTimerWithPauseResume(
     }
 
     fun cancel() {
-        scope.cancel("Cancelling Timer")
+        _scope?.let {
+            it.cancel("Cancelling Timer")
+        }
+        _scope = null
         countDownTimer = null
         pausedMillisUntilFinished = null
     }
