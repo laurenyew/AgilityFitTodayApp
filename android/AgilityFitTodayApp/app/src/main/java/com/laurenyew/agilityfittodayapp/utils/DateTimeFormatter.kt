@@ -1,11 +1,12 @@
 package com.laurenyew.agilityfittodayapp.utils
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 object DateTimeFormatter {
-    private val hoursMinsSecsFormatter = SimpleDateFormat("hh:mm:ss")
-    private val minsSecsFormatter = SimpleDateFormat("mm:ss")
+    private val hoursMinsSecsFormatter = SimpleDateFormat("hh:mm:ss:SS", Locale.US)
+    private val minsSecsFormatter = SimpleDateFormat("mm:ss:SSS", Locale.US)
     fun timeInMillisToDuration(timeInMillis: Long): String =
         if (timeInMillis > HOUR_TO_MILLIS) {
             hoursMinsSecsFormatter.format(Date(timeInMillis))

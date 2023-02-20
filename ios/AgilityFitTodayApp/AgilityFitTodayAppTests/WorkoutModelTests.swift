@@ -11,8 +11,8 @@ import XCTest
 class WorkoutModelTests: XCTestCase {
     func testWorkoutItemEstimatedTime() throws {
         // Setup
-        let workoutItem = WorkoutItem(quantity: 1, itemBase: BasicWorkoutItems.Stretch.toWorkoutItemBase())
-        let workoutItem2 = WorkoutItem(quantity: 2, itemBase: BasicWorkoutItems.Stretch.toWorkoutItemBase())
+        let workoutItem = WorkoutItem(quantity: 1, itemBase: BasicWorkoutItem.Stretch.toWorkoutItemBase())
+        let workoutItem2 = WorkoutItem(quantity: 2, itemBase: BasicWorkoutItem.Stretch.toWorkoutItemBase())
         
         // Exercise
         let result = workoutItem.estimatedTimeInSecs()
@@ -29,8 +29,8 @@ class WorkoutModelTests: XCTestCase {
     
     func testWorkoutSequenceEstimatedTime() throws {
         // Setup
-        let workoutItem1 = WorkoutItem(quantity: 1, itemBase: BasicWorkoutItems.Stretch.toWorkoutItemBase())
-        let workoutItem2 = WorkoutItem(quantity: 2, itemBase: BasicWorkoutItems.Squats.toWorkoutItemBase())
+        let workoutItem1 = WorkoutItem(quantity: 1, itemBase: BasicWorkoutItem.Stretch.toWorkoutItemBase())
+        let workoutItem2 = WorkoutItem(quantity: 2, itemBase: BasicWorkoutItem.Squats.toWorkoutItemBase())
         let workoutSequence = WorkoutSequence(name: "Test", description: "Testing...", workoutItems: [workoutItem1, workoutItem2], workoutType: .Stretch)
         
         // Exercise

@@ -2,13 +2,23 @@ package com.laurenyew.agilityfittodayapp.ui.startWorkout.execute
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -18,12 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.laurenyew.agilityfittodayapp.R
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutViewModel
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutSequenceDetailCard
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutSequenceItemsSection
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutFlowViewModel
 
 @Composable
-fun ExecuteWorkoutScreen(viewModel: StartWorkoutViewModel = hiltViewModel()) {
+fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()) {
     val selectedWorkoutState = viewModel.selectedWorkout.collectAsState(initial = null)
     selectedWorkoutState.value?.let { selectedWorkout ->
 
@@ -32,14 +40,19 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutViewModel = hiltViewModel()) {
         // TODO: Countdown go thru and mark parts as done
         // TODO: Skip function?
 
+        val workoutState by viewModel.workoutState.collectAsState()
+
         Scaffold(
             floatingActionButton = {
-                ExecuteWorkoutFAB(fabState = ExecuteWorkoutFABState.PAUSE) {
-                    viewModel.startWorkout()
-                }
-            }
-        ) {
-            Column {
+                ExecuteWorkoutControls(
+                    workoutState = workoutState,
+                    updateWorkoutState = {
+                        viewModel.updateWorkoutState(it)
+                    })
+            },
+            floatingActionButtonPosition = FabPosition.Center,
+        ) { padding ->
+            Column(modifier = Modifier.padding(padding)) {
                 WorkoutSequenceDetailCard(selectedWorkout)
                 WorkoutSequenceItemsSection(selectedWorkout)
             }
@@ -49,29 +62,53 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun ExecuteWorkoutFAB(
-    fabState: ExecuteWorkoutFABState,
-    onFABClicked: (ExecuteWorkoutFABState) -> Unit
+fun ExecuteWorkoutControls(
+    workoutState: WorkoutExecutionState,
+    updateWorkoutState: (WorkoutExecutionState) -> Unit,
 ) {
-    val fabTitle: String
-    @DrawableRes val fabIcon: Int
-    when (fabState) {
-        ExecuteWorkoutFABState.PAUSE -> {
-            fabTitle = "Pause"
-            fabIcon = R.drawable.ic_pause
-        }
-        ExecuteWorkoutFABState.RESUME -> {
-            fabTitle = "Resume"
-            fabIcon = R.drawable.ic_play
-        }
-        ExecuteWorkoutFABState.FINISH -> {
-            fabTitle = "Finish"
-            fabIcon = R.drawable.ic_flag
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        when (workoutState) {
+            WorkoutExecutionState.NOT_STARTED ->
+                ExecuteWorkoutFAB(fabTitle = "Start", fabIcon = R.drawable.ic_play) {
+                    updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
+                }
+
+            WorkoutExecutionState.IN_PROGRESS ->
+                ExecuteWorkoutFAB(fabTitle = "Pause", fabIcon = R.drawable.ic_pause) {
+                    updateWorkoutState(WorkoutExecutionState.STOPPED)
+                }
+
+            WorkoutExecutionState.STOPPED -> {
+                ExecuteWorkoutFAB(fabTitle = "Resume", fabIcon = R.drawable.ic_play) {
+                    updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
+                }
+
+                Spacer(Modifier.width(30.dp))
+                ExecuteWorkoutFAB(fabTitle = "Finish", fabIcon = R.drawable.ic_flag) {
+                    updateWorkoutState(WorkoutExecutionState.CANCELLED)
+                }
+            }
+
+            else -> {
+                /** Do nothing **/
+            }
         }
     }
+}
 
+@Composable
+fun ExecuteWorkoutFAB(
+    fabTitle: String,
+    @DrawableRes fabIcon: Int,
+    onFABClicked: () -> Unit
+) {
     FloatingActionButton(
-        onClick = { onFABClicked(fabState) },
+        onClick = { onFABClicked() },
     ) {
         Row(modifier = Modifier.padding(8.dp)) {
             val imageModifier = Modifier
@@ -101,9 +138,22 @@ fun ExecuteWorkoutFAB(
 
 @Preview
 @Composable
-fun ExecuteWorkoutFABPreview() {
-    ExecuteWorkoutFAB(
-        fabState = ExecuteWorkoutFABState.PAUSE
-    ) {
+fun ExecuteWorkoutControls_Running_Preview() {
+    Column {
+        ExecuteWorkoutControls(
+            workoutState = WorkoutExecutionState.IN_PROGRESS,
+            updateWorkoutState = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+fun ExecuteWorkoutControls_Paused_Preview() {
+    Column {
+        ExecuteWorkoutControls(
+            workoutState = WorkoutExecutionState.STOPPED,
+            updateWorkoutState = {},
+        )
     }
 }

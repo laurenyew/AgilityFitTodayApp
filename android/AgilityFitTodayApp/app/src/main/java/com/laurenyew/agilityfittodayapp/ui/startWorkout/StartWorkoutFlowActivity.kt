@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class StartWorkoutFlowActivity : AppCompatActivity() {
-    private val startWorkoutViewModel: StartWorkoutViewModel by viewModels()
+    private val startWorkoutViewModel: StartWorkoutFlowViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

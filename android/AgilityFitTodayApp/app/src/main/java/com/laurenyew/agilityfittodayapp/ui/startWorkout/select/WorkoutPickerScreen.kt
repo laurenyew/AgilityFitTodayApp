@@ -18,12 +18,12 @@ import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.ui.compose.ErrorDialog
 import com.laurenyew.agilityfittodayapp.ui.compose.Header
 import com.laurenyew.agilityfittodayapp.ui.compose.WorkoutSequenceListItem
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutViewModel
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutFlowViewModel
 import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun WorkoutPickerScreen(
-    viewModel: StartWorkoutViewModel = hiltViewModel()
+    viewModel: StartWorkoutFlowViewModel = hiltViewModel()
 ) {
     Column(
         Modifier.fillMaxSize()

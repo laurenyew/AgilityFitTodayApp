@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.laurenyew.agilityfittodayapp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".ui.BaseApplication"
@@ -12,8 +11,8 @@
         android:theme="@style/Theme.AgilityFitTodayApp">
         <activity
             android:name=".ui.startWorkout.StartWorkoutFlowActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -24,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.devsettings.DevSettingsActivity"
+            android:exported="true"
+            android:label="@string/title_dev_settings" />
     </application>
 
 </manifest>

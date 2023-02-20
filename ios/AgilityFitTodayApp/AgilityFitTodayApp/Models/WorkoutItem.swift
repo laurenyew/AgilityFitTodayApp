@@ -51,7 +51,7 @@ class WorkoutItem: Codable, Identifiable, Hashable {
     }
     
     func estimatedTimeInSecs() -> Int {
-        return itemBase.baseEstimatedTime * quantity // TODO: Eventually do mins to secs. Sticking with secs for now. * 60 // mins to secs
+        return itemBase.baseEstimatedTime * quantity * 60 // TODO: Eventually do mins to secs. Sticking with secs for now. // mins to secs
     }
     
     func estimatedTimeFormattedString() -> String {

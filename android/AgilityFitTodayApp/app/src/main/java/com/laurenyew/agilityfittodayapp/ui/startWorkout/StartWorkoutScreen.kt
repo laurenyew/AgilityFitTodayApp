@@ -9,12 +9,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.laurenyew.agilityfittodayapp.ui.compose.BaseActivityScreen
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.execute.ExecuteWorkoutScreen
-import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.StartWorkoutDetailScreen
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.finish.FinishedWorkoutScreen
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.select.WorkoutPickerScreen
 
 @Composable
 fun StartWorkoutScreen(
-    viewModel: StartWorkoutViewModel = hiltViewModel()
+    viewModel: StartWorkoutFlowViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
     val currentRoute =
@@ -30,7 +30,7 @@ fun StartWorkoutScreen(
 
 @Composable
 fun StartWorkoutNavHost(
-    viewModel: StartWorkoutViewModel = hiltViewModel(),
+    viewModel: StartWorkoutFlowViewModel = hiltViewModel(),
     navController: NavHostController,
 ) {
     NavHost(
@@ -42,13 +42,13 @@ fun StartWorkoutNavHost(
                 viewModel = viewModel
             )
         }
-        composable(StartWorkoutNavRoutes.StartWorkout.route) {
-            StartWorkoutDetailScreen(
+        composable(StartWorkoutNavRoutes.ExecuteWorkout.route) {
+            ExecuteWorkoutScreen(
                 viewModel = viewModel
             )
         }
-        composable(StartWorkoutNavRoutes.ExecuteWorkout.route) {
-            ExecuteWorkoutScreen(
+        composable(StartWorkoutNavRoutes.CompletedWorkout.route) {
+            FinishedWorkoutScreen(
                 viewModel = viewModel
             )
         }
