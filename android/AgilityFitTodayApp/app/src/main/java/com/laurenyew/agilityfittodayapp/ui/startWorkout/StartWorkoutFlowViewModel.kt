@@ -1,6 +1,5 @@
 package com.laurenyew.agilityfittodayapp.ui.startWorkout
 
-import android.os.CountDownTimer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -8,6 +7,7 @@ import androidx.paging.cachedIn
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.execute.WorkoutExecutionState
+import com.laurenyew.agilityfittodayapp.utils.CountDownTimerWithPauseResume
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,7 +39,8 @@ class StartWorkoutFlowViewModel @Inject constructor(
     private var _currentWorkoutItemIndex = MutableStateFlow(0)
     val currentWorkoutItemIndex: StateFlow<Int> = _currentWorkoutItemIndex
 
-    private lateinit var countDownTimer: CountDownTimer
+    // TODO Need builder function?
+    private lateinit var countDownTimer: CountDownTimerWithPauseResume
 
     // Workout Execution
     fun updateWorkoutState(newState: WorkoutExecutionState) {
@@ -55,7 +56,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
 
 
     private fun restartWorkout() {
-        // TODO: Do timer
+
 //        countDownTimer = ExecuteWorkoutCountDownTimer(
 //            selectedWorkout.value?.estimatedTime() ?: 0L
 //        )
