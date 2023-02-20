@@ -4,5 +4,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_settings">Settings</string>
-    <string name="title_dev_settings">DevSettings</string>
+    <string name="title_dev_settings">Developer Settings</string>
 </resources>
