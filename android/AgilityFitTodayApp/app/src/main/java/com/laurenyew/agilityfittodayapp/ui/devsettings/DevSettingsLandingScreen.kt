@@ -8,8 +8,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -19,7 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.laurenyew.agilityfittodayapp.ui.devsettings.animation.AnimationScreen
+import com.laurenyew.agilityfittodayapp.ui.devsettings.animation.AnimationNavHost
 
 @Composable
 fun DevSettingsNavHost(
@@ -27,32 +33,51 @@ fun DevSettingsNavHost(
     navController: NavHostController = rememberNavController(),
     startDestination: String = "landing"
 ) {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.Top
+    var title by remember { mutableStateOf("Dev Settings") }
+    Scaffold(
+        topBar = {
+            TopAppBar(title = {
+                Text(text = title)
+            })
+
+        }
     ) {
-        NavHost(
-            modifier = modifier,
-            navController = navController,
-            startDestination = startDestination
+        Column(
+            Modifier
+                .padding(it)
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Top
         ) {
-            composable("landing") {
-                DevSettingsLandingScreen(
-                    onNavigateToAnimation = { navController.navigate("animation") },
-                    /*...*/
-                )
+            NavHost(
+                modifier = modifier,
+                navController = navController,
+                startDestination = startDestination
+            ) {
+                composable("landing") {
+                    DevSettingsLandingScreen(
+                        onNavigateToAnimation = {
+                            navController.navigate("animation")
+                            title = "DevSettings > Animations"
+                        },
+                    )
+                }
+                composable("animation") {
+                    AnimationNavHost(
+                        onUpdateTopAppBarTitle = { newTitle: String ->
+                            title = newTitle
+                        }
+                    )
+                }
             }
-            composable("animation") { AnimationScreen() }
         }
     }
 }
 
 @Composable
 fun DevSettingsLandingScreen(
-    onNavigateToAnimation: (() -> Unit),
+    onNavigateToAnimation: (() -> Unit)
 ) {
     Button(onClick = {
         onNavigateToAnimation()

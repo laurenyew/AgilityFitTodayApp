@@ -26,7 +26,7 @@
         <activity
             android:name=".ui.devsettings.DevSettingsActivity"
             android:exported="true"
-            android:label="@string/title_dev_settings" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>
