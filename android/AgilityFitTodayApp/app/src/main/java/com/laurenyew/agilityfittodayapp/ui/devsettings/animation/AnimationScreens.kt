@@ -15,43 +15,39 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
 
-@Composable
-fun AnimationNavHost(
-    onUpdateTopAppBarTitle: ((String) -> Unit),
-    modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
-    startDestination: String = "landing"
+
+/**
+ * Build the animation navigation
+ */
+fun NavGraphBuilder.animationDevSettingsGraph(
+    navController: NavController,
+    updateAppBarTitle: ((String) -> Unit)
 ) {
-
-    NavHost(
-        modifier = modifier,
-        navController = navController,
-        startDestination = startDestination
-    ) {
-        composable("landing") {
+    navigation(startDestination = "animation_landing", route = "animation") {
+        composable("animation_landing") {
             AnimationLandingScreen(
                 onNavigateToImageAnimatedPathScreen = {
                     navController.navigate("image_animated_path")
-                    onUpdateTopAppBarTitle("Animations > Image Path")
+                    updateAppBarTitle("Animations > Image Path")
                 },
                 onNavigateToButtonAnimationsScreen = {
                     navController.navigate("button_animations")
-                    onUpdateTopAppBarTitle("Animations > Buttons")
+                    updateAppBarTitle("Animations > Buttons")
                 },
-                onNavigateToNavANimationsScreen = {
+                onNavigateToNavAnimationsScreen = {
                     navController.navigate("nav_animations")
-                    onUpdateTopAppBarTitle("Animations > Navigation")
+                    updateAppBarTitle("Animations > Navigation")
                 }
             )
         }
-        composable("image_animated_path") { ImageAnimatedPathScreen() }
-        composable("button_animations") { ButtonAnimationScreen() }
-        composable("nav_animations") { NavAnimationScreen() }
+        composable("image_animated_path") { com.laurenyew.agilityfittodayapp.ui.devsettings.animation.ImageAnimatedPathScreen() }
+        composable("button_animations") { com.laurenyew.agilityfittodayapp.ui.devsettings.animation.ButtonAnimationScreen() }
+        composable("nav_animations") { com.laurenyew.agilityfittodayapp.ui.devsettings.animation.NavAnimationScreen() }
     }
 }
 
@@ -59,7 +55,7 @@ fun AnimationNavHost(
 fun AnimationLandingScreen(
     onNavigateToImageAnimatedPathScreen: (() -> Unit),
     onNavigateToButtonAnimationsScreen: (() -> Unit),
-    onNavigateToNavANimationsScreen: (() -> Unit)
+    onNavigateToNavAnimationsScreen: (() -> Unit)
 ) {
     Column(
         Modifier
@@ -94,7 +90,7 @@ fun AnimationLandingScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-            onNavigateToImageAnimatedPathScreen()
+            onNavigateToNavAnimationsScreen()
         }) {
             Text(
                 text = "Navigation Animations",
@@ -114,6 +110,6 @@ fun AnimationLandingScreen_Preview() {
     AnimationLandingScreen(
         onNavigateToImageAnimatedPathScreen = { },
         onNavigateToButtonAnimationsScreen = { },
-        onNavigateToNavANimationsScreen = { }
+        onNavigateToNavAnimationsScreen = { }
     )
 }
