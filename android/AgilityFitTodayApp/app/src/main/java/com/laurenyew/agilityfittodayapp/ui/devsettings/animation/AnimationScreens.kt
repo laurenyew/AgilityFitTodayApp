@@ -30,24 +30,31 @@ fun NavGraphBuilder.animationDevSettingsGraph(
 ) {
     navigation(startDestination = "animation_landing", route = "animation") {
         composable("animation_landing") {
+            updateAppBarTitle("DevSettings > Animations")
             AnimationLandingScreen(
                 onNavigateToImageAnimatedPathScreen = {
                     navController.navigate("image_animated_path")
-                    updateAppBarTitle("Animations > Image Path")
                 },
                 onNavigateToButtonAnimationsScreen = {
                     navController.navigate("button_animations")
-                    updateAppBarTitle("Animations > Buttons")
                 },
                 onNavigateToNavAnimationsScreen = {
                     navController.navigate("nav_animations")
-                    updateAppBarTitle("Animations > Navigation")
                 }
             )
         }
-        composable("image_animated_path") { com.laurenyew.agilityfittodayapp.ui.devsettings.animation.ImageAnimatedPathScreen() }
-        composable("button_animations") { com.laurenyew.agilityfittodayapp.ui.devsettings.animation.ButtonAnimationScreen() }
-        composable("nav_animations") { com.laurenyew.agilityfittodayapp.ui.devsettings.animation.NavAnimationScreen() }
+        composable("image_animated_path") {
+            updateAppBarTitle("Animations > Image Path")
+            ImageAnimatedPathScreen()
+        }
+        composable("button_animations") {
+            updateAppBarTitle("Animations > Buttons")
+            ButtonAnimationScreen()
+        }
+        composable("nav_animations") {
+            updateAppBarTitle("Animations > Navigation")
+            NavAnimationScreen()
+        }
     }
 }
 

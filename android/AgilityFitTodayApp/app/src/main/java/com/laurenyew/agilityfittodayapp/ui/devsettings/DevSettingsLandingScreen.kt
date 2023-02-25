@@ -1,5 +1,6 @@
 package com.laurenyew.agilityfittodayapp.ui.devsettings
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,10 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,29 +32,36 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.laurenyew.agilityfittodayapp.ui.devsettings.animation.animationDevSettingsGraph
 
+/**
+ * @param onTopLevelBack lambda back pressed exit dev settings
+ */
 @Composable
 fun DevSettingsNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
     startDestination: String = "landing",
+    onTopLevelBack: (() -> Unit)
 ) {
     var title by remember { mutableStateOf("Dev Settings") }
 
-    // TODO: Fix back handling (title change, navigation)
-//    BackHandler(enabled = true) {
-//        title = navController.currentBackStackEntry
-//    }
+    BackHandler(enabled = navController.currentBackStackEntry == null) {
+        onTopLevelBack()
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(title = {
                 Text(text = title)
             }, navigationIcon = {
-//                IconButton(onClick = {
-//                    navController.popBackStack()
-//                }) {
-//                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
-//                }
+                IconButton(onClick = {
+                    if (navController.currentBackStackEntry != null) {
+                        navController.popBackStack()
+                    } else {
+                        onTopLevelBack()
+                    }
+                }) {
+                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
             })
 
         }
@@ -68,10 +80,10 @@ fun DevSettingsNavHost(
                 startDestination = startDestination
             ) {
                 composable("landing") {
+                    title = "Dev Settings"
                     DevSettingsLandingScreen(
                         onNavigateToAnimation = {
                             navController.navigate("animation")
-                            title = "DevSettings > Animations"
                         },
                     )
                 }
