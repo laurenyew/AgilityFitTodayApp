@@ -2,11 +2,13 @@ package com.laurenyew.agilityfittodayapp.ui.devsettings.animation
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
@@ -42,12 +44,18 @@ fun ImageAnimatedPathScreen() {
     val xOffset = animateIntAsState(
         targetValue = xState,
         animationSpec =
-        tween(durationMillis = 4000, easing = LinearEasing), label = "xOffset"
+        if (xState > 0) {
+            tween(durationMillis = 4000, easing = LinearEasing)
+        } else {
+            snap(0)
+        },
+        label = "xOffset",
     )
 
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
+        Text("Show Image Animation along a path (using offsets)")
         if (isRunning) {
             Button(
                 onClick = {
@@ -68,7 +76,7 @@ fun ImageAnimatedPathScreen() {
 
 
         HillRunning(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth(.8f),
             xOffset = xOffset.value,
             amplitude = 50f,
             period = 200f,
