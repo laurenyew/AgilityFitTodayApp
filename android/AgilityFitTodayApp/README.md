@@ -25,3 +25,7 @@
 ## Workarounds
 
 * Made timing from mins to seconds for easier testing
+
+## Resources
+
+* [Full Guide to Jetpack Compose Animations](https://www.youtube.com/watch?v=6ZZDPILtYlA)

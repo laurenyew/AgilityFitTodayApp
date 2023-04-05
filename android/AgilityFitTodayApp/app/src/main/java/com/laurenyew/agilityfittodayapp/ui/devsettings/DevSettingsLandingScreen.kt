@@ -1,5 +1,6 @@
 package com.laurenyew.agilityfittodayapp.ui.devsettings
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,9 +8,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -19,40 +30,78 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.laurenyew.agilityfittodayapp.ui.devsettings.animation.AnimationScreen
+import com.laurenyew.agilityfittodayapp.ui.devsettings.animation.animationDevSettingsGraph
 
+/**
+ * @param onTopLevelBack lambda back pressed exit dev settings
+ */
 @Composable
 fun DevSettingsNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = "landing"
+    startDestination: String = "landing",
+    onTopLevelBack: (() -> Unit)
 ) {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.Top
+    var title by remember { mutableStateOf("Dev Settings") }
+
+    BackHandler(enabled = navController.currentBackStackEntry == null) {
+        onTopLevelBack()
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(title = {
+                Text(text = title)
+            }, navigationIcon = {
+                IconButton(onClick = {
+                    if (navController.currentBackStackEntry != null) {
+                        navController.popBackStack()
+                    } else {
+                        onTopLevelBack()
+                    }
+                }) {
+                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            })
+
+        }
     ) {
-        NavHost(
-            modifier = modifier,
-            navController = navController,
-            startDestination = startDestination
+        Column(
+            Modifier
+                .padding(it)
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Top
         ) {
-            composable("landing") {
-                DevSettingsLandingScreen(
-                    onNavigateToAnimation = { navController.navigate("animation") },
-                    /*...*/
-                )
+            NavHost(
+                modifier = modifier,
+                navController = navController,
+                startDestination = startDestination
+            ) {
+                composable("landing") {
+                    title = "Dev Settings"
+                    DevSettingsLandingScreen(
+                        onNavigateToAnimation = {
+                            navController.navigate("animation")
+                        },
+                    )
+                }
+
+                // Animations screens
+                animationDevSettingsGraph(
+                    navController,
+                    updateAppBarTitle = { newTitle ->
+                        title = newTitle
+                    })
             }
-            composable("animation") { AnimationScreen() }
         }
     }
 }
 
 @Composable
 fun DevSettingsLandingScreen(
-    onNavigateToAnimation: (() -> Unit),
+    onNavigateToAnimation: (() -> Unit)
 ) {
     Button(onClick = {
         onNavigateToAnimation()

@@ -4,13 +4,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * Animation screens showing button / card animation into a new screen
+ */
 @Composable
-fun AnimationScreen() {
-    Text(text = "Animations")
+fun NavAnimationScreen() {
+    Text("Navigation")
 }
 
 @Preview
 @Composable
-fun AnimationScreen_Preview() {
-    AnimationScreen()
+fun NavAnimationScreen_Preview() {
+
 }
