@@ -1,5 +1,7 @@
 package com.laurenyew.agilityfittodayapp.ui.devsettings.animation
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,9 +14,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import timber.log.Timber
 
 /**
  * Animation screens showing button / card animation into a new screen
@@ -23,7 +26,7 @@ import timber.log.Timber
 fun NavAnimationScreen() {
     Column {
         RowOfBoxes(numBoxes = 1)
-        RowOfBoxes(numBoxes = 3, boxColor = Color.Green)
+        RowOfBoxes(numBoxes = 3, boxColor = Color.DarkGray)
         RowOfBoxes(numBoxes = 2, boxColor = Color.Red)
     }
 }
@@ -32,11 +35,9 @@ fun NavAnimationScreen() {
 fun RowOfBoxes(
     numBoxes: Int,
     boxColor: Color = Color.Blue,
-    onClick: (boxNum: Int) -> Unit = { boxNum ->
-        Timber.d("Clicked box $boxNum")
-    },
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     Row(modifier = modifier.padding(10.dp)) {
         for (index in 1..numBoxes) {
             Button(
@@ -49,7 +50,9 @@ fun RowOfBoxes(
                     contentColor = Color.White
                 ),
 
-                onClick = { onClick(index) }
+                onClick = {
+                    openNavActivity(context = context, color = boxColor, screenNum = index)
+                }
             ) {
                 Text("Navigate to Screen $index")
             }
@@ -58,8 +61,11 @@ fun RowOfBoxes(
     }
 }
 
-fun Button(modifier: Modifier, onClick: () -> Unit) {
-
+private fun openNavActivity(context: Context, color: Color, screenNum: Int) {
+    val intent = Intent(context, NavActivity::class.java)
+    intent.putExtra(NavActivity.COLOR_INTENT_KEY, color.toArgb())
+    intent.putExtra(NavActivity.SCREEN_NUM_KEY, screenNum)
+    context.startActivity(intent)
 }
 
 @Preview

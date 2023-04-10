@@ -27,6 +27,10 @@
             android:name=".ui.devsettings.DevSettingsActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ui.devsettings.animation.NavActivity"
+            android:exported="false"
+            android:label="Nav Activity" />
     </application>
 
 </manifest>
