@@ -30,7 +30,6 @@ object WorkoutTypeConverters {
     fun workoutItemListToJson(value: List<WorkoutItem>?): String =
         workoutItemAdapter.toJson(value)
 
-
     @TypeConverter
     fun jsonToWorkoutItemList(value: String): List<WorkoutItem>? =
         workoutItemAdapter.fromJson(value)

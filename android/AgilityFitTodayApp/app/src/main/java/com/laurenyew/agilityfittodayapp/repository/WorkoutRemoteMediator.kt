@@ -36,7 +36,6 @@ class WorkoutRemoteMediator(
 
                 lastItem.id
             }
-
         }
 
         if (loadKey == null) {

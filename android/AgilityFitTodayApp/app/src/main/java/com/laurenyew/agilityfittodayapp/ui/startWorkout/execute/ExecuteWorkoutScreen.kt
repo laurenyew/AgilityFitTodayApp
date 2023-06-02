@@ -49,23 +49,23 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
                     workoutState = workoutState,
                     updateWorkoutState = {
                         viewModel.updateWorkoutState(it)
-                    })
+                    }
+                )
             },
-            floatingActionButtonPosition = FabPosition.Center,
+            floatingActionButtonPosition = FabPosition.Center
         ) { padding ->
             Column(modifier = Modifier.padding(padding)) {
                 WorkoutSequenceDetailCard(selectedWorkout)
                 WorkoutSequenceItemsSection(selectedWorkout)
             }
         }
-
     }
 }
 
 @Composable
 fun ExecuteWorkoutControls(
     workoutState: WorkoutExecutionState,
-    updateWorkoutState: (WorkoutExecutionState) -> Unit,
+    updateWorkoutState: (WorkoutExecutionState) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -121,7 +121,7 @@ fun ExecuteWorkoutFAB(
     onFABClicked: () -> Unit
 ) {
     FloatingActionButton(
-        onClick = { onFABClicked() },
+        onClick = { onFABClicked() }
     ) {
         Row(modifier = Modifier.padding(8.dp)) {
             val imageModifier = Modifier
@@ -154,7 +154,7 @@ fun ExecuteWorkoutControls_Running_Preview() {
     Column {
         ExecuteWorkoutControls(
             workoutState = WorkoutExecutionState.IN_PROGRESS,
-            updateWorkoutState = {},
+            updateWorkoutState = {}
         )
     }
 }
@@ -165,7 +165,7 @@ fun ExecuteWorkoutControls_Paused_Preview() {
     Column {
         ExecuteWorkoutControls(
             workoutState = WorkoutExecutionState.STOPPED,
-            updateWorkoutState = {},
+            updateWorkoutState = {}
         )
     }
 }

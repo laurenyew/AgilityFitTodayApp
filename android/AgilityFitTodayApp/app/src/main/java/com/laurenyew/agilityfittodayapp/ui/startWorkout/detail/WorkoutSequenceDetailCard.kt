@@ -66,7 +66,7 @@ fun WorkoutSequenceItemsSection(
                 Card {
                     WorkoutItemListItem(
                         item = workoutItem,
-                        shouldShowTiming = true,
+                        shouldShowTiming = true
                     )
                 }
             }

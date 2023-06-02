@@ -50,7 +50,7 @@ fun FinishedWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_logo),
@@ -95,7 +95,6 @@ fun FinishedWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()
                     modifier = Modifier
                         .padding(8.dp)
                 )
-
             }
 
             Spacer(Modifier.height(20.dp))

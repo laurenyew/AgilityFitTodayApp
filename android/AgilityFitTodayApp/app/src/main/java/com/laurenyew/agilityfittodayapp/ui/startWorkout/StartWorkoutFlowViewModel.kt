@@ -54,9 +54,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
         }
     }
 
-
     private fun restartWorkout() {
-
 //        countDownTimer = ExecuteWorkoutCountDownTimer(
 //            selectedWorkout.value?.estimatedTime() ?: 0L
 //        )
@@ -67,7 +65,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
     }
 
     private fun resumeWorkout() {
-        //TODO: Restart timer from paused time
+        // TODO: Restart timer from paused time
     }
 
     private fun finishWorkout(isCancelled: Boolean = false) {

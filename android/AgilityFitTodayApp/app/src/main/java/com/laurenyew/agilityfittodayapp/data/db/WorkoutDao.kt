@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutType
-import com.laurenyew.agilityfittodayapp.network.models.WorkoutSequenceDTO
 
 @Dao
 interface WorkoutDao {
