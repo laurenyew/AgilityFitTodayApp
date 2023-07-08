@@ -3,12 +3,11 @@ package com.laurenyew.agilityfittodayapp.ui.settings
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
-import com.laurenyew.agilityfittodayapp.BuildConfig
 import com.laurenyew.agilityfittodayapp.ui.devsettings.DevSettingsActivity
 import timber.log.Timber
 
 class SettingsViewModel : ViewModel() {
-    val shouldShowDevSettingsButton: Boolean = BuildConfig.DEBUG
+    val shouldShowDevSettingsButton: Boolean = true
 
     fun openDevSettings(context: Context) {
         Timber.d("Open DevSettings")
