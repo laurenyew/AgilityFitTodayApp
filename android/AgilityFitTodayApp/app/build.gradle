@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
     id 'dagger.hilt.android.plugin'
 }
 
@@ -25,11 +26,6 @@ android {
         // Enables Jetpack Compose for this module
         compose true
         viewBinding true
-    }
-
-    composeOptions {
-        kotlinCompilerVersion "$kotlin_version"
-        kotlinCompilerExtensionVersion "1.4.0"
     }
 
     buildTypes {
@@ -86,7 +82,7 @@ dependencies {
     def composeBom = platform('androidx.compose:compose-bom:2023.01.00')
     implementation composeBom
     androidTestImplementation composeBom
-    implementation "androidx.compose.compiler:compiler:1.4.7"
+    implementation "androidx.compose.compiler:compiler:1.4.8"
     implementation "androidx.compose.ui:ui"
     // Tooling support (Previews, etc.)
     implementation "androidx.compose.ui:ui-tooling"
@@ -103,16 +99,16 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata"
     implementation "androidx.compose.runtime:runtime-rxjava2"
     // Navigation
-    implementation "androidx.navigation:navigation-compose:2.6.0-rc01"
+    implementation "androidx.navigation:navigation-compose:2.6.0"
     implementation "androidx.hilt:hilt-navigation-compose:1.1.0-alpha01"
     // Activity
-    implementation 'androidx.activity:activity-compose:1.7.1'
+    implementation 'androidx.activity:activity-compose:1.7.2'
 
     implementation "androidx.compose.animation:animation:1.4.3"
 
     // Jetpack Paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    implementation "androidx.paging:paging-compose:1.0.0-alpha19"
+    implementation "androidx.paging:paging-compose:$paging_version"
     testImplementation "androidx.paging:paging-common-ktx:$paging_version"
 
 
