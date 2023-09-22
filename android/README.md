@@ -1,5 +1,6 @@
 # Android AgilityFitTodayApp
 Sample App created to practice with different Android Tech
+App features are centered around creating a workout app
 
 <img src="./Screenshots/home.png" width="200"/> <img src="./Screenshots/select_workout.png" width="200"/> <img src="./Screenshots/start_workout.png" width="200"/> <img src="./Screenshots/start_workout_long.png" width="200"/> <img src="./Screenshots/dashboard.png" width="200"/> <img src="./Screenshots/app_icon.png" width="200"/> <img src="./Screenshots/experiments/animation_tests.png" width="200"/><img src="./Screenshots/experiments/animation_test.gif" width="200"/>
 

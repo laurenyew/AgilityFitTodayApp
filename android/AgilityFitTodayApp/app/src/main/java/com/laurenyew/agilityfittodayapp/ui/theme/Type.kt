@@ -1,4 +1,4 @@
-package laurenyew.petadoptsampleapp.ui.theme
+package com.laurenyew.agilityfittodayapp.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

@@ -22,8 +22,8 @@ fun StartWorkoutScreen(
 
     BaseActivityScreen(
         title = currentRoute.value,
-        onBackButtonPressed = { viewModel.onBackPressed() })
-    {
+        onBackButtonPressed = { viewModel.onBackPressed() }
+    ) {
         StartWorkoutNavHost(viewModel, navController)
     }
 }
@@ -31,7 +31,7 @@ fun StartWorkoutScreen(
 @Composable
 fun StartWorkoutNavHost(
     viewModel: StartWorkoutFlowViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,

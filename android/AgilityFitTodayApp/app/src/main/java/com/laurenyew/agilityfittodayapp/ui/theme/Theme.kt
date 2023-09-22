@@ -5,7 +5,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import laurenyew.petadoptsampleapp.ui.theme.typography
 
 private val DarkColorPalette = darkColors(
     primary = gold200,
@@ -17,7 +16,7 @@ private val LightColorPalette = lightColors(
     primary = gold500,
     primaryVariant = gold200,
     secondary = teal200,
-    surface = gold100,
+    surface = gold100
 )
 
 @Composable

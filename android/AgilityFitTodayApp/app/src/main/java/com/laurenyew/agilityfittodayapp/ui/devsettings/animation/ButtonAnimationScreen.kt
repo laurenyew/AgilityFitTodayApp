@@ -70,14 +70,14 @@ fun ButtonAnimationScreen() {
             shape = RoundedCornerShape(percent = borderRadius),
             onClick = {
                 isButtonRoundAndLarge = !isButtonRoundAndLarge
-            }) {
+            }
+        ) {
             Text(
                 "Toggle Shape",
                 fontSize = TextUnit(textSize.value, TextUnitType.Sp)
             )
         }
     }
-
 }
 
 @Preview

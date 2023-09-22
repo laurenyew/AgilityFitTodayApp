@@ -2,7 +2,11 @@ package com.laurenyew.agilityfittodayapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.laurenyew.agilityfittodayapp.data.db.*
+import com.laurenyew.agilityfittodayapp.data.db.AgilityFitTodayDatabase
+import com.laurenyew.agilityfittodayapp.data.db.DatabaseManager
+import com.laurenyew.agilityfittodayapp.data.db.FavoriteDatabaseProvider
+import com.laurenyew.agilityfittodayapp.data.db.UserDatabaseProvider
+import com.laurenyew.agilityfittodayapp.data.db.WorkoutDatabaseProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

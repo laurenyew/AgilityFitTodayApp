@@ -53,17 +53,16 @@ fun DevSettingsNavHost(
             TopAppBar(title = {
                 Text(text = title)
             }, navigationIcon = {
-                IconButton(onClick = {
-                    if (navController.currentBackStackEntry != null) {
-                        navController.popBackStack()
-                    } else {
-                        onTopLevelBack()
+                    IconButton(onClick = {
+                        if (navController.currentBackStackEntry != null) {
+                            navController.popBackStack()
+                        } else {
+                            onTopLevelBack()
+                        }
+                    }) {
+                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
                     }
-                }) {
-                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
-                }
-            })
-
+                })
         }
     ) {
         Column(
@@ -84,7 +83,7 @@ fun DevSettingsNavHost(
                     DevSettingsLandingScreen(
                         onNavigateToAnimation = {
                             navController.navigate("animation")
-                        },
+                        }
                     )
                 }
 
@@ -93,7 +92,8 @@ fun DevSettingsNavHost(
                     navController,
                     updateAppBarTitle = { newTitle ->
                         title = newTitle
-                    })
+                    }
+                )
             }
         }
     }

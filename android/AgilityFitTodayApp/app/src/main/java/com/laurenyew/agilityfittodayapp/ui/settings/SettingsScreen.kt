@@ -53,7 +53,6 @@ fun SettingsScreen(settingsViewModel: SettingsViewModel = hiltViewModel()) {
             )
         }
     }
-
 }
 
 @Preview

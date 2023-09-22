@@ -44,7 +44,6 @@ class CountDownTimerWithPauseResumeTest {
         )
     }
 
-
     @Test
     fun `happy path timer - timer runs and completes - onInterval and onFinish are called`() {
         // Verify

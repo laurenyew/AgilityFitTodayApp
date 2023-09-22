@@ -1,7 +1,11 @@
 package com.laurenyew.agilityfittodayapp.ui.startWorkout.select
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
@@ -32,7 +36,7 @@ fun WorkoutPickerScreen(
             workoutSequences =
             viewModel.workoutSequences,
             onItemClicked =
-            { viewModel.onSelectWorkoutSequence(it) },
+            { viewModel.onSelectWorkoutSequence(it) }
         )
     }
 }
@@ -41,20 +45,20 @@ fun WorkoutPickerScreen(
 @Composable
 fun PagingWorkoutSequenceList(
     workoutSequences: Flow<PagingData<WorkoutSequence>>,
-    onItemClicked: (id: Long) -> Unit,
+    onItemClicked: (id: Long) -> Unit
 ) {
     val workoutSeqItems = workoutSequences.collectAsLazyPagingItems()
 
     LazyColumn {
-
         var lastWorkoutSequence: WorkoutSequence? = null
 
         for (index in 0 until workoutSeqItems.itemCount) {
             // Add sticky header
             val workoutSeq = workoutSeqItems.peek(index)
             workoutSeq?.let {
-                if (lastWorkoutSequence?.workoutType != workoutSeq.workoutType)
+                if (lastWorkoutSequence?.workoutType != workoutSeq.workoutType) {
                     stickyHeader { Header(workoutSeq.workoutType.toString()) }
+                }
             }
 
             // Show list item
@@ -64,7 +68,7 @@ fun PagingWorkoutSequenceList(
                     Card(elevation = 2.dp) {
                         WorkoutSequenceListItem(
                             item = workoutSeqItem,
-                            onItemClicked = { id -> onItemClicked(id) },
+                            onItemClicked = { id -> onItemClicked(id) }
                         )
                     }
                 }
@@ -87,6 +91,7 @@ fun PagingWorkoutSequenceList(
                         }
                     }
                 }
+
                 loadState.refresh is LoadState.Error -> {
                     val e = workoutSeqItems.loadState.refresh as LoadState.Error
                     item {
@@ -97,6 +102,7 @@ fun PagingWorkoutSequenceList(
                         )
                     }
                 }
+
                 loadState.append is LoadState.Error -> {
                     val e = workoutSeqItems.loadState.append as LoadState.Error
                     item {

@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-
 /**
  * Create a timer with pause / resume / restart capabilities
  * that will alert us on a given interval

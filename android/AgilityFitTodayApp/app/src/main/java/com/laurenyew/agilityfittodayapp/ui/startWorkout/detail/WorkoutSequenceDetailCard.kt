@@ -1,4 +1,4 @@
-package com.laurenyew.agilityfittodayapp.ui.startWorkout.execute
+package com.laurenyew.agilityfittodayapp.ui.startWorkout.detail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -66,7 +66,7 @@ fun WorkoutSequenceItemsSection(
                 Card {
                     WorkoutItemListItem(
                         item = workoutItem,
-                        shouldShowTiming = true,
+                        shouldShowTiming = true
                     )
                 }
             }

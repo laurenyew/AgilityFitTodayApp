@@ -70,9 +70,8 @@ fun ImageAnimateRunningAlongPath() {
         } else {
             snap(0)
         },
-        label = "xOffset",
+        label = "xOffset"
     )
-
 
     Text("Show Image Animation along a path (using offsets)")
     if (isRunning) {
@@ -80,7 +79,8 @@ fun ImageAnimateRunningAlongPath() {
             onClick = {
                 xState = 0
                 isRunning = false
-            }) {
+            }
+        ) {
             Text("Restart")
         }
     } else {
@@ -88,7 +88,8 @@ fun ImageAnimateRunningAlongPath() {
             onClick = {
                 xState = 500
                 isRunning = true
-            }) {
+            }
+        ) {
             Text("Go!")
         }
     }
@@ -107,22 +108,21 @@ fun ImageAnimateRunningAlongPath() {
         }
     })
 
-
     HillRunning(
         modifier = Modifier.fillMaxWidth(.8f),
         xOffset = xOffset.value,
         amplitude = 1f,
         period = 1f,
-        hasRotation = false,
+        hasRotation = false
     ) {
         AnimatedContent(
             targetState = runImageNum,
             transitionSpec = {
                 ContentTransform(
                     targetContentEnter = EnterTransition.None,
-                    initialContentExit = ExitTransition.None,
+                    initialContentExit = ExitTransition.None
                 )
-            },
+            }
         ) { targetState ->
             val drawable = targetState.resId
 
@@ -156,14 +156,16 @@ fun ImageAnimate() {
         Button(
             onClick = {
                 isRunning = false
-            }) {
+            }
+        ) {
             Text("Stop")
         }
     } else {
         Button(
             onClick = {
                 isRunning = true
-            }) {
+            }
+        ) {
             Text("Start")
         }
     }
@@ -183,9 +185,9 @@ fun ImageAnimate() {
         transitionSpec = {
             ContentTransform(
                 targetContentEnter = EnterTransition.None,
-                initialContentExit = ExitTransition.None,
+                initialContentExit = ExitTransition.None
             )
-        },
+        }
     ) { targetState ->
         val drawable = targetState.resId
 
@@ -218,9 +220,8 @@ fun ImageAnimationAlongPathExample() {
         } else {
             snap(0)
         },
-        label = "xOffset",
+        label = "xOffset"
     )
-
 
     Text("Show Image moving along a path (using offsets)")
     if (isRunning) {
@@ -228,7 +229,8 @@ fun ImageAnimationAlongPathExample() {
             onClick = {
                 xState = 0
                 isRunning = false
-            }) {
+            }
+        ) {
             Text("Restart")
         }
     } else {
@@ -236,17 +238,17 @@ fun ImageAnimationAlongPathExample() {
             onClick = {
                 xState = 300
                 isRunning = true
-            }) {
+            }
+        ) {
             Text("Go!")
         }
     }
-
 
     HillRunning(
         modifier = Modifier.fillMaxWidth(.8f),
         xOffset = xOffset.value,
         amplitude = 50f,
-        period = 200f,
+        period = 200f
     ) { RunningImage() }
 }
 
@@ -301,20 +303,19 @@ fun ImageAnimatedPathScreen_Preview() {
     ImageAnimatedPathScreen()
 }
 
-
-/// Calculate Y
+// / Calculate Y
 const val TWO_PI = 2 * PI
 
 val calcY: (Int, Float, Float) -> Float = { x, amplitude, period ->
     (sin(x * TWO_PI / period) * amplitude).toFloat()
 }
 
-/// Calculate Rotation
+// / Calculate Rotation
 const val RADIANS_TO_DEGREES_RATIO = 360f / TWO_PI
 val calcSlope: (Int, Float, Float) -> Float = { x, amplitude, period ->
     (
-            cos((TWO_PI * x / period)) * (amplitude * (TWO_PI) / period)
-            ).toFloat()
+        cos((TWO_PI * x / period)) * (amplitude * (TWO_PI) / period)
+        ).toFloat()
 }
 
 val calcRotation: (Float) -> Float = { slope ->

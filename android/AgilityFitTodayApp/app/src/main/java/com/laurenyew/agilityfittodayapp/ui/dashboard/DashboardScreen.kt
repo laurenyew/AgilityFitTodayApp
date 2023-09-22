@@ -1,7 +1,11 @@
 package com.laurenyew.agilityfittodayapp.ui.dashboard
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Card
@@ -30,11 +34,11 @@ fun DashboardScreen() {
     )
     LazyVerticalGrid(
         columns = GridCells.Adaptive(160.dp),
-        contentPadding = PaddingValues(8.dp),
+        contentPadding = PaddingValues(8.dp)
     ) {
         this.items(
             count = data.size,
-            key = {index ->
+            key = { index ->
                 data[index].name
             }
         ) { index ->
@@ -46,7 +50,7 @@ fun DashboardScreen() {
                     .clickable {
                         item.onClick(context)
                     },
-                backgroundColor = Color.LightGray,
+                backgroundColor = Color.LightGray
             ) {
                 Box(
                     modifier = Modifier.size(350.dp),

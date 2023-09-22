@@ -26,7 +26,6 @@ class NavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         val color = Color(intent.getIntExtra(COLOR_INTENT_KEY, Color.Black.toArgb()))
         val screenNum = intent.getIntExtra(SCREEN_NUM_KEY, 0)
 

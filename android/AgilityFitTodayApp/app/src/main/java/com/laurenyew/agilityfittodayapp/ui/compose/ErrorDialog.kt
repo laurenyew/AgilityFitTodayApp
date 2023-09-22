@@ -33,7 +33,6 @@ fun ErrorDialog(
                     Text(text = "Retry")
                 }
             }
-
         },
         modifier = modifier
     )
@@ -43,6 +42,5 @@ fun ErrorDialog(
 @Composable
 fun ErrorDialogPreview() {
     ErrorDialog(message = "Test Error") {
-
     }
 }

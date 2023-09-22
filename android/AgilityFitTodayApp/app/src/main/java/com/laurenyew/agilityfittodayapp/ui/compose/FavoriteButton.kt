@@ -22,13 +22,15 @@ fun FavoriteButton(
             .height(8.dp)
 ) {
     if (isFavorite) {
-        Icon(imageVector = Icons.Filled.Favorite,
+        Icon(
+            imageVector = Icons.Filled.Favorite,
             contentDescription = "Favorite-d",
             modifier = modifier
                 .clickable { onItemFavorited?.invoke(false) }
         )
     } else {
-        Icon(imageVector = Icons.Filled.FavoriteBorder,
+        Icon(
+            imageVector = Icons.Filled.FavoriteBorder,
             contentDescription = "Not Favorite-d",
             modifier = modifier
                 .width(8.dp)
