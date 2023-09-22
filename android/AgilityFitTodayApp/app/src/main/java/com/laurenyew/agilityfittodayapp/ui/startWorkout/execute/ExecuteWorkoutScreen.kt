@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.laurenyew.agilityfittodayapp.ui.startWorkout.StartWorkoutFlowViewModel
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.detail.WorkoutSequenceDetailCard
+import com.laurenyew.agilityfittodayapp.ui.startWorkout.detail.WorkoutSequenceItemsSection
 
 @Composable
 fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()) {

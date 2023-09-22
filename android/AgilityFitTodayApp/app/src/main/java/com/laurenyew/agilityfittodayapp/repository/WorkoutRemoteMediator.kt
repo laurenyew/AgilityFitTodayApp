@@ -20,6 +20,7 @@ class WorkoutRemoteMediator(
     override suspend fun initialize(): InitializeAction =
         InitializeAction.LAUNCH_INITIAL_REFRESH
 
+    @Suppress("ReturnCount")
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, WorkoutSequence>
@@ -28,6 +29,7 @@ class WorkoutRemoteMediator(
             LoadType.REFRESH -> null
             LoadType.PREPEND ->
                 return MediatorResult.Success(endOfPaginationReached = true)
+
             LoadType.APPEND -> {
                 val lastItem = state.lastItemOrNull()
                     ?: return MediatorResult.Success(

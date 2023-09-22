@@ -1,4 +1,4 @@
-package com.laurenyew.agilityfittodayapp.ui.startWorkout.execute
+package com.laurenyew.agilityfittodayapp.ui.startWorkout.detail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

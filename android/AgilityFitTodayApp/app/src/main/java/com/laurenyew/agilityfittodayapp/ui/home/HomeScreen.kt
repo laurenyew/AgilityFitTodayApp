@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.laurenyew.agilityfittodayapp.R
 
+@Suppress("LongMethod")
 @Composable
 fun HomeScreen(homeScreenViewModel: HomeScreenViewModel = hiltViewModel()) {
     val context = LocalContext.current
@@ -53,7 +54,9 @@ fun HomeScreen(homeScreenViewModel: HomeScreenViewModel = hiltViewModel()) {
                 .padding(8.dp)
         )
         Text(
-            text = "This sample app features fitness workout creations that demo Jetpack libraries, Kotlin Coroutines & Flows, and other Android tech / architecture.",
+            text = "This sample app features fitness workout creations " +
+                "that demo Jetpack libraries, Kotlin Coroutines & Flows," +
+                " and other Android tech / architecture.",
             style = MaterialTheme.typography.subtitle1,
             textAlign = TextAlign.Center,
             modifier = Modifier
