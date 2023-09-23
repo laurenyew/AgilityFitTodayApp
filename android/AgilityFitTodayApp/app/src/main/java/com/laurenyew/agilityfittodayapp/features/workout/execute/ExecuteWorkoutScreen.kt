@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Flag
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -83,7 +84,7 @@ fun ExecuteWorkoutControls(
                     updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
                 }
 
-            WorkoutExecutionState.IN_PROGRESS ->
+            WorkoutExecutionState.RESTARTED, WorkoutExecutionState.IN_PROGRESS ->
                 ExecuteWorkoutFAB(
                     fabTitle = "Pause",
                     imageVector = Icons.Filled.Pause
@@ -93,13 +94,22 @@ fun ExecuteWorkoutControls(
 
             WorkoutExecutionState.STOPPED -> {
                 ExecuteWorkoutFAB(
+                    fabTitle = "Restart",
+                    imageVector = Icons.Filled.RestartAlt
+                ) {
+                    updateWorkoutState(WorkoutExecutionState.RESTARTED)
+                }
+
+                Spacer(Modifier.width(5.dp))
+
+                ExecuteWorkoutFAB(
                     fabTitle = "Resume",
                     imageVector = Icons.Filled.PlayArrow
                 ) {
                     updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
                 }
 
-                Spacer(Modifier.width(30.dp))
+                Spacer(Modifier.width(5.dp))
                 ExecuteWorkoutFAB(
                     fabTitle = "Finish",
                     Icons.Filled.Flag
@@ -124,9 +134,12 @@ fun ExecuteWorkoutFAB(
     FloatingActionButton(
         onClick = { onFABClicked() }
     ) {
-        Row(modifier = Modifier.padding(8.dp)) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
             val imageModifier = Modifier
-                .size(36.dp)
+                .size(24.dp)
                 .fillMaxSize()
 
             Icon(
@@ -139,11 +152,11 @@ fun ExecuteWorkoutFAB(
             Text(
                 text = fabTitle,
                 color = MaterialTheme.colors.onPrimary,
-                fontSize = 21.sp,
+                fontSize = 18.sp,
                 style = MaterialTheme.typography.button,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
-                    .padding(end = 16.dp)
+                    .padding(end = 8.dp)
             )
         }
     }

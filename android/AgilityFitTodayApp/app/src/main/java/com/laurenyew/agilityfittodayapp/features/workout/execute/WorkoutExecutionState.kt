@@ -5,6 +5,7 @@ package com.laurenyew.agilityfittodayapp.features.workout.execute
  */
 enum class WorkoutExecutionState {
     NOT_STARTED,
+    RESTARTED,
     IN_PROGRESS,
     STOPPED,
     CANCELLED,

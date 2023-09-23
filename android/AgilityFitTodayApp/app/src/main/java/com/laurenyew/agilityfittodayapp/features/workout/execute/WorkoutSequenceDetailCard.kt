@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.StateFlow
 @Composable
 fun WorkoutSequenceDetailCard(
     selectedWorkout: WorkoutSequence,
-    countDownTimeFlow: StateFlow<String>,
+    countDownTimeFlow: StateFlow<String>
 ) {
     val estimatedTime = selectedWorkout.estimatedTimeFormattedString()
     val countDownTime = countDownTimeFlow.collectAsState(initial = "")

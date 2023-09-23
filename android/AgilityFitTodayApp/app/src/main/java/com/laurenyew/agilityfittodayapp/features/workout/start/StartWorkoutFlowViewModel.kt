@@ -1,6 +1,5 @@
 package com.laurenyew.agilityfittodayapp.features.workout.start
 
-import android.text.format.DateUtils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -51,6 +50,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
         _workoutState.value = newState
         when (newState) {
             WorkoutExecutionState.NOT_STARTED -> restartWorkout()
+            WorkoutExecutionState.RESTARTED -> restartWorkout()
             WorkoutExecutionState.IN_PROGRESS -> resumeWorkout()
             WorkoutExecutionState.STOPPED -> pauseWorkout()
             WorkoutExecutionState.COMPLETED -> finishWorkout()
@@ -72,11 +72,11 @@ class StartWorkoutFlowViewModel @Inject constructor(
     }
 
     private fun pauseWorkout() {
-        // TODO: Pause timer
+        countDownTimer.pause()
     }
 
     private fun resumeWorkout() {
-        // TODO: Restart timer from paused time
+        countDownTimer.resume()
     }
 
     private fun finishWorkout(isCancelled: Boolean = false) {
@@ -94,9 +94,5 @@ class StartWorkoutFlowViewModel @Inject constructor(
             navManager.updateNavRoute(StartWorkoutNavRoutes.ExecuteWorkout)
             restartWorkout()
         }
-    }
-
-    companion object {
-        private const val COUNT_DOWN_INTERVAL_IN_MILLIS = 1000L
     }
 }
