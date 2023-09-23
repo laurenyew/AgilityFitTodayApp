@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.laurenyew.agilityfittodayapp.ui.home.HomeFragment"
+        android:name="com.laurenyew.agilityfittodayapp.features.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.laurenyew.agilityfittodayapp.ui.dashboard.DashboardFragment"
+        android:name="com.laurenyew.agilityfittodayapp.features.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.laurenyew.agilityfittodayapp.ui.notifications.NotificationsFragment"
+        android:name="com.laurenyew.agilityfittodayapp.features.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.laurenyew.agilityfittodayapp.ui.settings.SettingsFragment"
+        android:name="com.laurenyew.agilityfittodayapp.features.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
