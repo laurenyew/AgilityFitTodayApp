@@ -12,6 +12,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -20,10 +21,15 @@ import com.laurenyew.agilityfittodayapp.data.models.estimatedTimeFormattedString
 import com.laurenyew.agilityfittodayapp.ui.compose.WorkoutItemListItem
 import com.laurenyew.agilityfittodayapp.ui.compose.WorkoutSequenceListItem
 import com.laurenyew.agilityfittodayapp.ui.theme.cardColor
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun WorkoutSequenceDetailCard(selectedWorkout: WorkoutSequence) {
+fun WorkoutSequenceDetailCard(
+    selectedWorkout: WorkoutSequence,
+    countDownTimeFlow: StateFlow<String>,
+) {
     val estimatedTime = selectedWorkout.estimatedTimeFormattedString()
+    val countDownTime = countDownTimeFlow.collectAsState(initial = "")
 
     Card(
         backgroundColor = cardColor,
@@ -47,6 +53,22 @@ fun WorkoutSequenceDetailCard(selectedWorkout: WorkoutSequence) {
                 Spacer(modifier = Modifier.width(3.dp))
                 Text(
                     estimatedTime,
+                    style = MaterialTheme.typography.h6
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 32.dp, end = 16.dp, bottom = 21.dp, top = 0.dp)
+            ) {
+                Text(
+                    "Time Left:",
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.width(3.dp))
+                Text(
+                    countDownTime.value,
                     style = MaterialTheme.typography.h6
                 )
             }

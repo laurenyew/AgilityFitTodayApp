@@ -1,5 +1,6 @@
 package com.laurenyew.agilityfittodayapp.features.workout.start
 
+import android.text.format.DateUtils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -8,6 +9,7 @@ import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.features.workout.execute.WorkoutExecutionState
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import com.laurenyew.agilityfittodayapp.utils.CountDownTimerWithPauseResume
+import com.laurenyew.agilityfittodayapp.utils.DateTimeFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,6 +43,8 @@ class StartWorkoutFlowViewModel @Inject constructor(
 
     // TODO Need builder function?
     private lateinit var countDownTimer: CountDownTimerWithPauseResume
+    private val _countDownTimeFlow = MutableStateFlow("")
+    val countDownTimeFlow: StateFlow<String> = _countDownTimeFlow
 
     // Workout Execution
     fun updateWorkoutState(newState: WorkoutExecutionState) {
@@ -55,9 +59,16 @@ class StartWorkoutFlowViewModel @Inject constructor(
     }
 
     private fun restartWorkout() {
-//        countDownTimer = ExecuteWorkoutCountDownTimer(
-//            selectedWorkout.value?.estimatedTime() ?: 0L
-//        )
+        countDownTimer = CountDownTimerWithPauseResume(
+            millisInFuture = selectedWorkout.value?.estimatedTime() ?: 0L,
+            countDownInterval = 1000L,
+            onIntervalTick = {
+                _countDownTimeFlow.value = DateTimeFormatter.timeInMillisToDuration(it)
+            },
+            onCountDownComplete = {
+//                finishWorkout()
+            }
+        )
     }
 
     private fun pauseWorkout() {

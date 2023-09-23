@@ -40,6 +40,7 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
         // TODO: Countdown Timer
         // TODO: Countdown go thru and mark parts as done
         // TODO: Skip function?
+        // TODO: Make workout parts show progress
 
         val workoutState by viewModel.workoutState.collectAsState()
 
@@ -55,7 +56,7 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
             floatingActionButtonPosition = FabPosition.Center
         ) { padding ->
             Column(modifier = Modifier.padding(padding)) {
-                WorkoutSequenceDetailCard(selectedWorkout)
+                WorkoutSequenceDetailCard(selectedWorkout, viewModel.countDownTimeFlow)
                 WorkoutSequenceItemsSection(selectedWorkout)
             }
         }
