@@ -49,7 +49,13 @@ class StartWorkoutFlowViewModel @Inject constructor(
     fun updateWorkoutState(newState: WorkoutExecutionState) {
         _workoutState.value = newState
         when (newState) {
-            WorkoutExecutionState.NOT_STARTED -> restartWorkout()
+            WorkoutExecutionState.NOT_STARTED -> {
+                // Setup the timer UI
+                selectedWorkout.value?.estimatedTime()?.let {
+                    _countDownTimeFlow.value = DateTimeFormatter.timeInMillisToDuration(it)
+                }
+            }
+
             WorkoutExecutionState.RESTARTED -> restartWorkout()
             WorkoutExecutionState.IN_PROGRESS -> resumeWorkout()
             WorkoutExecutionState.STOPPED -> pauseWorkout()
@@ -92,7 +98,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
         viewModelScope.launch {
             _selectedWorkout.value = workoutRepository.getWorkoutSequence(sequenceId)
             navManager.updateNavRoute(StartWorkoutNavRoutes.ExecuteWorkout)
-            restartWorkout()
+            updateWorkoutState(WorkoutExecutionState.NOT_STARTED)
         }
     }
 }
