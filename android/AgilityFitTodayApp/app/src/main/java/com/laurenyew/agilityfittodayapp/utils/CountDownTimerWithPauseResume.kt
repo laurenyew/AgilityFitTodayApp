@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 class CountDownTimerWithPauseResume(
     private val millisInFuture: Long,
     private val countDownInterval: Long,
-    private val onIntervalTick: ((millisUntilFinished: Long) -> Unit),
+    private val onIntervalTick: (millisUntilFinished: Long, millisTimePassed: Long) -> Unit,
     private val onCountDownComplete: (() -> Unit),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
@@ -40,10 +40,10 @@ class CountDownTimerWithPauseResume(
         }
     private var countDownTimer: Flow<Long>? = null
     private var pausedMillisUntilFinished: Long? = null
-    private val onPauseResumeIntervalTick: ((millisUntilFinished: Long) -> Unit) =
-        { millisUntilFinished ->
+    private val onPauseResumeIntervalTick: ((millisUntilFinished: Long, millisTimePassed: Long) -> Unit) =
+        { millisUntilFinished, millisTimePassed ->
             pausedMillisUntilFinished = millisUntilFinished
-            onIntervalTick(millisUntilFinished)
+            onIntervalTick(millisUntilFinished, millisTimePassed)
         }
 
     private val onPauseResumeCountDownComplete: (() -> Unit) = {
@@ -100,7 +100,7 @@ class CountDownTimerWithPauseResume(
     private fun countDownTimerFlow(
         millisInFuture: Long,
         countDownInterval: Long,
-        onIntervalTick: (millisUntilFinished: Long) -> Unit,
+        onIntervalTick: (millisUntilFinished: Long, millisTimePassed: Long) -> Unit,
         onCountDownComplete: () -> Unit
     ): Flow<Long> =
         flow {
@@ -113,7 +113,8 @@ class CountDownTimerWithPauseResume(
             }
         }
             .onEach { timeUntilFinished ->
-                onIntervalTick(timeUntilFinished)
+                val timePassed = millisInFuture - timeUntilFinished
+                onIntervalTick(timeUntilFinished, timePassed)
             }
             .onCompletion { cancelledException ->
                 if (cancelledException == null) {

@@ -47,6 +47,7 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
                 )
                 WorkoutSequenceItemsSection(
                     selectedWorkout = selectedWorkout,
+                    currentExecutingItemIndex = viewModel.currentWorkoutItemIndex.value,
                     onScrolledPastFirstItem = { isScrolledPastFirstItem ->
                         shouldShowPreviewWorkoutDetail = isScrolledPastFirstItem
                     }

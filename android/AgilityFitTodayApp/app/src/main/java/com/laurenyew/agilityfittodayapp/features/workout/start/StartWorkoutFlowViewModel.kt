@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.laurenyew.agilityfittodayapp.data.models.WorkoutItemSeqTiming
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.features.workout.execute.WorkoutExecutionState
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
@@ -13,6 +14,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,6 +30,8 @@ class StartWorkoutFlowViewModel @Inject constructor(
 
     private var _selectedWorkout = MutableStateFlow<WorkoutSequence?>(null)
     val selectedWorkout: StateFlow<WorkoutSequence?> = _selectedWorkout
+
+    private var _selectedWorkoutItems: List<WorkoutItemSeqTiming> = emptyList()
 
     // Get first sequences
     val workoutSequences: Flow<PagingData<WorkoutSequence>> =
@@ -44,6 +49,14 @@ class StartWorkoutFlowViewModel @Inject constructor(
     private lateinit var countDownTimer: CountDownTimerWithPauseResume
     private val _countDownTimeFlow = MutableStateFlow("")
     val countDownTimeFlow: StateFlow<String> = _countDownTimeFlow
+
+    init {
+        selectedWorkout
+            .onEach {
+                _selectedWorkoutItems = it?.workoutItemSeqTiming() ?: emptyList()
+            }
+            .launchIn(viewModelScope)
+    }
 
     // Workout Execution
     fun updateWorkoutState(newState: WorkoutExecutionState) {
@@ -65,11 +78,14 @@ class StartWorkoutFlowViewModel @Inject constructor(
     }
 
     private fun restartWorkout() {
+        _currentWorkoutItemIndex.value = 0
         countDownTimer = CountDownTimerWithPauseResume(
             millisInFuture = selectedWorkout.value?.estimatedTime() ?: 0L,
             countDownInterval = 1000L,
-            onIntervalTick = {
-                _countDownTimeFlow.value = DateTimeFormatter.timeInMillisToDuration(it)
+            onIntervalTick = { millisUntilFinished, millisTimePassed ->
+                updateWorkoutExecutionIndex(millisTimePassed) // TODO: This isn't working.
+                _countDownTimeFlow.value =
+                    DateTimeFormatter.timeInMillisToDuration(millisTimePassed)
             },
             onCountDownComplete = {
 //                finishWorkout()
@@ -87,6 +103,13 @@ class StartWorkoutFlowViewModel @Inject constructor(
 
     private fun finishWorkout(isCancelled: Boolean = false) {
         navManager.updateNavRoute(StartWorkoutNavRoutes.CompletedWorkout)
+    }
+
+    private fun updateWorkoutExecutionIndex(workoutSeqTimePassed: Long) {
+        val index = _selectedWorkoutItems.indexOfFirst {
+            it.sequenceTiming >= workoutSeqTimePassed
+        }
+        _currentWorkoutItemIndex.value = index
     }
 
     // Flow Navigation
