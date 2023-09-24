@@ -7,6 +7,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.laurenyew.agilityfittodayapp.features.workout.start.StartWorkoutFlowViewModel
@@ -16,13 +19,14 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
     val selectedWorkoutState = viewModel.selectedWorkout.collectAsState(initial = null)
     selectedWorkoutState.value?.let { selectedWorkout ->
 
-        // TODO: Handle FAB State changes
-        // TODO: Countdown Timer
         // TODO: Countdown go thru and mark parts as done
         // TODO: Skip function?
         // TODO: Make workout parts show progress
 
         val workoutState by viewModel.workoutState.collectAsState()
+        var shouldShowPreviewWorkoutDetail by remember {
+            mutableStateOf(false)
+        }
 
         Scaffold(
             floatingActionButton = {
@@ -36,8 +40,17 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
             floatingActionButtonPosition = FabPosition.Center
         ) { padding ->
             Column(modifier = Modifier.padding(padding)) {
-                WorkoutSequenceDetailCard(selectedWorkout, viewModel.countDownTimeFlow)
-                WorkoutSequenceItemsSection(selectedWorkout)
+                WorkoutSequenceDetailCard(
+                    selectedWorkout,
+                    viewModel.countDownTimeFlow,
+                    isPreview = shouldShowPreviewWorkoutDetail
+                )
+                WorkoutSequenceItemsSection(
+                    selectedWorkout = selectedWorkout,
+                    onScrolledPastFirstItem = { isScrolledPastFirstItem ->
+                        shouldShowPreviewWorkoutDetail = isScrolledPastFirstItem
+                    }
+                )
             }
         }
     }

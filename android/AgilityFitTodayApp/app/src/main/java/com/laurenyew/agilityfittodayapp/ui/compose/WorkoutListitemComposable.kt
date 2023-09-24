@@ -13,6 +13,7 @@ import com.laurenyew.agilityfittodayapp.data.models.estimatedTimeFormattedString
 @Composable
 fun WorkoutSequenceListItem(
     item: WorkoutSequence,
+    description: String? = null,
     onItemClicked: ((Long) -> Unit)? = null,
     onItemFavorited: ((Boolean) -> Unit)? = null,
     modifier: Modifier = Modifier
@@ -23,7 +24,7 @@ fun WorkoutSequenceListItem(
 
     ListItemComposable(
         title = item.name,
-        description = item.description,
+        description = description ?: item.description,
         iconId = R.drawable.ic_run,
         isFavorite = onItemFavorited?.let { isFavorite },
         onItemFavorited = onItemFavorited,
