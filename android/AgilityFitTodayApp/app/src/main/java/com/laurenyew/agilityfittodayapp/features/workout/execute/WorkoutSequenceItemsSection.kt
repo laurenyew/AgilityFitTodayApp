@@ -6,15 +6,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.ui.compose.WorkoutItemListItem
 import com.laurenyew.agilityfittodayapp.ui.theme.gold200
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 
@@ -22,15 +26,17 @@ import kotlinx.coroutines.flow.map
 fun WorkoutSequenceItemsSection(
     modifier: Modifier = Modifier,
     selectedWorkout: WorkoutSequence,
-    currentExecutingItemIndex: Int,
+    currentExecutingItemIndexFlow: StateFlow<Int>,
     onScrolledPastFirstItem: (Boolean) -> Unit
 ) {
     val listState = rememberLazyListState()
+    val currentExecutingItemIndex =
+        currentExecutingItemIndexFlow.collectAsState()
 
     LazyColumn(modifier, state = listState) {
         selectedWorkout.workoutItems.forEachIndexed { index, workoutItem ->
-            val hasExecuted = index < currentExecutingItemIndex
-            val isExecuting = index == currentExecutingItemIndex
+            val hasExecuted = index < currentExecutingItemIndex.value
+            val isExecuting = index == currentExecutingItemIndex.value
             val colorModifer = colorModifier(
                 hasExecuted = hasExecuted,
                 isExecuting = isExecuting
@@ -38,13 +44,14 @@ fun WorkoutSequenceItemsSection(
 
             // Show list item
             item {
-                Card {
+                Card(shape = RectangleShape) {
                     WorkoutItemListItem(
                         item = workoutItem,
                         shouldShowTiming = true,
                         modifier = colorModifer
                     )
                 }
+                Divider()
             }
         }
         item {
@@ -69,7 +76,7 @@ fun WorkoutSequenceItemsSection(
  */
 private fun colorModifier(hasExecuted: Boolean = false, isExecuting: Boolean = false): Modifier =
     when {
-        hasExecuted -> Modifier.background(Color.Gray)
+        hasExecuted -> Modifier.alpha(0.3f)
         isExecuting -> Modifier.background(gold200)
         else -> Modifier
     }

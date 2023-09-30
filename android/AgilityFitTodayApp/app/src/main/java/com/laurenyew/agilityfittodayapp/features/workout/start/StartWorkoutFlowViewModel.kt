@@ -39,16 +39,17 @@ class StartWorkoutFlowViewModel @Inject constructor(
             .cachedIn(viewModelScope)
 
     private var _workoutState =
-        MutableStateFlow<WorkoutExecutionState>(WorkoutExecutionState.NOT_STARTED)
+        MutableStateFlow(WorkoutExecutionState.NOT_STARTED)
     val workoutState: StateFlow<WorkoutExecutionState> = _workoutState
 
     private var _currentWorkoutItemIndex = MutableStateFlow(0)
     val currentWorkoutItemIndex: StateFlow<Int> = _currentWorkoutItemIndex
 
-    // TODO Need builder function?
     private lateinit var countDownTimer: CountDownTimerWithPauseResume
     private val _countDownTimeFlow = MutableStateFlow("")
     val countDownTimeFlow: StateFlow<String> = _countDownTimeFlow
+    private val _totalTimeSinceFirstStartFlow = MutableStateFlow("")
+    val totalTimeSinceFirstStartFlow = _totalTimeSinceFirstStartFlow
 
     init {
         selectedWorkout
@@ -67,11 +68,13 @@ class StartWorkoutFlowViewModel @Inject constructor(
                 selectedWorkout.value?.estimatedTime()?.let {
                     _countDownTimeFlow.value = DateTimeFormatter.timeInMillisToDuration(it)
                 }
+                _totalTimeSinceFirstStartFlow.value = DateTimeFormatter.timeInMillisToDuration(0L)
             }
 
             WorkoutExecutionState.RESTARTED -> restartWorkout()
             WorkoutExecutionState.IN_PROGRESS -> resumeWorkout()
             WorkoutExecutionState.STOPPED -> pauseWorkout()
+            WorkoutExecutionState.READY_TO_FINISH -> prepareToFinishWorkout()
             WorkoutExecutionState.COMPLETED -> finishWorkout()
             WorkoutExecutionState.CANCELLED -> finishWorkout(isCancelled = true)
         }
@@ -80,15 +83,17 @@ class StartWorkoutFlowViewModel @Inject constructor(
     private fun restartWorkout() {
         _currentWorkoutItemIndex.value = 0
         countDownTimer = CountDownTimerWithPauseResume(
-            millisInFuture = selectedWorkout.value?.estimatedTime() ?: 0L,
+            workoutTime = selectedWorkout.value?.estimatedTime() ?: 0L,
             countDownInterval = 1000L,
-            onIntervalTick = { millisUntilFinished, millisTimePassed ->
-                updateWorkoutExecutionIndex(millisTimePassed) // TODO: This isn't working.
+            onIntervalTick = { timerData ->
+                updateWorkoutExecutionIndex(timerData.timePassedInWorkout)
                 _countDownTimeFlow.value =
-                    DateTimeFormatter.timeInMillisToDuration(millisTimePassed)
+                    DateTimeFormatter.timeInMillisToDuration(timerData.timeUntilFinished)
+                _totalTimeSinceFirstStartFlow.value =
+                    DateTimeFormatter.timeInMillisToDuration(timerData.totalTimePassedSinceFirstStart)
             },
             onCountDownComplete = {
-//                finishWorkout()
+                updateWorkoutState(WorkoutExecutionState.READY_TO_FINISH)
             }
         )
     }
@@ -99,6 +104,10 @@ class StartWorkoutFlowViewModel @Inject constructor(
 
     private fun resumeWorkout() {
         countDownTimer.resume()
+    }
+
+    private fun prepareToFinishWorkout() {
+        // TODO -- Want dialog popup to confirm finish
     }
 
     private fun finishWorkout(isCancelled: Boolean = false) {

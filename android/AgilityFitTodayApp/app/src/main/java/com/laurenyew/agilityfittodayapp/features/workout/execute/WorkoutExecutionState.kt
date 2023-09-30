@@ -9,5 +9,6 @@ enum class WorkoutExecutionState {
     IN_PROGRESS,
     STOPPED,
     CANCELLED,
+    READY_TO_FINISH,
     COMPLETED
 }

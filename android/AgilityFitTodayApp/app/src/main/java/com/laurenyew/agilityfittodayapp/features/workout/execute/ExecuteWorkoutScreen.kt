@@ -43,11 +43,12 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
                 WorkoutSequenceDetailCard(
                     selectedWorkout,
                     viewModel.countDownTimeFlow,
+                    viewModel.totalTimeSinceFirstStartFlow,
                     isPreview = shouldShowPreviewWorkoutDetail
                 )
                 WorkoutSequenceItemsSection(
                     selectedWorkout = selectedWorkout,
-                    currentExecutingItemIndex = viewModel.currentWorkoutItemIndex.value,
+                    currentExecutingItemIndexFlow = viewModel.currentWorkoutItemIndex,
                     onScrolledPastFirstItem = { isScrolledPastFirstItem ->
                         shouldShowPreviewWorkoutDetail = isScrolledPastFirstItem
                     }

@@ -25,9 +25,11 @@ import kotlinx.coroutines.flow.StateFlow
 fun WorkoutSequenceDetailCard(
     selectedWorkout: WorkoutSequence,
     countDownTimeFlow: StateFlow<String>,
+    totalTimeSinceFirstStartFlow: StateFlow<String>,
     isPreview: Boolean = false
 ) {
     val countDownTime = countDownTimeFlow.collectAsState(initial = "")
+    val totalTimeSinceFirstStart = totalTimeSinceFirstStartFlow.collectAsState(initial = "")
 
     Card(
         backgroundColor = cardColor,
@@ -37,12 +39,14 @@ fun WorkoutSequenceDetailCard(
             if (it) {
                 WorkoutSequencePreviewContent(
                     selectedWorkout = selectedWorkout,
-                    countDownTime = countDownTime.value
+                    countDownTime = countDownTime.value,
+                    totalTimeSinceFirstStart = totalTimeSinceFirstStart.value
                 )
             } else {
                 WorkoutSequenceDetailContent(
                     selectedWorkout = selectedWorkout,
-                    countDownTime = countDownTime.value
+                    countDownTime = countDownTime.value,
+                    totalTimeSinceFirstStart = totalTimeSinceFirstStart.value
                 )
             }
         }
@@ -52,7 +56,8 @@ fun WorkoutSequenceDetailCard(
 @Composable
 fun WorkoutSequenceDetailContent(
     selectedWorkout: WorkoutSequence,
-    countDownTime: String
+    countDownTime: String,
+    totalTimeSinceFirstStart: String
 ) {
     val estimatedTime = selectedWorkout.estimatedTimeFormattedString()
 
@@ -93,17 +98,34 @@ fun WorkoutSequenceDetailContent(
                 style = MaterialTheme.typography.h6
             )
         }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 32.dp, end = 16.dp, bottom = 21.dp, top = 0.dp)
+        ) {
+            Text(
+                "Total Time Passed:",
+                style = MaterialTheme.typography.h6,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.width(3.dp))
+            Text(
+                totalTimeSinceFirstStart,
+                style = MaterialTheme.typography.h6
+            )
+        }
     }
 }
 
 @Composable
 fun WorkoutSequencePreviewContent(
     selectedWorkout: WorkoutSequence,
-    countDownTime: String
+    countDownTime: String,
+    totalTimeSinceFirstStart: String
 ) {
     WorkoutSequenceListItem(
         item = selectedWorkout,
-        description = "Time Left: $countDownTime",
+        description = "Time Left: $countDownTime\nTotal Time Passed: $totalTimeSinceFirstStart",
         modifier = Modifier.padding(8.dp)
     )
 }

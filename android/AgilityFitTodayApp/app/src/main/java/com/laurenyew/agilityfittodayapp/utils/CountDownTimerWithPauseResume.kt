@@ -17,16 +17,16 @@ import kotlinx.coroutines.launch
  * that will alert us on a given interval
  * and let us know when it is finished
  *
- * @param millisInFuture [Long] value representing total time this Timer will run
+ * @param workoutTime [Long] value representing total time this Timer will run
  * @param countDownInterval [Long] value in millis on each interval delay
  * @param onIntervalTick callback for when hits interval
  * @param onCountDownComplete callback when the countdown completes
  * @param testScope used for testing, provide a scope
  */
 class CountDownTimerWithPauseResume(
-    private val millisInFuture: Long,
+    private val workoutTime: Long,
     private val countDownInterval: Long,
-    private val onIntervalTick: (millisUntilFinished: Long, millisTimePassed: Long) -> Unit,
+    private val onIntervalTick: (timerData: TimerData) -> Unit,
     private val onCountDownComplete: (() -> Unit),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
@@ -38,16 +38,16 @@ class CountDownTimerWithPauseResume(
             }
             return _scope!!
         }
-    private var countDownTimer: Flow<Long>? = null
-    private var pausedMillisUntilFinished: Long? = null
-    private val onPauseResumeIntervalTick: ((millisUntilFinished: Long, millisTimePassed: Long) -> Unit) =
-        { millisUntilFinished, millisTimePassed ->
-            pausedMillisUntilFinished = millisUntilFinished
-            onIntervalTick(millisUntilFinished, millisTimePassed)
+    private var countDownTimer: Flow<TimerData>? = null
+    private var pausedTimerData: TimerData? = null
+    private val onPauseResumeIntervalTick: ((timerData: TimerData) -> Unit) =
+        { timerData ->
+            pausedTimerData = timerData
+            onIntervalTick(timerData)
         }
 
     private val onPauseResumeCountDownComplete: (() -> Unit) = {
-        pausedMillisUntilFinished = null
+        pausedTimerData = null
         onCountDownComplete()
     }
 
@@ -59,7 +59,8 @@ class CountDownTimerWithPauseResume(
         cancel()
         scope.launch {
             countDownTimer = countDownTimerFlow(
-                millisInFuture = millisInFuture,
+                workoutTime = workoutTime,
+                pausedTimerData = pausedTimerData?.copy(timePassedInWorkout = 0L),
                 countDownInterval = countDownInterval,
                 onIntervalTick = onPauseResumeIntervalTick,
                 onCountDownComplete = onPauseResumeCountDownComplete
@@ -76,7 +77,8 @@ class CountDownTimerWithPauseResume(
     fun resume() {
         scope.launch {
             countDownTimer = countDownTimerFlow(
-                millisInFuture = pausedMillisUntilFinished ?: millisInFuture,
+                workoutTime = pausedTimerData?.timeUntilFinished ?: workoutTime,
+                pausedTimerData = pausedTimerData,
                 countDownInterval = countDownInterval,
                 onIntervalTick = onPauseResumeIntervalTick,
                 onCountDownComplete = onPauseResumeCountDownComplete
@@ -91,30 +93,41 @@ class CountDownTimerWithPauseResume(
         }
         _scope = null
         countDownTimer = null
-        pausedMillisUntilFinished = null
+        pausedTimerData = null
     }
 
     /**
      * Create a basic flow that can simulate a timer
      */
     private fun countDownTimerFlow(
-        millisInFuture: Long,
+        workoutTime: Long,
         countDownInterval: Long,
-        onIntervalTick: (millisUntilFinished: Long, millisTimePassed: Long) -> Unit,
-        onCountDownComplete: () -> Unit
-    ): Flow<Long> =
+        onIntervalTick: (timerData: TimerData) -> Unit,
+        onCountDownComplete: () -> Unit,
+        pausedTimerData: TimerData? = null
+    ): Flow<TimerData> =
         flow {
-            var totalTime = millisInFuture
+            var totalTime = workoutTime
+            var timePassedSinceFirstStart = pausedTimerData?.totalTimePassedSinceFirstStart ?: 0L
+            var timePassedInWorkout = pausedTimerData?.timePassedInWorkout ?: 0L
+
             while (totalTime > 0) {
                 delay(countDownInterval)
                 val timeUntilFinished = totalTime - countDownInterval
                 totalTime = timeUntilFinished
-                emit(timeUntilFinished)
+                timePassedSinceFirstStart += countDownInterval
+                timePassedInWorkout += countDownInterval
+                emit(
+                    TimerData(
+                        timeUntilFinished = timeUntilFinished,
+                        timePassedInWorkout = timePassedInWorkout,
+                        totalTimePassedSinceFirstStart = timePassedSinceFirstStart
+                    )
+                )
             }
         }
-            .onEach { timeUntilFinished ->
-                val timePassed = millisInFuture - timeUntilFinished
-                onIntervalTick(timeUntilFinished, timePassed)
+            .onEach { timerData ->
+                onIntervalTick(timerData)
             }
             .onCompletion { cancelledException ->
                 if (cancelledException == null) {
@@ -122,3 +135,16 @@ class CountDownTimerWithPauseResume(
                 }
             }
 }
+
+/**
+ * @param timeUntilFinished : Time in millis until we are finished with the workout
+ * @param timePassedInWorkout : Amount of time in the workout that has passed
+ * (used to figure out the workout index we are on)
+ * @param totalTimePassedSinceFirstStart : Total time passed (ignores restarts)
+ * since first starting on workout
+ */
+data class TimerData(
+    val timeUntilFinished: Long,
+    val timePassedInWorkout: Long,
+    val totalTimePassedSinceFirstStart: Long
+)
