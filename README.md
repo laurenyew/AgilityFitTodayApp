@@ -8,7 +8,7 @@ These apps were built to have similar feature sets using native Android/iOS.
 
 <img src="./android/Screenshots/select_workout.png" width="200"/> <img src="./android/Screenshots/start_workout.png" width="200"/> <img src="./android/Screenshots/start_workout_long.png" width="200"/> <img src="./android/Screenshots/home.png" width="200"/> <img src="./android/Screenshots/dashboard.png" width="200"/> <img src="./android/Screenshots/experiments/animation_tests.png" width="200"/> <img src="./android/Screenshots/experiments/animation_test.gif" width="200"/>
 
-<img src="./android/Screenshots/experiments/execute_workout_example_1.png" width="200"/> <img src="./android/Screenshots/experiments/execute_workout_example_2.png" width="200"/> <img src="./android/Screenshots/experiments/execute_workout_example_3.png" width="200"/> <img src="./android/Screenshots/experiments/finish_workout.png" width="200"/>
+<img src="./android/Screenshots/execute_workout_example_1.png" width="200"/> <img src="./android/Screenshots/execute_workout_example_2.png" width="200"/> <img src="./android/Screenshots/execute_workout_example_3.png" width="200"/> <img src="./android/Screenshots/finish_workout.png" width="200"/>
 
 ## iOS
 
