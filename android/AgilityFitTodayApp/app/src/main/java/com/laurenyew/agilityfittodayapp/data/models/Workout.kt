@@ -21,7 +21,28 @@ data class WorkoutSequence(
         workoutItems.sumOf {
             it.estimatedTime()
         }
+
+    fun workoutItemSeqTiming(): List<WorkoutItemSeqTiming> {
+        var seqTime = 0L
+        return workoutItems.map {
+            seqTime += it.estimatedTime()
+            WorkoutItemSeqTiming(
+                it,
+                seqTime
+            )
+        }
+    }
 }
+
+/**
+ * Helper data class
+ * @param item: WorkoutItem
+ * @param sequenceTiming: total millis that sequence reaches to get to workout
+ */
+data class WorkoutItemSeqTiming(
+    val item: WorkoutItem,
+    val sequenceTiming: Long
+)
 
 fun WorkoutSequence.estimatedTimeFormattedString(): String =
     DateTimeFormatter.timeInMillisToDuration(this.estimatedTime())

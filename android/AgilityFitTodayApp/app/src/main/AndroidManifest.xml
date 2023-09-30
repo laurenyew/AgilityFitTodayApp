@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name=".ui.BaseApplication"
+        android:name="com.laurenyew.agilityfittodayapp.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgilityFitTodayApp">
         <activity
-            android:name=".ui.startWorkout.StartWorkoutFlowActivity"
+            android:name=".features.workout.start.StartWorkoutFlowActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.devsettings.DevSettingsActivity"
+            android:name=".devsettings.DevSettingsActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".ui.devsettings.animation.NavActivity"
+            android:name=".devsettings.animation.NavActivity"
             android:exported="false"
             android:label="Nav Activity" />
     </application>

@@ -4,6 +4,8 @@ App features are centered around creating a workout app
 
 <img src="./Screenshots/home.png" width="200"/> <img src="./Screenshots/select_workout.png" width="200"/> <img src="./Screenshots/start_workout.png" width="200"/> <img src="./Screenshots/start_workout_long.png" width="200"/> <img src="./Screenshots/dashboard.png" width="200"/> <img src="./Screenshots/app_icon.png" width="200"/> <img src="./Screenshots/experiments/animation_tests.png" width="200"/><img src="./Screenshots/experiments/animation_test.gif" width="200"/>
 
+<img src="./Screenshots/execute_workout_example_1.png" width="200"/> <img src="./Screenshots/execute_workout_example_2.png" width="200"/> <img src="./Screenshots/execute_workout_example_3.png" width="200"/> <img src="./Screenshots/finish_workout.png" width="200"/>
+
 ## Proposed Features
 
 - Start a workout (WIP)
