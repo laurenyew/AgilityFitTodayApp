@@ -79,7 +79,6 @@ fun ExecuteWorkoutControls(
                     updateWorkoutState(WorkoutExecutionState.CANCELLED)
                 }
             }
-
             else -> {
                 /** Do nothing **/
             }
