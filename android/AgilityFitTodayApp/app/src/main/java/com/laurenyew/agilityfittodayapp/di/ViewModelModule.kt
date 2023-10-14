@@ -1,5 +1,7 @@
 package com.laurenyew.agilityfittodayapp.di
 
+import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerAPI
+import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerImpl
 import com.laurenyew.agilityfittodayapp.features.workout.start.StartWorkoutFlowNavManager
 import com.laurenyew.agilityfittodayapp.features.workout.start.StartWorkoutFlowNavManagerAPI
 import dagger.Module
@@ -19,4 +21,8 @@ class ViewModelModule {
     @ViewModelScoped
     fun provideStartWorkoutFlowNavManagerAPI(): StartWorkoutFlowNavManagerAPI =
         StartWorkoutFlowNavManager()
+
+    @Provides
+    @ViewModelScoped
+    fun provideExecuteWorkoutManager(): ExecuteWorkoutManagerAPI = ExecuteWorkoutManagerImpl()
 }

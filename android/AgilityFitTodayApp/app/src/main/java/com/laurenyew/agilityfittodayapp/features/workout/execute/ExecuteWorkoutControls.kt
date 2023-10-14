@@ -6,18 +6,20 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Flag
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.RestartAlt
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,22 +31,34 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ExecuteWorkoutControls(
     workoutState: WorkoutExecutionState,
-    updateWorkoutState: (WorkoutExecutionState) -> Unit
+    updateWorkoutState: (WorkoutExecutionState) -> Unit,
+    setUsingWorkoutTimer: (usingWorkoutTimer: Boolean) -> Unit,
 ) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),
-        horizontalArrangement = Arrangement.End
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.End,
     ) {
         when (workoutState) {
-            WorkoutExecutionState.NOT_STARTED ->
+            WorkoutExecutionState.NOT_STARTED -> {
                 ExecuteWorkoutFAB(
-                    fabTitle = "Start",
-                    imageVector = Icons.Filled.PlayArrow
+                    fabTitle = "Start with Timer",
+                    imageVector = Icons.Filled.Timer
                 ) {
+                    setUsingWorkoutTimer(true)
                     updateWorkoutState(WorkoutExecutionState.RESTARTED)
                 }
+                Spacer(Modifier.height(8.dp))
+                ExecuteWorkoutFAB(
+                    fabTitle = "Start with User Confirm",
+                    imageVector = Icons.Filled.CheckCircle
+                ) {
+                    setUsingWorkoutTimer(false)
+                    updateWorkoutState(WorkoutExecutionState.RESTARTED)
+                }
+            }
 
             WorkoutExecutionState.RESTARTED, WorkoutExecutionState.IN_PROGRESS ->
                 ExecuteWorkoutFAB(
@@ -61,17 +75,14 @@ fun ExecuteWorkoutControls(
                 ) {
                     updateWorkoutState(WorkoutExecutionState.RESTARTED)
                 }
-
-                Spacer(Modifier.width(5.dp))
-
+                Spacer(Modifier.height(8.dp))
                 ExecuteWorkoutFAB(
                     fabTitle = "Resume",
                     imageVector = Icons.Filled.PlayArrow
                 ) {
                     updateWorkoutState(WorkoutExecutionState.IN_PROGRESS)
                 }
-
-                Spacer(Modifier.width(5.dp))
+                Spacer(Modifier.height(8.dp))
                 ExecuteWorkoutFAB(
                     fabTitle = "Finish",
                     Icons.Filled.Flag
@@ -79,7 +90,9 @@ fun ExecuteWorkoutControls(
                     updateWorkoutState(WorkoutExecutionState.CANCELLED)
                 }
             }
+
             else -> {
+                /** Do nothing **/
                 /** Do nothing **/
             }
         }
@@ -129,7 +142,8 @@ fun ExecuteWorkoutControls_Running_Preview() {
     Column {
         ExecuteWorkoutControls(
             workoutState = WorkoutExecutionState.IN_PROGRESS,
-            updateWorkoutState = {}
+            updateWorkoutState = {},
+            setUsingWorkoutTimer = {},
         )
     }
 }
@@ -140,7 +154,8 @@ fun ExecuteWorkoutControls_Paused_Preview() {
     Column {
         ExecuteWorkoutControls(
             workoutState = WorkoutExecutionState.STOPPED,
-            updateWorkoutState = {}
+            updateWorkoutState = {},
+            setUsingWorkoutTimer = {},
         )
     }
 }

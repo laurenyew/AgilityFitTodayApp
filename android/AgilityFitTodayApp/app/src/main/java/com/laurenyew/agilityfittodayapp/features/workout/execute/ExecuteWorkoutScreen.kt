@@ -28,7 +28,7 @@ import com.laurenyew.agilityfittodayapp.features.workout.start.StartWorkoutFlowV
 
 @Composable
 fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()) {
-    val selectedWorkoutState = viewModel.selectedWorkout.collectAsState(initial = null)
+    val selectedWorkoutState = viewModel.selectedWorkoutStateFlow.collectAsState(initial = null)
     selectedWorkoutState.value?.let { selectedWorkout ->
 
         // TODO: Countdown go thru and mark parts as done
@@ -47,6 +47,9 @@ fun ExecuteWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel())
                     workoutState = workoutState,
                     updateWorkoutState = {
                         viewModel.updateWorkoutState(it)
+                    },
+                    setUsingWorkoutTimer = {
+                        viewModel.setUsingWorkoutTimer(it)
                     }
                 )
             },

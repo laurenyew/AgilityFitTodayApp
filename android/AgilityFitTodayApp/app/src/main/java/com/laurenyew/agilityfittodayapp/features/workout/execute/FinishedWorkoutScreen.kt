@@ -43,7 +43,7 @@ fun FinishedWorkoutScreen(viewModel: StartWorkoutFlowViewModel = hiltViewModel()
         .padding(20.dp)
         .fillMaxSize()
 
-    val workout by viewModel.selectedWorkout.collectAsState()
+    val workout by viewModel.selectedWorkoutStateFlow.collectAsState()
 
     Scaffold { padding ->
         Column(
