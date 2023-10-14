@@ -3,7 +3,7 @@ package com.laurenyew.agilityfittodayapp.data.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.laurenyew.agilityfittodayapp.utils.DateTimeFormatter
-import com.laurenyew.agilityfittodayapp.utils.MIN_TO_MILLIS
+import com.laurenyew.agilityfittodayapp.utils.SECONDS_TO_MILLIS
 
 @Entity
 data class WorkoutSequence(
@@ -19,13 +19,13 @@ data class WorkoutSequence(
      */
     fun estimatedTime(): Long =
         workoutItems.sumOf {
-            it.estimatedTime()
+            it.estimatedTimeInSeconds()
         }
 
     fun workoutItemSeqTiming(): List<WorkoutItemSeqTiming> {
         var seqTime = 0L
         return workoutItems.map {
-            seqTime += it.estimatedTime()
+            seqTime += it.estimatedTimeInSeconds()
             WorkoutItemSeqTiming(
                 it,
                 seqTime
@@ -54,8 +54,11 @@ data class WorkoutItem(
     val itemBase: WorkoutItemBase,
     val isFavorite: Boolean = false
 ) {
-    fun estimatedTime(): Long = itemBase.baseEstimatedTime * quantity * MIN_TO_MILLIS
+    /**
+     * Estimated Time in Seconds
+     */
+    fun estimatedTimeInSeconds(): Long = itemBase.baseEstimatedTimeInSecs * quantity * SECONDS_TO_MILLIS
 }
 
 fun WorkoutItem.estimatedTimeFormattedString(): String =
-    DateTimeFormatter.timeInMillisToDuration(this.estimatedTime())
+    DateTimeFormatter.timeInMillisToDuration(this.estimatedTimeInSeconds())

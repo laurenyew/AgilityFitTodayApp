@@ -11,13 +11,13 @@ import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import com.laurenyew.agilityfittodayapp.utils.CountDownTimerWithPauseResume
 import com.laurenyew.agilityfittodayapp.utils.DateTimeFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * TODO: How to actually do the timer going through a workout?
@@ -55,6 +55,7 @@ class StartWorkoutFlowViewModel @Inject constructor(
         selectedWorkout
             .onEach {
                 _selectedWorkoutItems = it?.workoutItemSeqTiming() ?: emptyList()
+                _currentWorkoutItemIndex.value = 0
             }
             .launchIn(viewModelScope)
     }
@@ -131,6 +132,16 @@ class StartWorkoutFlowViewModel @Inject constructor(
             _selectedWorkout.value = workoutRepository.getWorkoutSequence(sequenceId)
             navManager.updateNavRoute(StartWorkoutNavRoutes.ExecuteWorkout)
             updateWorkoutState(WorkoutExecutionState.NOT_STARTED)
+        }
+    }
+
+    fun onResetWorkoutSelection() {
+        viewModelScope.launch {
+            _selectedWorkout.value = null
+            _currentWorkoutItemIndex.value = 0
+            _countDownTimeFlow.value = ""
+            _totalTimeSinceFirstStartFlow.value = ""
+            _workoutState.value = WorkoutExecutionState.NOT_STARTED
         }
     }
 }

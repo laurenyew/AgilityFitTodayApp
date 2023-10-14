@@ -12,9 +12,10 @@ class StartWorkoutFlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Hook in onbackpressed
+        // Hook in onbackpressed when exiting activity
         startWorkoutViewModel.activityBackPressLambda = {
-            onBackPressed()
+            startWorkoutViewModel.onResetWorkoutSelection()
+            finish()
         }
 
         setContent {

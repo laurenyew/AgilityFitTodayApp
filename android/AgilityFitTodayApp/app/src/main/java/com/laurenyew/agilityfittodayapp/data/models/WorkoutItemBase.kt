@@ -1,5 +1,7 @@
 package com.laurenyew.agilityfittodayapp.data.models
 
+import com.laurenyew.agilityfittodayapp.utils.MIN_TO_SECONDS
+import com.laurenyew.agilityfittodayapp.utils.ONE_MINUTE_IN_SECONDS
 import com.laurenyew.agilityfittodayapp.utils.WorkoutTypeConverters
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
@@ -7,14 +9,14 @@ import com.squareup.moshi.ToJson
 sealed class WorkoutItemBase(
     val name: String,
     val description: String,
-    val baseEstimatedTime: Long, // in minutes
+    val baseEstimatedTimeInSecs: Long, // in seconds
     val isMeasuredInReps: Boolean,
     val workoutType: WorkoutType
 ) {
     object Rest : WorkoutItemBase(
         name = "Rest",
         description = "Rest, Breathe, & Hydrate",
-        baseEstimatedTime = 1,
+        baseEstimatedTimeInSecs = ONE_MINUTE_IN_SECONDS,
         isMeasuredInReps = false,
         workoutType = WorkoutType.REST
     )
@@ -22,7 +24,7 @@ sealed class WorkoutItemBase(
     object Crunches : WorkoutItemBase(
         name = "Crunches",
         description = "On your back, hands behind head, half sit-up",
-        baseEstimatedTime = 1,
+        baseEstimatedTimeInSecs = 10,
         isMeasuredInReps = true,
         workoutType = WorkoutType.CORE
     )
@@ -30,8 +32,8 @@ sealed class WorkoutItemBase(
     object PushUps : WorkoutItemBase(
         name = "Push-ups",
         description = "In a plank position with your hands below your shoulders" +
-            ", bend and straighten your elbows to 90 degrees",
-        baseEstimatedTime = 1,
+                ", bend and straighten your elbows to 90 degrees",
+        baseEstimatedTimeInSecs = 5,
         isMeasuredInReps = true,
         workoutType = WorkoutType.UPPER_BODY_STRENGTH
     )
@@ -39,7 +41,7 @@ sealed class WorkoutItemBase(
     object Squats : WorkoutItemBase(
         name = "Squats",
         description = "Knees over ankles, bend your knees with straight back (w/ or w/o weights)",
-        baseEstimatedTime = 1,
+        baseEstimatedTimeInSecs = 10,
         isMeasuredInReps = true,
         workoutType = WorkoutType.LOWER_BODY_STRENGTH
     )
@@ -47,7 +49,7 @@ sealed class WorkoutItemBase(
     object Treadmill : WorkoutItemBase(
         name = "Treadmill",
         description = "Walk / Run in intervals on the treadmill",
-        baseEstimatedTime = 5,
+        baseEstimatedTimeInSecs = 5 * MIN_TO_SECONDS,
         isMeasuredInReps = false,
         workoutType = WorkoutType.CARDIO
     )
@@ -55,7 +57,7 @@ sealed class WorkoutItemBase(
     object Stretch : WorkoutItemBase(
         name = "Stretch",
         description = "Stretch / Cooldown",
-        baseEstimatedTime = 5,
+        baseEstimatedTimeInSecs = 5 * MIN_TO_SECONDS,
         isMeasuredInReps = false,
         workoutType = WorkoutType.STRETCH
     )
