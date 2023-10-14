@@ -31,7 +31,7 @@ sealed class WorkoutItemBase(
     object PushUps : WorkoutItemBase(
         name = "Push-ups",
         description = "In a plank position with your hands below your shoulders" +
-                ", bend and straighten your elbows to 90 degrees",
+            ", bend and straighten your elbows to 90 degrees",
         baseEstimatedTimeInSecs = 5,
         isMeasuredInReps = true,
         workoutType = WorkoutType.UPPER_BODY_STRENGTH

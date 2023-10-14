@@ -11,13 +11,13 @@ import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import com.laurenyew.agilityfittodayapp.utils.CountDownTimerWithPauseResume
 import com.laurenyew.agilityfittodayapp.utils.DateTimeFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * TODO: How to actually do the timer going through a workout?
