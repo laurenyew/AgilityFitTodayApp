@@ -1,6 +1,5 @@
 package com.laurenyew.agilityfittodayapp.data.models
 
-import com.laurenyew.agilityfittodayapp.utils.MIN_TO_SECONDS
 import com.laurenyew.agilityfittodayapp.utils.ONE_MINUTE_IN_SECONDS
 import com.laurenyew.agilityfittodayapp.utils.WorkoutTypeConverters
 import com.squareup.moshi.FromJson
@@ -49,7 +48,7 @@ sealed class WorkoutItemBase(
     object Treadmill : WorkoutItemBase(
         name = "Treadmill",
         description = "Walk / Run in intervals on the treadmill",
-        baseEstimatedTimeInSecs = 5 * MIN_TO_SECONDS,
+        baseEstimatedTimeInSecs = 5 * ONE_MINUTE_IN_SECONDS,
         isMeasuredInReps = false,
         workoutType = WorkoutType.CARDIO
     )
@@ -57,7 +56,7 @@ sealed class WorkoutItemBase(
     object Stretch : WorkoutItemBase(
         name = "Stretch",
         description = "Stretch / Cooldown",
-        baseEstimatedTimeInSecs = 5 * MIN_TO_SECONDS,
+        baseEstimatedTimeInSecs = 5 * ONE_MINUTE_IN_SECONDS,
         isMeasuredInReps = false,
         workoutType = WorkoutType.STRETCH
     )
