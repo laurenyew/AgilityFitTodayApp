@@ -32,14 +32,14 @@ import androidx.compose.ui.unit.sp
 fun ExecuteWorkoutControls(
     workoutState: WorkoutExecutionState,
     updateWorkoutState: (WorkoutExecutionState) -> Unit,
-    setUsingWorkoutTimer: (usingWorkoutTimer: Boolean) -> Unit,
+    setUsingWorkoutTimer: (usingWorkoutTimer: Boolean) -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),
         verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.End,
+        horizontalAlignment = Alignment.End
     ) {
         when (workoutState) {
             WorkoutExecutionState.NOT_STARTED -> {
@@ -143,7 +143,7 @@ fun ExecuteWorkoutControls_Running_Preview() {
         ExecuteWorkoutControls(
             workoutState = WorkoutExecutionState.IN_PROGRESS,
             updateWorkoutState = {},
-            setUsingWorkoutTimer = {},
+            setUsingWorkoutTimer = {}
         )
     }
 }
@@ -155,7 +155,7 @@ fun ExecuteWorkoutControls_Paused_Preview() {
         ExecuteWorkoutControls(
             workoutState = WorkoutExecutionState.STOPPED,
             updateWorkoutState = {},
-            setUsingWorkoutTimer = {},
+            setUsingWorkoutTimer = {}
         )
     }
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 /**
  * Handle executing the workout
  */
-interface ExecuteWorkoutManagerAPI: ExecuteWorkoutManagerStateAPI {
+interface ExecuteWorkoutManagerAPI : ExecuteWorkoutManagerStateAPI {
     fun setSelectedWorkout(sequence: WorkoutSequence?)
     fun setUsingWorkoutTimer(usingWorkoutTimer: Boolean)
     fun updateWorkoutState(newState: WorkoutExecutionState)
@@ -111,7 +111,6 @@ class ExecuteWorkoutManagerImpl : ExecuteWorkoutManagerAPI {
     private fun prepareToFinishWorkout() {
         // TODO -- Want dialog popup to confirm finish
     }
-
 
     private fun updateWorkoutExecutionIndex(workoutSeqTimePassed: Long) {
         val index = selectedWorkoutItems.indexOfFirst {

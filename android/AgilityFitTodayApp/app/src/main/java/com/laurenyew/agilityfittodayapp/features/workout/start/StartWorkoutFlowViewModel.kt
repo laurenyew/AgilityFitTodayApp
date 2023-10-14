@@ -10,9 +10,9 @@ import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerSt
 import com.laurenyew.agilityfittodayapp.features.workout.execute.WorkoutExecutionState
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * TODO: How to actually do the timer going through a workout?
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 class StartWorkoutFlowViewModel @Inject constructor(
     private val workoutRepository: WorkoutRepository,
     private val navManager: StartWorkoutFlowNavManagerAPI,
-    private val executeWorkoutManager: ExecuteWorkoutManagerAPI,
+    private val executeWorkoutManager: ExecuteWorkoutManagerAPI
 ) : ViewModel(),
     StartWorkoutFlowNavManagerAPI by navManager,
     ExecuteWorkoutManagerStateAPI by executeWorkoutManager {
