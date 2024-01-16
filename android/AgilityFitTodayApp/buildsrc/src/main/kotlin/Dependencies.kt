@@ -14,13 +14,13 @@ object AndroidSdk {
 const val kotlinVersion = "1.8.22"
 
 object Jetpack {
-    const val navigationVersion = "2.7.2"
+    const val navigationVersion = "2.7.6"
     const val pagingVersion = "3.2.1"
-    const val lifecycleVersion = "2.6.2"
+    const val lifecycleVersion = "2.7.0"
 }
 
 object Room {
-    const val version = "2.5.2"
+    const val version = "2.6.1"
 }
 
 object Coroutines {

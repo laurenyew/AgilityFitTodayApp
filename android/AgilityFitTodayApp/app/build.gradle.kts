@@ -60,7 +60,7 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Lifecycle
@@ -82,13 +82,13 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:${DependencyInjection.hiltVersion}")
     kapt("com.google.dagger:hilt-android-compiler:${DependencyInjection.hiltVersion}")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
 
     // Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
-    implementation("androidx.compose.compiler:compiler:1.5.3")
+    implementation("androidx.compose.compiler:compiler:1.5.8")
     implementation("androidx.compose.ui:ui")
     // Tooling support (Previews, etc.)
     implementation("androidx.compose.ui:ui-tooling")
@@ -105,11 +105,11 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation("androidx.compose.runtime:runtime-rxjava2")
     // Navigation
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     // Activity
-    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation("androidx.activity:activity-compose:1.8.2")
 
-    implementation("androidx.compose.animation:animation:1.5.1")
+    implementation("androidx.compose.animation:animation:1.5.4")
 
     // Jetpack Paging
     implementation("androidx.paging:paging-runtime-ktx:${Jetpack.pagingVersion}")
