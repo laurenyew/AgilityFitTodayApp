@@ -1,33 +1,17 @@
-package com.laurenyew.agilityfittodayapp.features.workout
+package com.laurenyew.agilityfittodayapp.features.workout.manager
 
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutItemSeqTiming
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
 import com.laurenyew.agilityfittodayapp.features.workout.execute.WorkoutExecutionState
 import com.laurenyew.agilityfittodayapp.utils.CountDownTimerWithPauseResume
 import com.laurenyew.agilityfittodayapp.utils.DateTimeFormatter
+import com.laurenyew.agilityfittodayapp.utils.TimePassedTimer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 /**
- * Handle executing the workout
+ * Implements [ExecuteWorkoutManagerAPI]
  */
-interface ExecuteWorkoutManagerAPI : ExecuteWorkoutManagerStateAPI {
-    fun setSelectedWorkout(sequence: WorkoutSequence?)
-    fun setUsingWorkoutTimer(usingWorkoutTimer: Boolean)
-    fun updateWorkoutState(newState: WorkoutExecutionState)
-    fun onResetWorkoutSelection()
-}
-
-interface ExecuteWorkoutManagerStateAPI {
-    val selectedWorkoutStateFlow: StateFlow<WorkoutSequence?>
-
-    val workoutState: StateFlow<WorkoutExecutionState>
-    val currentWorkoutItemIndex: StateFlow<Int>
-    val countDownTimeFlow: StateFlow<String>
-    val totalTimeSinceFirstStartFlow: StateFlow<String>
-    val usingWorkoutTimer: Boolean
-}
-
 class ExecuteWorkoutManagerImpl : ExecuteWorkoutManagerAPI {
     private var selectedWorkout = MutableStateFlow<WorkoutSequence?>(null)
     override val selectedWorkoutStateFlow: StateFlow<WorkoutSequence?> = selectedWorkout
@@ -40,15 +24,17 @@ class ExecuteWorkoutManagerImpl : ExecuteWorkoutManagerAPI {
     private var _currentWorkoutItemIndex = MutableStateFlow(0)
     override val currentWorkoutItemIndex: StateFlow<Int> = _currentWorkoutItemIndex
 
-    private lateinit var countDownTimer: CountDownTimerWithPauseResume
     private val _countDownTimeFlow = MutableStateFlow("")
     override val countDownTimeFlow: StateFlow<String> = _countDownTimeFlow
     private val _totalTimeSinceFirstStartFlow = MutableStateFlow("")
     override val totalTimeSinceFirstStartFlow = _totalTimeSinceFirstStartFlow
 
-    private var _usingWorkoutTimer = true
+    private var _usingWorkoutTimer: Boolean = true
     override val usingWorkoutTimer: Boolean
         get() = _usingWorkoutTimer
+
+    private var countDownTimer: CountDownTimerWithPauseResume? = null
+    private var timePassedTimer: TimePassedTimer? = null
 
     // Workout Execution
 
@@ -72,40 +58,63 @@ class ExecuteWorkoutManagerImpl : ExecuteWorkoutManagerAPI {
             WorkoutExecutionState.IN_PROGRESS -> resumeWorkout()
             WorkoutExecutionState.STOPPED -> pauseWorkout()
             WorkoutExecutionState.READY_TO_FINISH -> prepareToFinishWorkout()
-            else -> {
-                // Do nothing
+            WorkoutExecutionState.CANCELLED, WorkoutExecutionState.COMPLETED -> {
+                cancelWorkout()
             }
         }
     }
 
-    override fun setUsingWorkoutTimer(isUsing: Boolean) {
-        _usingWorkoutTimer = isUsing
+    override fun setUsingWorkoutTimer(shouldUseWorkoutTimer: Boolean) {
+        _usingWorkoutTimer = shouldUseWorkoutTimer
     }
 
     private fun restartWorkout() {
         _currentWorkoutItemIndex.value = 0
-        countDownTimer = CountDownTimerWithPauseResume(
-            workoutTime = selectedWorkout.value?.estimatedTime() ?: 0L,
-            countDownInterval = 1000L,
-            onIntervalTick = { timerData ->
-                updateWorkoutExecutionIndex(timerData.timePassedInWorkout)
-                _countDownTimeFlow.value =
-                    DateTimeFormatter.timeInMillisToDuration(timerData.timeUntilFinished)
-                _totalTimeSinceFirstStartFlow.value =
-                    DateTimeFormatter.timeInMillisToDuration(timerData.totalTimePassedSinceFirstStart)
-            },
-            onCountDownComplete = {
-                updateWorkoutState(WorkoutExecutionState.READY_TO_FINISH)
-            }
-        )
+        if (usingWorkoutTimer) {
+            countDownTimer = CountDownTimerWithPauseResume(
+                workoutTime = selectedWorkout.value?.estimatedTime() ?: 0L,
+                countDownInterval = 1000L,
+                onIntervalTick = { timerData ->
+                    updateWorkoutExecutionIndex(timerData.timePassedInWorkout)
+                    _countDownTimeFlow.value =
+                        DateTimeFormatter.timeInMillisToDuration(timerData.timeUntilFinished)
+                    _totalTimeSinceFirstStartFlow.value =
+                        DateTimeFormatter.timeInMillisToDuration(timerData.totalTimePassedSinceFirstStart)
+                },
+                onCountDownComplete = {
+                    updateWorkoutState(WorkoutExecutionState.READY_TO_FINISH)
+                }
+            )
+        } else {
+            timePassedTimer = TimePassedTimer(
+                countDownInterval = 1000L,
+                onIntervalTick = { timerData ->
+                    updateWorkoutExecutionIndex(timerData.timePassedInWorkout)
+                    _totalTimeSinceFirstStartFlow.value =
+                        DateTimeFormatter.timeInMillisToDuration(timerData.totalTimePassedSinceFirstStart)
+                },
+            )
+        }
     }
 
     private fun pauseWorkout() {
-        countDownTimer.pause()
+        countDownTimer?.pause()
+        timePassedTimer?.pause()
     }
 
     private fun resumeWorkout() {
-        countDownTimer.resume()
+        countDownTimer?.resume()
+        timePassedTimer?.resume()
+    }
+
+    private fun cancelWorkout() {
+        countDownTimer?.cancel()
+        countDownTimer = null
+        timePassedTimer?.cancel()
+        timePassedTimer = null
+        _currentWorkoutItemIndex.value = 0
+        _countDownTimeFlow.value = ""
+        _totalTimeSinceFirstStartFlow.value = ""
     }
 
     private fun prepareToFinishWorkout() {
@@ -120,9 +129,7 @@ class ExecuteWorkoutManagerImpl : ExecuteWorkoutManagerAPI {
     }
 
     override fun onResetWorkoutSelection() {
-        _currentWorkoutItemIndex.value = 0
-        _countDownTimeFlow.value = ""
-        _totalTimeSinceFirstStartFlow.value = ""
+        cancelWorkout()
         _workoutState.value = WorkoutExecutionState.NOT_STARTED
     }
 }

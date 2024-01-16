@@ -1,7 +1,7 @@
 package com.laurenyew.agilityfittodayapp.di
 
-import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerAPI
-import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerImpl
+import com.laurenyew.agilityfittodayapp.features.workout.manager.ExecuteWorkoutManagerAPI
+import com.laurenyew.agilityfittodayapp.features.workout.manager.ExecuteWorkoutManagerImpl
 import com.laurenyew.agilityfittodayapp.features.workout.start.StartWorkoutFlowNavManager
 import com.laurenyew.agilityfittodayapp.features.workout.start.StartWorkoutFlowNavManagerAPI
 import dagger.Module

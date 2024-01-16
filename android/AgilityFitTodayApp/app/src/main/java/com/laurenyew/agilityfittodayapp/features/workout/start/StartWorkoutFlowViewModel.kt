@@ -5,14 +5,14 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.laurenyew.agilityfittodayapp.data.models.WorkoutSequence
-import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerAPI
-import com.laurenyew.agilityfittodayapp.features.workout.ExecuteWorkoutManagerStateAPI
 import com.laurenyew.agilityfittodayapp.features.workout.execute.WorkoutExecutionState
+import com.laurenyew.agilityfittodayapp.features.workout.manager.ExecuteWorkoutManagerAPI
+import com.laurenyew.agilityfittodayapp.features.workout.manager.ExecuteWorkoutManagerStateAPI
 import com.laurenyew.agilityfittodayapp.repository.WorkoutRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * TODO: How to actually do the timer going through a workout?
@@ -38,10 +38,13 @@ class StartWorkoutFlowViewModel @Inject constructor(
     // Workout Execution
 
     fun updateWorkoutState(newState: WorkoutExecutionState) {
+        executeWorkoutManager.updateWorkoutState(newState = newState)
         when (newState) {
             WorkoutExecutionState.COMPLETED -> finishWorkout()
             WorkoutExecutionState.CANCELLED -> finishWorkout(isCancelled = true)
-            else -> executeWorkoutManager.updateWorkoutState(newState = newState)
+            else -> {
+                // Do nothing
+            }
         }
     }
 
