@@ -92,7 +92,7 @@ class ExecuteWorkoutManagerImpl : ExecuteWorkoutManagerAPI {
                     updateWorkoutExecutionIndex(timerData.timePassedInWorkout)
                     _totalTimeSinceFirstStartFlow.value =
                         DateTimeFormatter.timeInMillisToDuration(timerData.totalTimePassedSinceFirstStart)
-                },
+                }
             )
         }
     }

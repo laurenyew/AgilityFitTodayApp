@@ -62,7 +62,7 @@ class TimePassedTimer(
             timer = timerFlow(
                 pausedTimerData = pausedTimerData,
                 countDownInterval = countDownInterval,
-                onIntervalTick = onPauseResumeIntervalTick,
+                onIntervalTick = onPauseResumeIntervalTick
             )
             timer?.collect()
         }
